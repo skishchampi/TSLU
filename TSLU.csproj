@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -100,10 +101,20 @@
       <DependentUpon>aao.cs</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Database3DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database3DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model3.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model6.edmx</DependentUpon>
     </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
@@ -160,7 +171,22 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model3.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Database3DataSet.xsc">
+      <DependentUpon>Database3DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Database3DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database3DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database3DataSet.xss">
+      <DependentUpon>Database3DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Model3.edmx.sqlce" />
+    <EntityDeploy Include="Model6.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model6.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Properties\DataSources\Model3Container.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -196,7 +222,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database2.sdf">
+    <Content Include="Database3.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

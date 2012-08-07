@@ -57,6 +57,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AddNewCategory
             // 
@@ -70,6 +71,7 @@
             this.MinimizeBox = false;
             this.Name = "AddNewCategory";
             this.Text = "Add New Category";
+            this.Load += new System.EventHandler(this.AddNewCategory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

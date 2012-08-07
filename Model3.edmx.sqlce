@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server Compact Edition
 -- --------------------------------------------------
--- Date Created: 08/07/2012 23:53:59
+-- Date Created: 08/08/2012 00:56:02
 -- Generated from EDMX file: C:\Users\Aakash\documents\visual studio 2010\Projects\WpfApplication3\WpfApplication3\Model3.edmx
 -- --------------------------------------------------
 
@@ -12,12 +12,82 @@
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+    ALTER TABLE [Dictionaries] DROP CONSTRAINT [FK_BookPublisher];
+GO
+    ALTER TABLE [BookAuthor] DROP CONSTRAINT [FK_BookAuthor_Book];
+GO
+    ALTER TABLE [BookAuthor] DROP CONSTRAINT [FK_BookAuthor_Author];
+GO
+    ALTER TABLE [Locations] DROP CONSTRAINT [FK_PublisherLocation];
+GO
+    ALTER TABLE [DictionaryCategory] DROP CONSTRAINT [FK_DictionaryCategory_Dictionary];
+GO
+    ALTER TABLE [DictionaryCategory] DROP CONSTRAINT [FK_DictionaryCategory_Category];
+GO
+    ALTER TABLE [DictionaryMention] DROP CONSTRAINT [FK_DictionaryMention_Dictionary];
+GO
+    ALTER TABLE [DictionaryMention] DROP CONSTRAINT [FK_DictionaryMention_Mention];
+GO
+    ALTER TABLE [DictionaryAcknowledgement] DROP CONSTRAINT [FK_DictionaryAcknowledgement_Dictionary];
+GO
+    ALTER TABLE [DictionaryAcknowledgement] DROP CONSTRAINT [FK_DictionaryAcknowledgement_Acknowledgement];
+GO
+    ALTER TABLE [ToLs] DROP CONSTRAINT [FK_LanguageToL];
+GO
+    ALTER TABLE [ToLs] DROP CONSTRAINT [FK_DictionaryToL];
+GO
+    ALTER TABLE [FromLs] DROP CONSTRAINT [FK_LanguageFromL];
+GO
+    ALTER TABLE [FromLs] DROP CONSTRAINT [FK_DictionaryFromL];
+GO
+    ALTER TABLE [FromS] DROP CONSTRAINT [FK_ScriptFromS];
+GO
+    ALTER TABLE [FromS] DROP CONSTRAINT [FK_DictionaryFromS];
+GO
+    ALTER TABLE [ToS] DROP CONSTRAINT [FK_DictionaryToS];
+GO
+    ALTER TABLE [ToS] DROP CONSTRAINT [FK_ScriptToS];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- NOTE: if the table does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+    DROP TABLE [Dictionaries];
+GO
+    DROP TABLE [Publishers];
+GO
+    DROP TABLE [Authors];
+GO
+    DROP TABLE [Locations];
+GO
+    DROP TABLE [Categories];
+GO
+    DROP TABLE [Mentions];
+GO
+    DROP TABLE [Acknowledgements];
+GO
+    DROP TABLE [Languages];
+GO
+    DROP TABLE [FromLs];
+GO
+    DROP TABLE [ToLs];
+GO
+    DROP TABLE [Scripts];
+GO
+    DROP TABLE [FromS];
+GO
+    DROP TABLE [ToS];
+GO
+    DROP TABLE [BookAuthor];
+GO
+    DROP TABLE [DictionaryCategory];
+GO
+    DROP TABLE [DictionaryMention];
+GO
+    DROP TABLE [DictionaryAcknowledgement];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables

@@ -11,6 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace WpfApplication3
 {
@@ -19,13 +22,18 @@ namespace WpfApplication3
     /// </summary>
     public partial class MainWindow : Window
     {
+        DataAccessTierClass a = new DataAccessTierClass();
         public MainWindow()
         {
             InitializeComponent();
             //Window1 w = new Window1();
             //w.Show();
+            a.fnGetDataConnection();
             
         }
+
+        
+        
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {

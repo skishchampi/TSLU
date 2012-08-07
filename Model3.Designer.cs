@@ -21,10 +21,17 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Model3", "BookPublisher", "Book", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Dictionary), "Publisher", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WpfApplication3.Publisher), true)]
 [assembly: EdmRelationshipAttribute("Model3", "BookAuthor", "Book", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Dictionary), "Author", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Author))]
 [assembly: EdmRelationshipAttribute("Model3", "PublisherLocation", "Publisher", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WpfApplication3.Publisher), "Location", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Location), true)]
-[assembly: EdmRelationshipAttribute("Model3", "DictionaryLanguage", "Dictionary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Dictionary), "Language", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Language))]
 [assembly: EdmRelationshipAttribute("Model3", "DictionaryCategory", "Dictionary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Dictionary), "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Category))]
 [assembly: EdmRelationshipAttribute("Model3", "DictionaryMention", "Dictionary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Dictionary), "Mention", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Mention))]
 [assembly: EdmRelationshipAttribute("Model3", "DictionaryAcknowledgement", "Dictionary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Dictionary), "Acknowledgement", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.Acknowledgement))]
+[assembly: EdmRelationshipAttribute("Model3", "LanguageToL", "Language", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WpfApplication3.Language), "ToL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.ToL), true)]
+[assembly: EdmRelationshipAttribute("Model3", "DictionaryToL", "Dictionary", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WpfApplication3.Dictionary), "ToL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.ToL), true)]
+[assembly: EdmRelationshipAttribute("Model3", "LanguageFromL", "Language", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WpfApplication3.Language), "FromL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.FromL), true)]
+[assembly: EdmRelationshipAttribute("Model3", "DictionaryFromL", "Dictionary", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WpfApplication3.Dictionary), "FromL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.FromL), true)]
+[assembly: EdmRelationshipAttribute("Model3", "ScriptFromS", "Script", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WpfApplication3.Script), "FromS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.FromS), true)]
+[assembly: EdmRelationshipAttribute("Model3", "DictionaryFromS", "Dictionary", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WpfApplication3.Dictionary), "FromS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.FromS), true)]
+[assembly: EdmRelationshipAttribute("Model3", "DictionaryToS", "Dictionary", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WpfApplication3.Dictionary), "ToS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.ToS), true)]
+[assembly: EdmRelationshipAttribute("Model3", "ScriptToS", "Script", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(WpfApplication3.Script), "ToS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(WpfApplication3.ToS), true)]
 
 #endregion
 
@@ -127,22 +134,6 @@ namespace WpfApplication3
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Language> Languages
-        {
-            get
-            {
-                if ((_Languages == null))
-                {
-                    _Languages = base.CreateObjectSet<Language>("Languages");
-                }
-                return _Languages;
-            }
-        }
-        private ObjectSet<Language> _Languages;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Location> Locations
         {
             get
@@ -203,6 +194,102 @@ namespace WpfApplication3
             }
         }
         private ObjectSet<Acknowledgement> _Acknowledgements;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Language> Languages
+        {
+            get
+            {
+                if ((_Languages == null))
+                {
+                    _Languages = base.CreateObjectSet<Language>("Languages");
+                }
+                return _Languages;
+            }
+        }
+        private ObjectSet<Language> _Languages;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FromL> FromLs
+        {
+            get
+            {
+                if ((_FromLs == null))
+                {
+                    _FromLs = base.CreateObjectSet<FromL>("FromLs");
+                }
+                return _FromLs;
+            }
+        }
+        private ObjectSet<FromL> _FromLs;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ToL> ToLs
+        {
+            get
+            {
+                if ((_ToLs == null))
+                {
+                    _ToLs = base.CreateObjectSet<ToL>("ToLs");
+                }
+                return _ToLs;
+            }
+        }
+        private ObjectSet<ToL> _ToLs;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Script> Scripts
+        {
+            get
+            {
+                if ((_Scripts == null))
+                {
+                    _Scripts = base.CreateObjectSet<Script>("Scripts");
+                }
+                return _Scripts;
+            }
+        }
+        private ObjectSet<Script> _Scripts;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FromS> FromS
+        {
+            get
+            {
+                if ((_FromS == null))
+                {
+                    _FromS = base.CreateObjectSet<FromS>("FromS");
+                }
+                return _FromS;
+            }
+        }
+        private ObjectSet<FromS> _FromS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ToS> ToS
+        {
+            get
+            {
+                if ((_ToS == null))
+                {
+                    _ToS = base.CreateObjectSet<ToS>("ToS");
+                }
+                return _ToS;
+            }
+        }
+        private ObjectSet<ToS> _ToS;
 
         #endregion
         #region AddTo Methods
@@ -229,14 +316,6 @@ namespace WpfApplication3
         public void AddToAuthors(Author author)
         {
             base.AddObject("Authors", author);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Languages EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToLanguages(Language language)
-        {
-            base.AddObject("Languages", language);
         }
     
         /// <summary>
@@ -269,6 +348,54 @@ namespace WpfApplication3
         public void AddToAcknowledgements(Acknowledgement acknowledgement)
         {
             base.AddObject("Acknowledgements", acknowledgement);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Languages EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToLanguages(Language language)
+        {
+            base.AddObject("Languages", language);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FromLs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFromLs(FromL fromL)
+        {
+            base.AddObject("FromLs", fromL);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ToLs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToToLs(ToL toL)
+        {
+            base.AddObject("ToLs", toL);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Scripts EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToScripts(Script script)
+        {
+            base.AddObject("Scripts", script);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FromS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFromS(FromS fromS)
+        {
+            base.AddObject("FromS", fromS);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ToS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToToS(ToS toS)
+        {
+            base.AddObject("ToS", toS);
         }
 
         #endregion
@@ -952,28 +1079,6 @@ namespace WpfApplication3
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryLanguage", "Language")]
-        public EntityCollection<Language> Languages
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Language>("Model3.DictionaryLanguage", "Language");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Language>("Model3.DictionaryLanguage", "Language", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryCategory", "Category")]
         public EntityCollection<Category> Categories
         {
@@ -1030,6 +1135,466 @@ namespace WpfApplication3
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Acknowledgement>("Model3.DictionaryAcknowledgement", "Acknowledgement", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryToL", "ToL")]
+        public EntityCollection<ToL> ToLs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToL>("Model3.DictionaryToL", "ToL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToL>("Model3.DictionaryToL", "ToL", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryFromL", "FromL")]
+        public EntityCollection<FromL> FromLs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<FromL>("Model3.DictionaryFromL", "FromL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<FromL>("Model3.DictionaryFromL", "FromL", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryFromS", "FromS")]
+        public EntityCollection<FromS> FromS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<FromS>("Model3.DictionaryFromS", "FromS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<FromS>("Model3.DictionaryFromS", "FromS", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryToS", "ToS")]
+        public EntityCollection<ToS> ToS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToS>("Model3.DictionaryToS", "ToS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToS>("Model3.DictionaryToS", "ToS", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model3", Name="FromL")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FromL : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new FromL object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="languageId">Initial value of the LanguageId property.</param>
+        /// <param name="dictionaryId">Initial value of the DictionaryId property.</param>
+        public static FromL CreateFromL(global::System.Int32 id, global::System.Int32 languageId, global::System.Int32 dictionaryId)
+        {
+            FromL fromL = new FromL();
+            fromL.Id = id;
+            fromL.LanguageId = languageId;
+            fromL.DictionaryId = dictionaryId;
+            return fromL;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LanguageId
+        {
+            get
+            {
+                return _LanguageId;
+            }
+            set
+            {
+                OnLanguageIdChanging(value);
+                ReportPropertyChanging("LanguageId");
+                _LanguageId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LanguageId");
+                OnLanguageIdChanged();
+            }
+        }
+        private global::System.Int32 _LanguageId;
+        partial void OnLanguageIdChanging(global::System.Int32 value);
+        partial void OnLanguageIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 DictionaryId
+        {
+            get
+            {
+                return _DictionaryId;
+            }
+            set
+            {
+                OnDictionaryIdChanging(value);
+                ReportPropertyChanging("DictionaryId");
+                _DictionaryId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DictionaryId");
+                OnDictionaryIdChanged();
+            }
+        }
+        private global::System.Int32 _DictionaryId;
+        partial void OnDictionaryIdChanging(global::System.Int32 value);
+        partial void OnDictionaryIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "LanguageFromL", "Language")]
+        public Language Language
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Model3.LanguageFromL", "Language").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Model3.LanguageFromL", "Language").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Language> LanguageReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Model3.LanguageFromL", "Language");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Language>("Model3.LanguageFromL", "Language", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryFromL", "Dictionary")]
+        public Dictionary Dictionary
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryFromL", "Dictionary").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryFromL", "Dictionary").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Dictionary> DictionaryReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryFromL", "Dictionary");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Dictionary>("Model3.DictionaryFromL", "Dictionary", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model3", Name="FromS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FromS : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new FromS object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="scriptId">Initial value of the ScriptId property.</param>
+        /// <param name="dictionaryId">Initial value of the DictionaryId property.</param>
+        public static FromS CreateFromS(global::System.Int32 id, global::System.Int32 scriptId, global::System.Int32 dictionaryId)
+        {
+            FromS fromS = new FromS();
+            fromS.Id = id;
+            fromS.ScriptId = scriptId;
+            fromS.DictionaryId = dictionaryId;
+            return fromS;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ScriptId
+        {
+            get
+            {
+                return _ScriptId;
+            }
+            set
+            {
+                OnScriptIdChanging(value);
+                ReportPropertyChanging("ScriptId");
+                _ScriptId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ScriptId");
+                OnScriptIdChanged();
+            }
+        }
+        private global::System.Int32 _ScriptId;
+        partial void OnScriptIdChanging(global::System.Int32 value);
+        partial void OnScriptIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 DictionaryId
+        {
+            get
+            {
+                return _DictionaryId;
+            }
+            set
+            {
+                OnDictionaryIdChanging(value);
+                ReportPropertyChanging("DictionaryId");
+                _DictionaryId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DictionaryId");
+                OnDictionaryIdChanged();
+            }
+        }
+        private global::System.Int32 _DictionaryId;
+        partial void OnDictionaryIdChanging(global::System.Int32 value);
+        partial void OnDictionaryIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "ScriptFromS", "Script")]
+        public Script Script
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Script>("Model3.ScriptFromS", "Script").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Script>("Model3.ScriptFromS", "Script").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Script> ScriptReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Script>("Model3.ScriptFromS", "Script");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Script>("Model3.ScriptFromS", "Script", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryFromS", "Dictionary")]
+        public Dictionary Dictionary
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryFromS", "Dictionary").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryFromS", "Dictionary").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Dictionary> DictionaryReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryFromS", "Dictionary");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Dictionary>("Model3.DictionaryFromS", "Dictionary", value);
                 }
             }
         }
@@ -1124,18 +1689,40 @@ namespace WpfApplication3
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryLanguage", "Dictionary")]
-        public EntityCollection<Dictionary> Dictionaries
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "LanguageToL", "ToL")]
+        public EntityCollection<ToL> ToLs
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Dictionary>("Model3.DictionaryLanguage", "Dictionary");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToL>("Model3.LanguageToL", "ToL");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Dictionary>("Model3.DictionaryLanguage", "Dictionary", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToL>("Model3.LanguageToL", "ToL", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "LanguageFromL", "FromL")]
+        public EntityCollection<FromL> FromLs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<FromL>("Model3.LanguageFromL", "FromL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<FromL>("Model3.LanguageFromL", "FromL", value);
                 }
             }
         }
@@ -1648,6 +2235,480 @@ namespace WpfApplication3
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Location>("Model3.PublisherLocation", "Location", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model3", Name="Script")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Script : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Script object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static Script CreateScript(global::System.Int32 id)
+        {
+            Script script = new Script();
+            script.Id = id;
+            return script;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "ScriptFromS", "FromS")]
+        public EntityCollection<FromS> FromS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<FromS>("Model3.ScriptFromS", "FromS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<FromS>("Model3.ScriptFromS", "FromS", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "ScriptToS", "ToS")]
+        public EntityCollection<ToS> ToS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToS>("Model3.ScriptToS", "ToS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToS>("Model3.ScriptToS", "ToS", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model3", Name="ToL")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ToL : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ToL object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="languageId">Initial value of the LanguageId property.</param>
+        /// <param name="dictionaryId">Initial value of the DictionaryId property.</param>
+        public static ToL CreateToL(global::System.Int32 id, global::System.Int32 languageId, global::System.Int32 dictionaryId)
+        {
+            ToL toL = new ToL();
+            toL.Id = id;
+            toL.LanguageId = languageId;
+            toL.DictionaryId = dictionaryId;
+            return toL;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LanguageId
+        {
+            get
+            {
+                return _LanguageId;
+            }
+            set
+            {
+                OnLanguageIdChanging(value);
+                ReportPropertyChanging("LanguageId");
+                _LanguageId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LanguageId");
+                OnLanguageIdChanged();
+            }
+        }
+        private global::System.Int32 _LanguageId;
+        partial void OnLanguageIdChanging(global::System.Int32 value);
+        partial void OnLanguageIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 DictionaryId
+        {
+            get
+            {
+                return _DictionaryId;
+            }
+            set
+            {
+                OnDictionaryIdChanging(value);
+                ReportPropertyChanging("DictionaryId");
+                _DictionaryId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DictionaryId");
+                OnDictionaryIdChanged();
+            }
+        }
+        private global::System.Int32 _DictionaryId;
+        partial void OnDictionaryIdChanging(global::System.Int32 value);
+        partial void OnDictionaryIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "LanguageToL", "Language")]
+        public Language Language
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Model3.LanguageToL", "Language").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Model3.LanguageToL", "Language").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Language> LanguageReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Model3.LanguageToL", "Language");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Language>("Model3.LanguageToL", "Language", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryToL", "Dictionary")]
+        public Dictionary Dictionary
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryToL", "Dictionary").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryToL", "Dictionary").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Dictionary> DictionaryReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryToL", "Dictionary");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Dictionary>("Model3.DictionaryToL", "Dictionary", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model3", Name="ToS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ToS : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ToS object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="dictionaryId">Initial value of the DictionaryId property.</param>
+        /// <param name="scriptId">Initial value of the ScriptId property.</param>
+        public static ToS CreateToS(global::System.Int32 id, global::System.Int32 dictionaryId, global::System.Int32 scriptId)
+        {
+            ToS toS = new ToS();
+            toS.Id = id;
+            toS.DictionaryId = dictionaryId;
+            toS.ScriptId = scriptId;
+            return toS;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 DictionaryId
+        {
+            get
+            {
+                return _DictionaryId;
+            }
+            set
+            {
+                OnDictionaryIdChanging(value);
+                ReportPropertyChanging("DictionaryId");
+                _DictionaryId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DictionaryId");
+                OnDictionaryIdChanged();
+            }
+        }
+        private global::System.Int32 _DictionaryId;
+        partial void OnDictionaryIdChanging(global::System.Int32 value);
+        partial void OnDictionaryIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ScriptId
+        {
+            get
+            {
+                return _ScriptId;
+            }
+            set
+            {
+                OnScriptIdChanging(value);
+                ReportPropertyChanging("ScriptId");
+                _ScriptId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ScriptId");
+                OnScriptIdChanged();
+            }
+        }
+        private global::System.Int32 _ScriptId;
+        partial void OnScriptIdChanging(global::System.Int32 value);
+        partial void OnScriptIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "DictionaryToS", "Dictionary")]
+        public Dictionary Dictionary
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryToS", "Dictionary").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryToS", "Dictionary").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Dictionary> DictionaryReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dictionary>("Model3.DictionaryToS", "Dictionary");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Dictionary>("Model3.DictionaryToS", "Dictionary", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model3", "ScriptToS", "Script")]
+        public Script Script
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Script>("Model3.ScriptToS", "Script").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Script>("Model3.ScriptToS", "Script").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Script> ScriptReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Script>("Model3.ScriptToS", "Script");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Script>("Model3.ScriptToS", "Script", value);
                 }
             }
         }

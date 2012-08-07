@@ -1,4 +1,450 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" Namespace="Model3.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-  <EntityContainer Name="Model3TargetContainer" />
+<Schema Namespace="Model3.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="Model3StoreContainer">
+    <EntitySet Name="Dictionaries" EntityType="Model3.Store.Dictionaries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Publishers" EntityType="Model3.Store.Publishers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Authors" EntityType="Model3.Store.Authors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Locations" EntityType="Model3.Store.Locations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="Model3.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Mentions" EntityType="Model3.Store.Mentions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Acknowledgements" EntityType="Model3.Store.Acknowledgements" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Languages" EntityType="Model3.Store.Languages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FromLs" EntityType="Model3.Store.FromLs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ToLs" EntityType="Model3.Store.ToLs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Scripts" EntityType="Model3.Store.Scripts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FromS" EntityType="Model3.Store.FromS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ToS" EntityType="Model3.Store.ToS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookAuthor" EntityType="Model3.Store.BookAuthor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DictionaryCategory" EntityType="Model3.Store.DictionaryCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DictionaryMention" EntityType="Model3.Store.DictionaryMention" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DictionaryAcknowledgement" EntityType="Model3.Store.DictionaryAcknowledgement" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="BookPublisher" Association="Model3.Store.BookPublisher">
+      <End Role="Book" EntitySet="Dictionaries" />
+      <End Role="Publisher" EntitySet="Publishers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookAuthor_Book" Association="Model3.Store.FK_BookAuthor_Book">
+      <End Role="Book" EntitySet="Dictionaries" />
+      <End Role="BookAuthor" EntitySet="BookAuthor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookAuthor_Author" Association="Model3.Store.FK_BookAuthor_Author">
+      <End Role="Author" EntitySet="Authors" />
+      <End Role="BookAuthor" EntitySet="BookAuthor" />
+    </AssociationSet>
+    <AssociationSet Name="PublisherLocation" Association="Model3.Store.PublisherLocation">
+      <End Role="Publisher" EntitySet="Publishers" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DictionaryCategory_Dictionary" Association="Model3.Store.FK_DictionaryCategory_Dictionary">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="DictionaryCategory" EntitySet="DictionaryCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DictionaryCategory_Category" Association="Model3.Store.FK_DictionaryCategory_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="DictionaryCategory" EntitySet="DictionaryCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DictionaryMention_Dictionary" Association="Model3.Store.FK_DictionaryMention_Dictionary">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="DictionaryMention" EntitySet="DictionaryMention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DictionaryMention_Mention" Association="Model3.Store.FK_DictionaryMention_Mention">
+      <End Role="Mention" EntitySet="Mentions" />
+      <End Role="DictionaryMention" EntitySet="DictionaryMention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DictionaryAcknowledgement_Dictionary" Association="Model3.Store.FK_DictionaryAcknowledgement_Dictionary">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="DictionaryAcknowledgement" EntitySet="DictionaryAcknowledgement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DictionaryAcknowledgement_Acknowledgement" Association="Model3.Store.FK_DictionaryAcknowledgement_Acknowledgement">
+      <End Role="Acknowledgement" EntitySet="Acknowledgements" />
+      <End Role="DictionaryAcknowledgement" EntitySet="DictionaryAcknowledgement" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageToL" Association="Model3.Store.LanguageToL">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="ToL" EntitySet="ToLs" />
+    </AssociationSet>
+    <AssociationSet Name="DictionaryToL" Association="Model3.Store.DictionaryToL">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="ToL" EntitySet="ToLs" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageFromL" Association="Model3.Store.LanguageFromL">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="FromL" EntitySet="FromLs" />
+    </AssociationSet>
+    <AssociationSet Name="DictionaryFromL" Association="Model3.Store.DictionaryFromL">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="FromL" EntitySet="FromLs" />
+    </AssociationSet>
+    <AssociationSet Name="ScriptFromS" Association="Model3.Store.ScriptFromS">
+      <End Role="Script" EntitySet="Scripts" />
+      <End Role="FromS" EntitySet="FromS" />
+    </AssociationSet>
+    <AssociationSet Name="DictionaryFromS" Association="Model3.Store.DictionaryFromS">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="FromS" EntitySet="FromS" />
+    </AssociationSet>
+    <AssociationSet Name="DictionaryToS" Association="Model3.Store.DictionaryToS">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="ToS" EntitySet="ToS" />
+    </AssociationSet>
+    <AssociationSet Name="ScriptToS" Association="Model3.Store.ScriptToS">
+      <End Role="Script" EntitySet="Scripts" />
+      <End Role="ToS" EntitySet="ToS" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Dictionaries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISBN" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" />
+    <Property Name="Edition" Type="int" Nullable="false" />
+    <Property Name="Volume" Type="int" Nullable="false" />
+    <Property Name="Part" Type="int" Nullable="false" />
+    <Property Name="PublisherId" Type="int" Nullable="false" />
+    <Property Name="Copies" Type="nvarchar" Nullable="false" />
+    <Property Name="Words" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Publishers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+    <Property Name="Address" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="City" Type="nvarchar" Nullable="false" />
+    <Property Name="State" Type="nvarchar" Nullable="false" />
+    <Property Name="PIN" Type="nvarchar" Nullable="false" />
+    <Property Name="street" Type="nvarchar" Nullable="false" />
+    <Property Name="PublisherId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mentions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Acknowledgements">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Languages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FromLs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="DictionaryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ToLs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="DictionaryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Scripts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FromS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScriptId" Type="int" Nullable="false" />
+    <Property Name="DictionaryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ToS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DictionaryId" Type="int" Nullable="false" />
+    <Property Name="ScriptId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookAuthor">
+    <Key>
+      <PropertyRef Name="Books_Id" />
+      <PropertyRef Name="Authors_Id" />
+    </Key>
+    <Property Name="Books_Id" Type="int" Nullable="false" />
+    <Property Name="Authors_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DictionaryCategory">
+    <Key>
+      <PropertyRef Name="Dictionaries_Id" />
+      <PropertyRef Name="Categories_Id" />
+    </Key>
+    <Property Name="Dictionaries_Id" Type="int" Nullable="false" />
+    <Property Name="Categories_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DictionaryMention">
+    <Key>
+      <PropertyRef Name="Dictionaries_Id" />
+      <PropertyRef Name="Mentions_Id" />
+    </Key>
+    <Property Name="Dictionaries_Id" Type="int" Nullable="false" />
+    <Property Name="Mentions_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DictionaryAcknowledgement">
+    <Key>
+      <PropertyRef Name="Dictionaries_Id" />
+      <PropertyRef Name="Acknowledgements_Id" />
+    </Key>
+    <Property Name="Dictionaries_Id" Type="int" Nullable="false" />
+    <Property Name="Acknowledgements_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="BookPublisher">
+    <End Role="Book" Type="Model3.Store.Dictionaries" Multiplicity="*" />
+    <End Role="Publisher" Type="Model3.Store.Publishers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="PublisherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PublisherLocation">
+    <End Role="Publisher" Type="Model3.Store.Publishers" Multiplicity="1" />
+    <End Role="Location" Type="Model3.Store.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="PublisherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageToL">
+    <End Role="Language" Type="Model3.Store.Languages" Multiplicity="1" />
+    <End Role="ToL" Type="Model3.Store.ToLs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToL">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DictionaryToL">
+    <End Role="Dictionary" Type="Model3.Store.Dictionaries" Multiplicity="1" />
+    <End Role="ToL" Type="Model3.Store.ToLs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToL">
+        <PropertyRef Name="DictionaryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageFromL">
+    <End Role="Language" Type="Model3.Store.Languages" Multiplicity="1" />
+    <End Role="FromL" Type="Model3.Store.FromLs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FromL">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DictionaryFromL">
+    <End Role="Dictionary" Type="Model3.Store.Dictionaries" Multiplicity="1" />
+    <End Role="FromL" Type="Model3.Store.FromLs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FromL">
+        <PropertyRef Name="DictionaryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ScriptFromS">
+    <End Role="Script" Type="Model3.Store.Scripts" Multiplicity="1" />
+    <End Role="FromS" Type="Model3.Store.FromS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Script">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FromS">
+        <PropertyRef Name="ScriptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DictionaryFromS">
+    <End Role="Dictionary" Type="Model3.Store.Dictionaries" Multiplicity="1" />
+    <End Role="FromS" Type="Model3.Store.FromS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FromS">
+        <PropertyRef Name="DictionaryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DictionaryToS">
+    <End Role="Dictionary" Type="Model3.Store.Dictionaries" Multiplicity="1" />
+    <End Role="ToS" Type="Model3.Store.ToS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToS">
+        <PropertyRef Name="DictionaryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ScriptToS">
+    <End Role="Script" Type="Model3.Store.Scripts" Multiplicity="1" />
+    <End Role="ToS" Type="Model3.Store.ToS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Script">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToS">
+        <PropertyRef Name="ScriptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookAuthor_Book">
+    <End Role="Book" Type="Model3.Store.Dictionaries" Multiplicity="1" />
+    <End Role="BookAuthor" Type="Model3.Store.BookAuthor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookAuthor">
+        <PropertyRef Name="Books_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookAuthor_Author">
+    <End Role="BookAuthor" Type="Model3.Store.BookAuthor" Multiplicity="*" />
+    <End Role="Author" Type="Model3.Store.Authors" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookAuthor">
+        <PropertyRef Name="Authors_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DictionaryCategory_Dictionary">
+    <End Role="Dictionary" Type="Model3.Store.Dictionaries" Multiplicity="1" />
+    <End Role="DictionaryCategory" Type="Model3.Store.DictionaryCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DictionaryCategory">
+        <PropertyRef Name="Dictionaries_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DictionaryCategory_Category">
+    <End Role="DictionaryCategory" Type="Model3.Store.DictionaryCategory" Multiplicity="*" />
+    <End Role="Category" Type="Model3.Store.Categories" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DictionaryCategory">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DictionaryMention_Dictionary">
+    <End Role="Dictionary" Type="Model3.Store.Dictionaries" Multiplicity="1" />
+    <End Role="DictionaryMention" Type="Model3.Store.DictionaryMention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DictionaryMention">
+        <PropertyRef Name="Dictionaries_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DictionaryMention_Mention">
+    <End Role="DictionaryMention" Type="Model3.Store.DictionaryMention" Multiplicity="*" />
+    <End Role="Mention" Type="Model3.Store.Mentions" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Mention">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DictionaryMention">
+        <PropertyRef Name="Mentions_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DictionaryAcknowledgement_Dictionary">
+    <End Role="Dictionary" Type="Model3.Store.Dictionaries" Multiplicity="1" />
+    <End Role="DictionaryAcknowledgement" Type="Model3.Store.DictionaryAcknowledgement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DictionaryAcknowledgement">
+        <PropertyRef Name="Dictionaries_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DictionaryAcknowledgement_Acknowledgement">
+    <End Role="DictionaryAcknowledgement" Type="Model3.Store.DictionaryAcknowledgement" Multiplicity="*" />
+    <End Role="Acknowledgement" Type="Model3.Store.Acknowledgements" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Acknowledgement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DictionaryAcknowledgement">
+        <PropertyRef Name="Acknowledgements_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

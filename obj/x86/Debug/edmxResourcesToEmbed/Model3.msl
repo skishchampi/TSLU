@@ -1,6 +1,158 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
-  <Alias Key="Model" Value="Model3" />
-  <Alias Key="Target" Value="Model3.Store" />
-  <EntityContainerMapping CdmEntityContainer="Model3Container" StorageEntityContainer="Model3TargetContainer" />
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model3StoreContainer" CdmEntityContainer="Model3Container">
+    <EntitySetMapping Name="Dictionaries">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.Dictionary)">
+        <MappingFragment StoreEntitySet="Dictionaries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Edition" ColumnName="Edition" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Part" ColumnName="Part" />
+          <ScalarProperty Name="PublisherId" ColumnName="PublisherId" />
+          <ScalarProperty Name="Copies" ColumnName="Copies" />
+          <ScalarProperty Name="Words" ColumnName="Words" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publishers">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.Publisher)">
+        <MappingFragment StoreEntitySet="Publishers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.Author)">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.Location)">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="PublisherId" ColumnName="PublisherId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mentions">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.Mention)">
+        <MappingFragment StoreEntitySet="Mentions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Acknowledgements">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.Acknowledgement)">
+        <MappingFragment StoreEntitySet="Acknowledgements">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.Language)">
+        <MappingFragment StoreEntitySet="Languages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FromLs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.FromL)">
+        <MappingFragment StoreEntitySet="FromLs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="DictionaryId" ColumnName="DictionaryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToLs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.ToL)">
+        <MappingFragment StoreEntitySet="ToLs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="DictionaryId" ColumnName="DictionaryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Scripts">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.Script)">
+        <MappingFragment StoreEntitySet="Scripts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FromS">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.FromS)">
+        <MappingFragment StoreEntitySet="FromS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ScriptId" ColumnName="ScriptId" />
+          <ScalarProperty Name="DictionaryId" ColumnName="DictionaryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToS">
+      <EntityTypeMapping TypeName="IsTypeOf(Model3.ToS)">
+        <MappingFragment StoreEntitySet="ToS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DictionaryId" ColumnName="DictionaryId" />
+          <ScalarProperty Name="ScriptId" ColumnName="ScriptId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="BookAuthor" TypeName="Model3.BookAuthor" StoreEntitySet="BookAuthor">
+      <EndProperty Name="Book">
+        <ScalarProperty Name="Id" ColumnName="Books_Id" />
+      </EndProperty>
+      <EndProperty Name="Author">
+        <ScalarProperty Name="Id" ColumnName="Authors_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DictionaryCategory" TypeName="Model3.DictionaryCategory" StoreEntitySet="DictionaryCategory">
+      <EndProperty Name="Dictionary">
+        <ScalarProperty Name="Id" ColumnName="Dictionaries_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DictionaryMention" TypeName="Model3.DictionaryMention" StoreEntitySet="DictionaryMention">
+      <EndProperty Name="Dictionary">
+        <ScalarProperty Name="Id" ColumnName="Dictionaries_Id" />
+      </EndProperty>
+      <EndProperty Name="Mention">
+        <ScalarProperty Name="Id" ColumnName="Mentions_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DictionaryAcknowledgement" TypeName="Model3.DictionaryAcknowledgement" StoreEntitySet="DictionaryAcknowledgement">
+      <EndProperty Name="Dictionary">
+        <ScalarProperty Name="Id" ColumnName="Dictionaries_Id" />
+      </EndProperty>
+      <EndProperty Name="Acknowledgement">
+        <ScalarProperty Name="Id" ColumnName="Acknowledgements_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
 </Mapping>

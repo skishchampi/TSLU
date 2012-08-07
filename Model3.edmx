@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" Namespace="Model3.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="Model3TargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model3" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="Model3Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dictionaries" EntityType="Model3.Dictionary" />
+          <EntitySet Name="Publishers" EntityType="Model3.Publisher" />
+          <AssociationSet Name="BookPublisher" Association="Model3.BookPublisher">
+            <End Role="Book" EntitySet="Dictionaries" />
+            <End Role="Publisher" EntitySet="Publishers" />
+          </AssociationSet>
+          <EntitySet Name="Authors" EntityType="Model3.Author" />
+          <AssociationSet Name="BookAuthor" Association="Model3.BookAuthor">
+            <End Role="Book" EntitySet="Dictionaries" />
+            <End Role="Author" EntitySet="Authors" />
+          </AssociationSet>
+          <EntitySet Name="Languages" EntityType="Model3.Language" />
+          <EntitySet Name="Locations" EntityType="Model3.Location" />
+          <AssociationSet Name="PublisherLocation" Association="Model3.PublisherLocation">
+            <End Role="Publisher" EntitySet="Publishers" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="DictionaryLanguage" Association="Model3.DictionaryLanguage">
+            <End Role="Dictionary" EntitySet="Dictionaries" />
+            <End Role="Language" EntitySet="Languages" />
+          </AssociationSet>
+          <EntitySet Name="Categories" EntityType="Model3.Category" />
+          <AssociationSet Name="DictionaryCategory" Association="Model3.DictionaryCategory">
+            <End Role="Dictionary" EntitySet="Dictionaries" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <EntitySet Name="Mentions" EntityType="Model3.Mention" />
+          <AssociationSet Name="DictionaryMention" Association="Model3.DictionaryMention">
+            <End Role="Dictionary" EntitySet="Dictionaries" />
+            <End Role="Mention" EntitySet="Mentions" />
+          </AssociationSet>
+          <EntitySet Name="Acknowledgements" EntityType="Model3.Acknowledgement" />
+          <AssociationSet Name="DictionaryAcknowledgement" Association="Model3.DictionaryAcknowledgement">
+            <End Role="Dictionary" EntitySet="Dictionaries" />
+            <End Role="Acknowledgement" EntitySet="Acknowledgements" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ISBN" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="Int32" Name="Edition" Nullable="false" />
+          <Property Type="Int32" Name="Volume" Nullable="false" />
+          <Property Type="Int32" Name="Part" Nullable="false" />
+          <NavigationProperty Name="Publisher" Relationship="Model3.BookPublisher" FromRole="Book" ToRole="Publisher" />
+          <Property Type="Int32" Name="PublisherId" Nullable="false" />
+          <NavigationProperty Name="Authors" Relationship="Model3.BookAuthor" FromRole="Book" ToRole="Author" />
+          <NavigationProperty Name="Languages" Relationship="Model3.DictionaryLanguage" FromRole="Dictionary" ToRole="Language" />
+          <NavigationProperty Name="Categories" Relationship="Model3.DictionaryCategory" FromRole="Dictionary" ToRole="Category" />
+          <Property Type="String" Name="Copies" Nullable="false" />
+          <Property Type="String" Name="Words" Nullable="false" />
+          <NavigationProperty Name="Mentions" Relationship="Model3.DictionaryMention" FromRole="Dictionary" ToRole="Mention" />
+          <NavigationProperty Name="Acknowledgements" Relationship="Model3.DictionaryAcknowledgement" FromRole="Dictionary" ToRole="Acknowledgement" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Int32" Name="Address" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Model3.BookPublisher" FromRole="Publisher" ToRole="Book" />
+          <NavigationProperty Name="Locations" Relationship="Model3.PublisherLocation" FromRole="Publisher" ToRole="Location" />
+        </EntityType>
+        <Association Name="BookPublisher">
+          <End Type="Model3.Dictionary" Role="Book" Multiplicity="*" />
+          <End Type="Model3.Publisher" Role="Publisher" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="PublisherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Model3.BookAuthor" FromRole="Author" ToRole="Book" />
+        </EntityType>
+        <Association Name="BookAuthor">
+          <End Type="Model3.Dictionary" Role="Book" Multiplicity="*" />
+          <End Type="Model3.Author" Role="Author" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Dictionaries" Relationship="Model3.DictionaryLanguage" FromRole="Language" ToRole="Dictionary" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="String" Name="State" Nullable="false" />
+          <Property Type="String" Name="PIN" Nullable="false" />
+          <Property Type="String" Name="street" Nullable="false" />
+          <NavigationProperty Name="Publisher" Relationship="Model3.PublisherLocation" FromRole="Location" ToRole="Publisher" />
+          <Property Type="Int32" Name="PublisherId" Nullable="false" />
+        </EntityType>
+        <Association Name="PublisherLocation">
+          <End Type="Model3.Publisher" Role="Publisher" Multiplicity="1" />
+          <End Type="Model3.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="PublisherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DictionaryLanguage">
+          <End Type="Model3.Dictionary" Role="Dictionary" Multiplicity="*" />
+          <End Type="Model3.Language" Role="Language" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="Dictionaries" Relationship="Model3.DictionaryCategory" FromRole="Category" ToRole="Dictionary" />
+        </EntityType>
+        <Association Name="DictionaryCategory">
+          <End Type="Model3.Dictionary" Role="Dictionary" Multiplicity="*" />
+          <End Type="Model3.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Mention">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" />
+          <NavigationProperty Name="Dictionaries" Relationship="Model3.DictionaryMention" FromRole="Mention" ToRole="Dictionary" />
+        </EntityType>
+        <Association Name="DictionaryMention">
+          <End Type="Model3.Dictionary" Role="Dictionary" Multiplicity="*" />
+          <End Type="Model3.Mention" Role="Mention" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Acknowledgement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" />
+          <NavigationProperty Name="Dictionaries" Relationship="Model3.DictionaryAcknowledgement" FromRole="Acknowledgement" ToRole="Dictionary" />
+        </EntityType>
+        <Association Name="DictionaryAcknowledgement">
+          <End Type="Model3.Dictionary" Role="Dictionary" Multiplicity="*" />
+          <End Type="Model3.Acknowledgement" Role="Acknowledgement" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model3" />
+        <Alias Key="Target" Value="Model3.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model3Container" StorageEntityContainer="Model3TargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Model3" DisplayType="true" >
+        <EntityTypeShape EntityType="Model3.Dictionary" Width="1.5" PointX="0.5" PointY="0.875" Height="3.071432291666667" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model3.Publisher" Width="1.5" PointX="4.5" PointY="0.5" Height="1.5923063151041665" />
+        <AssociationConnector Association="Model3.BookPublisher">
+          <ConnectorPoint PointX="2" PointY="2.123556315104167" />
+          <ConnectorPoint PointX="4.5" PointY="2.123556315104167" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model3.Author" Width="1.5" PointX="4.625" PointY="2.625" Height="1.4279589843749996" />
+        <AssociationConnector Association="Model3.BookAuthor">
+          <ConnectorPoint PointX="2" PointY="3.09375" />
+          <ConnectorPoint PointX="4.625" PointY="3.09375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model3.Language" Width="1.5" PointX="9.875" PointY="0.5" Height="1.2636116536458335" />
+        <EntityTypeShape EntityType="Model3.Location" Width="1.5" PointX="7.5" PointY="2.375" Height="1.7566536458333326" />
+        <AssociationConnector Association="Model3.PublisherLocation">
+          <ConnectorPoint PointX="6" PointY="1.3783268229166668" />
+          <ConnectorPoint PointX="8.25" PointY="1.3783268229166668" />
+          <ConnectorPoint PointX="8.25" PointY="2.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model3.DictionaryLanguage">
+          <ConnectorPoint PointX="2" PointY="2.4408268229166667" />
+          <ConnectorPoint PointX="7.25" PointY="2.4408268229166667" />
+          <ConnectorPoint PointX="7.25" PointY="2.125" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="2.1249999999999996" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="2.125" />
+          <ConnectorPoint PointX="10.625" PointY="2.125" />
+          <ConnectorPoint PointX="10.625" PointY="1.927958984375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model3.Category" Width="1.5" PointX="10.125" PointY="2.375" Height="1.2636116536458335" />
+        <AssociationConnector Association="Model3.DictionaryCategory">
+          <ConnectorPoint PointX="2" PointY="2.4720793229166667" />
+          <ConnectorPoint PointX="7" PointY="2.4720793229166667" />
+          <ConnectorPoint PointX="7" PointY="2.125" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="2.1249999999999996" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="2.125" />
+          <ConnectorPoint PointX="11.124999500000001" PointY="2.125" />
+          <ConnectorPoint PointX="11.124999500000001" PointY="2.375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model3.Mention" Width="1.5" PointX="2.625" PointY="0.5" Height="1.4279589843750005" />
+        <AssociationConnector Association="Model3.DictionaryMention">
+          <ConnectorPoint PointX="2" PointY="1.4836531575520837" />
+          <ConnectorPoint PointX="2.625" PointY="1.4836531575520837" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model3.Acknowledgement" Width="1.5" PointX="3.125" PointY="3.625" Height="1.4279589843749996" />
+        <AssociationConnector Association="Model3.DictionaryAcknowledgement">
+          <ConnectorPoint PointX="2" PointY="3.9500634765625" />
+          <ConnectorPoint PointX="3.125" PointY="3.9500634765625" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

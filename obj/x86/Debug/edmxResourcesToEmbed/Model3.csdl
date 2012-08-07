@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model3" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="Model3Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dictionaries" EntityType="Model3.Dictionary" />
+    <EntitySet Name="Publishers" EntityType="Model3.Publisher" />
+    <AssociationSet Name="BookPublisher" Association="Model3.BookPublisher">
+      <End Role="Book" EntitySet="Dictionaries" />
+      <End Role="Publisher" EntitySet="Publishers" />
+    </AssociationSet>
+    <EntitySet Name="Authors" EntityType="Model3.Author" />
+    <AssociationSet Name="BookAuthor" Association="Model3.BookAuthor">
+      <End Role="Book" EntitySet="Dictionaries" />
+      <End Role="Author" EntitySet="Authors" />
+    </AssociationSet>
+    <EntitySet Name="Languages" EntityType="Model3.Language" />
+    <EntitySet Name="Locations" EntityType="Model3.Location" />
+    <AssociationSet Name="PublisherLocation" Association="Model3.PublisherLocation">
+      <End Role="Publisher" EntitySet="Publishers" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="DictionaryLanguage" Association="Model3.DictionaryLanguage">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="Language" EntitySet="Languages" />
+    </AssociationSet>
+    <EntitySet Name="Categories" EntityType="Model3.Category" />
+    <AssociationSet Name="DictionaryCategory" Association="Model3.DictionaryCategory">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <EntitySet Name="Mentions" EntityType="Model3.Mention" />
+    <AssociationSet Name="DictionaryMention" Association="Model3.DictionaryMention">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="Mention" EntitySet="Mentions" />
+    </AssociationSet>
+    <EntitySet Name="Acknowledgements" EntityType="Model3.Acknowledgement" />
+    <AssociationSet Name="DictionaryAcknowledgement" Association="Model3.DictionaryAcknowledgement">
+      <End Role="Dictionary" EntitySet="Dictionaries" />
+      <End Role="Acknowledgement" EntitySet="Acknowledgements" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Dictionary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ISBN" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" />
+    <Property Type="Int32" Name="Edition" Nullable="false" />
+    <Property Type="Int32" Name="Volume" Nullable="false" />
+    <Property Type="Int32" Name="Part" Nullable="false" />
+    <NavigationProperty Name="Publisher" Relationship="Model3.BookPublisher" FromRole="Book" ToRole="Publisher" />
+    <Property Type="Int32" Name="PublisherId" Nullable="false" />
+    <NavigationProperty Name="Authors" Relationship="Model3.BookAuthor" FromRole="Book" ToRole="Author" />
+    <NavigationProperty Name="Languages" Relationship="Model3.DictionaryLanguage" FromRole="Dictionary" ToRole="Language" />
+    <NavigationProperty Name="Categories" Relationship="Model3.DictionaryCategory" FromRole="Dictionary" ToRole="Category" />
+    <Property Type="String" Name="Copies" Nullable="false" />
+    <Property Type="String" Name="Words" Nullable="false" />
+    <NavigationProperty Name="Mentions" Relationship="Model3.DictionaryMention" FromRole="Dictionary" ToRole="Mention" />
+    <NavigationProperty Name="Acknowledgements" Relationship="Model3.DictionaryAcknowledgement" FromRole="Dictionary" ToRole="Acknowledgement" />
+  </EntityType>
+  <EntityType Name="Publisher">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="Int32" Name="Address" Nullable="false" />
+    <NavigationProperty Name="Books" Relationship="Model3.BookPublisher" FromRole="Publisher" ToRole="Book" />
+    <NavigationProperty Name="Locations" Relationship="Model3.PublisherLocation" FromRole="Publisher" ToRole="Location" />
+  </EntityType>
+  <Association Name="BookPublisher">
+    <End Type="Model3.Dictionary" Role="Book" Multiplicity="*" />
+    <End Type="Model3.Publisher" Role="Publisher" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="PublisherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <NavigationProperty Name="Books" Relationship="Model3.BookAuthor" FromRole="Author" ToRole="Book" />
+  </EntityType>
+  <Association Name="BookAuthor">
+    <End Type="Model3.Dictionary" Role="Book" Multiplicity="*" />
+    <End Type="Model3.Author" Role="Author" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <NavigationProperty Name="Dictionaries" Relationship="Model3.DictionaryLanguage" FromRole="Language" ToRole="Dictionary" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="City" Nullable="false" />
+    <Property Type="String" Name="State" Nullable="false" />
+    <Property Type="String" Name="PIN" Nullable="false" />
+    <Property Type="String" Name="street" Nullable="false" />
+    <NavigationProperty Name="Publisher" Relationship="Model3.PublisherLocation" FromRole="Location" ToRole="Publisher" />
+    <Property Type="Int32" Name="PublisherId" Nullable="false" />
+  </EntityType>
+  <Association Name="PublisherLocation">
+    <End Type="Model3.Publisher" Role="Publisher" Multiplicity="1" />
+    <End Type="Model3.Location" Role="Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="PublisherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DictionaryLanguage">
+    <End Type="Model3.Dictionary" Role="Dictionary" Multiplicity="*" />
+    <End Type="Model3.Language" Role="Language" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Description" Nullable="false" />
+    <NavigationProperty Name="Dictionaries" Relationship="Model3.DictionaryCategory" FromRole="Category" ToRole="Dictionary" />
+  </EntityType>
+  <Association Name="DictionaryCategory">
+    <End Type="Model3.Dictionary" Role="Dictionary" Multiplicity="*" />
+    <End Type="Model3.Category" Role="Category" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Mention">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Type" Nullable="false" />
+    <NavigationProperty Name="Dictionaries" Relationship="Model3.DictionaryMention" FromRole="Mention" ToRole="Dictionary" />
+  </EntityType>
+  <Association Name="DictionaryMention">
+    <End Type="Model3.Dictionary" Role="Dictionary" Multiplicity="*" />
+    <End Type="Model3.Mention" Role="Mention" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Acknowledgement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Type" Nullable="false" />
+    <NavigationProperty Name="Dictionaries" Relationship="Model3.DictionaryAcknowledgement" FromRole="Acknowledgement" ToRole="Dictionary" />
+  </EntityType>
+  <Association Name="DictionaryAcknowledgement">
+    <End Type="Model3.Dictionary" Role="Dictionary" Multiplicity="*" />
+    <End Type="Model3.Acknowledgement" Role="Acknowledgement" Multiplicity="*" />
+  </Association>
+</Schema>

@@ -38,7 +38,7 @@ namespace WpfApplication3 {
         
         private LocationDataTable tableLocation;
         
-        private MentionsDataTable tableMentions;
+        private MAPDataTable tableMAP;
         
         private OrganizationsDataTable tableOrganizations;
         
@@ -49,6 +49,8 @@ namespace WpfApplication3 {
         private ScriptDataTable tableScript;
         
         private ScriptDicDataTable tableScriptDic;
+        
+        private MAODataTable tableMAO;
         
         private global::System.Data.DataRelation relationFK_AuthDic;
         
@@ -103,8 +105,8 @@ namespace WpfApplication3 {
                 if ((ds.Tables["Location"] != null)) {
                     base.Tables.Add(new LocationDataTable(ds.Tables["Location"]));
                 }
-                if ((ds.Tables["Mentions"] != null)) {
-                    base.Tables.Add(new MentionsDataTable(ds.Tables["Mentions"]));
+                if ((ds.Tables["MAP"] != null)) {
+                    base.Tables.Add(new MAPDataTable(ds.Tables["MAP"]));
                 }
                 if ((ds.Tables["Organizations"] != null)) {
                     base.Tables.Add(new OrganizationsDataTable(ds.Tables["Organizations"]));
@@ -120,6 +122,9 @@ namespace WpfApplication3 {
                 }
                 if ((ds.Tables["ScriptDic"] != null)) {
                     base.Tables.Add(new ScriptDicDataTable(ds.Tables["ScriptDic"]));
+                }
+                if ((ds.Tables["MAO"] != null)) {
+                    base.Tables.Add(new MAODataTable(ds.Tables["MAO"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -213,9 +218,9 @@ namespace WpfApplication3 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public MentionsDataTable Mentions {
+        public MAPDataTable MAP {
             get {
-                return this.tableMentions;
+                return this.tableMAP;
             }
         }
         
@@ -266,6 +271,16 @@ namespace WpfApplication3 {
         public ScriptDicDataTable ScriptDic {
             get {
                 return this.tableScriptDic;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MAODataTable MAO {
+            get {
+                return this.tableMAO;
             }
         }
         
@@ -357,8 +372,8 @@ namespace WpfApplication3 {
                 if ((ds.Tables["Location"] != null)) {
                     base.Tables.Add(new LocationDataTable(ds.Tables["Location"]));
                 }
-                if ((ds.Tables["Mentions"] != null)) {
-                    base.Tables.Add(new MentionsDataTable(ds.Tables["Mentions"]));
+                if ((ds.Tables["MAP"] != null)) {
+                    base.Tables.Add(new MAPDataTable(ds.Tables["MAP"]));
                 }
                 if ((ds.Tables["Organizations"] != null)) {
                     base.Tables.Add(new OrganizationsDataTable(ds.Tables["Organizations"]));
@@ -374,6 +389,9 @@ namespace WpfApplication3 {
                 }
                 if ((ds.Tables["ScriptDic"] != null)) {
                     base.Tables.Add(new ScriptDicDataTable(ds.Tables["ScriptDic"]));
+                }
+                if ((ds.Tables["MAO"] != null)) {
+                    base.Tables.Add(new MAODataTable(ds.Tables["MAO"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -450,10 +468,10 @@ namespace WpfApplication3 {
                     this.tableLocation.InitVars();
                 }
             }
-            this.tableMentions = ((MentionsDataTable)(base.Tables["Mentions"]));
+            this.tableMAP = ((MAPDataTable)(base.Tables["MAP"]));
             if ((initTable == true)) {
-                if ((this.tableMentions != null)) {
-                    this.tableMentions.InitVars();
+                if ((this.tableMAP != null)) {
+                    this.tableMAP.InitVars();
                 }
             }
             this.tableOrganizations = ((OrganizationsDataTable)(base.Tables["Organizations"]));
@@ -486,6 +504,12 @@ namespace WpfApplication3 {
                     this.tableScriptDic.InitVars();
                 }
             }
+            this.tableMAO = ((MAODataTable)(base.Tables["MAO"]));
+            if ((initTable == true)) {
+                if ((this.tableMAO != null)) {
+                    this.tableMAO.InitVars();
+                }
+            }
             this.relationFK_AuthDic = this.Relations["FK_AuthDic"];
             this.relationFK_Dic = this.Relations["FK_Dic"];
         }
@@ -512,8 +536,8 @@ namespace WpfApplication3 {
             base.Tables.Add(this.tableLanguage);
             this.tableLocation = new LocationDataTable();
             base.Tables.Add(this.tableLocation);
-            this.tableMentions = new MentionsDataTable();
-            base.Tables.Add(this.tableMentions);
+            this.tableMAP = new MAPDataTable();
+            base.Tables.Add(this.tableMAP);
             this.tableOrganizations = new OrganizationsDataTable();
             base.Tables.Add(this.tableOrganizations);
             this.tablePeople = new PeopleDataTable();
@@ -524,6 +548,72 @@ namespace WpfApplication3 {
             base.Tables.Add(this.tableScript);
             this.tableScriptDic = new ScriptDicDataTable();
             base.Tables.Add(this.tableScriptDic);
+            this.tableMAO = new MAODataTable();
+            base.Tables.Add(this.tableMAO);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Category_Dictionaries", new global::System.Data.DataColumn[] {
+                        this.tableCategory.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.CategoryColumn});
+            this.tableDictionaries.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Language_LangDic", new global::System.Data.DataColumn[] {
+                        this.tableLanguage.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLangDic.LIDColumn});
+            this.tableLangDic.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_MAP", new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAP.DIDColumn});
+            this.tableMAP.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_People_MAP", new global::System.Data.DataColumn[] {
+                        this.tablePeople.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAP.PIDColumn});
+            this.tableMAP.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Location_Publisher", new global::System.Data.DataColumn[] {
+                        this.tableLocation.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePublisher.LocationColumn});
+            this.tablePublisher.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_ScriptDic", new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableScriptDic.DIDColumn});
+            this.tableScriptDic.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Script_ScriptDic", new global::System.Data.DataColumn[] {
+                        this.tableScript.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableScriptDic.SIDColumn});
+            this.tableScriptDic.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Organizations_MAO", new global::System.Data.DataColumn[] {
+                        this.tableOrganizations.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAO.OIDColumn});
+            this.tableMAO.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_MAO", new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAO.DIDColumn});
+            this.tableMAO.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_AuthDic = new global::System.Data.DataRelation("FK_AuthDic", new global::System.Data.DataColumn[] {
                         this.tableAuthor.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableAuthDic.AIDColumn}, false);
@@ -578,7 +668,7 @@ namespace WpfApplication3 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeMentions() {
+        private bool ShouldSerializeMAP() {
             return false;
         }
         
@@ -609,6 +699,12 @@ namespace WpfApplication3 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeScriptDic() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeMAO() {
             return false;
         }
         
@@ -689,7 +785,7 @@ namespace WpfApplication3 {
         public delegate void LocationRowChangeEventHandler(object sender, LocationRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void MentionsRowChangeEventHandler(object sender, MentionsRowChangeEvent e);
+        public delegate void MAPRowChangeEventHandler(object sender, MAPRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void OrganizationsRowChangeEventHandler(object sender, OrganizationsRowChangeEvent e);
@@ -705,6 +801,9 @@ namespace WpfApplication3 {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ScriptDicRowChangeEventHandler(object sender, ScriptDicRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void MAORowChangeEventHandler(object sender, MAORowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1559,6 +1658,8 @@ namespace WpfApplication3 {
             
             private global::System.Data.DataColumn columnNotes;
             
+            private global::System.Data.DataColumn columnCategory;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DictionariesDataTable() {
@@ -1658,6 +1759,14 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CategoryColumn {
+                get {
+                    return this.columnCategory;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1693,7 +1802,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DictionariesRow AddDictionariesRow(string ID, string Title, string Edition, string Volume, string Part, string Copies, string Words, string Notes) {
+            public DictionariesRow AddDictionariesRow(string ID, string Title, string Edition, string Volume, string Part, string Copies, string Words, string Notes, string Category) {
                 DictionariesRow rowDictionariesRow = ((DictionariesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -1703,7 +1812,8 @@ namespace WpfApplication3 {
                         Part,
                         Copies,
                         Words,
-                        Notes};
+                        Notes,
+                        Category};
                 rowDictionariesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDictionariesRow);
                 return rowDictionariesRow;
@@ -1741,6 +1851,7 @@ namespace WpfApplication3 {
                 this.columnCopies = base.Columns["Copies"];
                 this.columnWords = base.Columns["Words"];
                 this.columnNotes = base.Columns["Notes"];
+                this.columnCategory = base.Columns["Category"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1762,6 +1873,8 @@ namespace WpfApplication3 {
                 base.Columns.Add(this.columnWords);
                 this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNotes);
+                this.columnCategory = new global::System.Data.DataColumn("Category", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCategory);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
@@ -2808,7 +2921,7 @@ namespace WpfApplication3 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class MentionsDataTable : global::System.Data.TypedTableBase<MentionsRow> {
+        public partial class MAPDataTable : global::System.Data.TypedTableBase<MAPRow> {
             
             private global::System.Data.DataColumn columnDID;
             
@@ -2818,8 +2931,8 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MentionsDataTable() {
-                this.TableName = "Mentions";
+            public MAPDataTable() {
+                this.TableName = "MAP";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2827,7 +2940,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal MentionsDataTable(global::System.Data.DataTable table) {
+            internal MAPDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2844,7 +2957,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected MentionsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected MAPDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -2884,47 +2997,47 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MentionsRow this[int index] {
+            public MAPRow this[int index] {
                 get {
-                    return ((MentionsRow)(this.Rows[index]));
+                    return ((MAPRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event MentionsRowChangeEventHandler MentionsRowChanging;
+            public event MAPRowChangeEventHandler MAPRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event MentionsRowChangeEventHandler MentionsRowChanged;
+            public event MAPRowChangeEventHandler MAPRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event MentionsRowChangeEventHandler MentionsRowDeleting;
+            public event MAPRowChangeEventHandler MAPRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event MentionsRowChangeEventHandler MentionsRowDeleted;
+            public event MAPRowChangeEventHandler MAPRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddMentionsRow(MentionsRow row) {
+            public void AddMAPRow(MAPRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MentionsRow AddMentionsRow(string DID, string PID, string MA) {
-                MentionsRow rowMentionsRow = ((MentionsRow)(this.NewRow()));
+            public MAPRow AddMAPRow(string DID, string PID, string MA) {
+                MAPRow rowMAPRow = ((MAPRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DID,
                         PID,
                         MA};
-                rowMentionsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowMentionsRow);
-                return rowMentionsRow;
+                rowMAPRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMAPRow);
+                return rowMAPRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MentionsRow FindByDIDPID(string DID, string PID) {
-                return ((MentionsRow)(this.Rows.Find(new object[] {
+            public MAPRow FindByDIDPID(string DID, string PID) {
+                return ((MAPRow)(this.Rows.Find(new object[] {
                             DID,
                             PID})));
             }
@@ -2932,7 +3045,7 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                MentionsDataTable cln = ((MentionsDataTable)(base.Clone()));
+                MAPDataTable cln = ((MAPDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2940,7 +3053,7 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new MentionsDataTable();
+                return new MAPDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2972,28 +3085,28 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MentionsRow NewMentionsRow() {
-                return ((MentionsRow)(this.NewRow()));
+            public MAPRow NewMAPRow() {
+                return ((MAPRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new MentionsRow(builder);
+                return new MAPRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(MentionsRow);
+                return typeof(MAPRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.MentionsRowChanged != null)) {
-                    this.MentionsRowChanged(this, new MentionsRowChangeEvent(((MentionsRow)(e.Row)), e.Action));
+                if ((this.MAPRowChanged != null)) {
+                    this.MAPRowChanged(this, new MAPRowChangeEvent(((MAPRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3001,8 +3114,8 @@ namespace WpfApplication3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.MentionsRowChanging != null)) {
-                    this.MentionsRowChanging(this, new MentionsRowChangeEvent(((MentionsRow)(e.Row)), e.Action));
+                if ((this.MAPRowChanging != null)) {
+                    this.MAPRowChanging(this, new MAPRowChangeEvent(((MAPRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3010,8 +3123,8 @@ namespace WpfApplication3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.MentionsRowDeleted != null)) {
-                    this.MentionsRowDeleted(this, new MentionsRowChangeEvent(((MentionsRow)(e.Row)), e.Action));
+                if ((this.MAPRowDeleted != null)) {
+                    this.MAPRowDeleted(this, new MAPRowChangeEvent(((MAPRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3019,14 +3132,14 @@ namespace WpfApplication3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.MentionsRowDeleting != null)) {
-                    this.MentionsRowDeleting(this, new MentionsRowChangeEvent(((MentionsRow)(e.Row)), e.Action));
+                if ((this.MAPRowDeleting != null)) {
+                    this.MAPRowDeleting(this, new MAPRowChangeEvent(((MAPRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveMentionsRow(MentionsRow row) {
+            public void RemoveMAPRow(MAPRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -3053,7 +3166,7 @@ namespace WpfApplication3 {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "MentionsDataTable";
+                attribute2.FixedValue = "MAPDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4500,6 +4613,297 @@ namespace WpfApplication3 {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MAODataTable : global::System.Data.TypedTableBase<MAORow> {
+            
+            private global::System.Data.DataColumn columnDID;
+            
+            private global::System.Data.DataColumn columnOID;
+            
+            private global::System.Data.DataColumn columnMA;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAODataTable() {
+                this.TableName = "MAO";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal MAODataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected MAODataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DIDColumn {
+                get {
+                    return this.columnDID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OIDColumn {
+                get {
+                    return this.columnOID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MAColumn {
+                get {
+                    return this.columnMA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAORow this[int index] {
+                get {
+                    return ((MAORow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MAORowChangeEventHandler MAORowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MAORowChangeEventHandler MAORowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MAORowChangeEventHandler MAORowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MAORowChangeEventHandler MAORowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddMAORow(MAORow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAORow AddMAORow(string DID, string OID, string MA) {
+                MAORow rowMAORow = ((MAORow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        DID,
+                        OID,
+                        MA};
+                rowMAORow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMAORow);
+                return rowMAORow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAORow FindByDIDOID(string DID, string OID) {
+                return ((MAORow)(this.Rows.Find(new object[] {
+                            DID,
+                            OID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                MAODataTable cln = ((MAODataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MAODataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnDID = base.Columns["DID"];
+                this.columnOID = base.Columns["OID"];
+                this.columnMA = base.Columns["MA"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnDID = new global::System.Data.DataColumn("DID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDID);
+                this.columnOID = new global::System.Data.DataColumn("OID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOID);
+                this.columnMA = new global::System.Data.DataColumn("MA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMA);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnDID,
+                                this.columnOID}, true));
+                this.columnDID.AllowDBNull = false;
+                this.columnDID.MaxLength = 100;
+                this.columnOID.AllowDBNull = false;
+                this.columnOID.MaxLength = 100;
+                this.columnMA.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAORow NewMAORow() {
+                return ((MAORow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MAORow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(MAORow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MAORowChanged != null)) {
+                    this.MAORowChanged(this, new MAORowChangeEvent(((MAORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MAORowChanging != null)) {
+                    this.MAORowChanging(this, new MAORowChangeEvent(((MAORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MAORowDeleted != null)) {
+                    this.MAORowDeleted(this, new MAORowChangeEvent(((MAORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MAORowDeleting != null)) {
+                    this.MAORowDeleting(this, new MAORowChangeEvent(((MAORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveMAORow(MAORow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Database3DataSet ds = new Database3DataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MAODataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class AuthDicRow : global::System.Data.DataRow {
@@ -4816,6 +5220,22 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Category {
+                get {
+                    try {
+                        return ((string)(this[this.tableDictionaries.CategoryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Category\' in table \'Dictionaries\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDictionaries.CategoryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTitleNull() {
                 return this.IsNull(this.tableDictionaries.TitleColumn);
             }
@@ -4896,6 +5316,18 @@ namespace WpfApplication3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNotesNull() {
                 this[this.tableDictionaries.NotesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCategoryNull() {
+                return this.IsNull(this.tableDictionaries.CategoryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCategoryNull() {
+                this[this.tableDictionaries.CategoryColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5181,25 +5613,25 @@ namespace WpfApplication3 {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class MentionsRow : global::System.Data.DataRow {
+        public partial class MAPRow : global::System.Data.DataRow {
             
-            private MentionsDataTable tableMentions;
+            private MAPDataTable tableMAP;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal MentionsRow(global::System.Data.DataRowBuilder rb) : 
+            internal MAPRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableMentions = ((MentionsDataTable)(this.Table));
+                this.tableMAP = ((MAPDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string DID {
                 get {
-                    return ((string)(this[this.tableMentions.DIDColumn]));
+                    return ((string)(this[this.tableMAP.DIDColumn]));
                 }
                 set {
-                    this[this.tableMentions.DIDColumn] = value;
+                    this[this.tableMAP.DIDColumn] = value;
                 }
             }
             
@@ -5207,10 +5639,10 @@ namespace WpfApplication3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string PID {
                 get {
-                    return ((string)(this[this.tableMentions.PIDColumn]));
+                    return ((string)(this[this.tableMAP.PIDColumn]));
                 }
                 set {
-                    this[this.tableMentions.PIDColumn] = value;
+                    this[this.tableMAP.PIDColumn] = value;
                 }
             }
             
@@ -5219,27 +5651,27 @@ namespace WpfApplication3 {
             public string MA {
                 get {
                     try {
-                        return ((string)(this[this.tableMentions.MAColumn]));
+                        return ((string)(this[this.tableMAP.MAColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MA\' in table \'Mentions\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'MA\' in table \'MAP\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableMentions.MAColumn] = value;
+                    this[this.tableMAP.MAColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMANull() {
-                return this.IsNull(this.tableMentions.MAColumn);
+                return this.IsNull(this.tableMAP.MAColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMANull() {
-                this[this.tableMentions.MAColumn] = global::System.Convert.DBNull;
+                this[this.tableMAP.MAColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5536,6 +5968,71 @@ namespace WpfApplication3 {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class MAORow : global::System.Data.DataRow {
+            
+            private MAODataTable tableMAO;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal MAORow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMAO = ((MAODataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DID {
+                get {
+                    return ((string)(this[this.tableMAO.DIDColumn]));
+                }
+                set {
+                    this[this.tableMAO.DIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OID {
+                get {
+                    return ((string)(this[this.tableMAO.OIDColumn]));
+                }
+                set {
+                    this[this.tableMAO.OIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MA {
+                get {
+                    try {
+                        return ((string)(this[this.tableMAO.MAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MA\' in table \'MAO\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMAO.MAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMANull() {
+                return this.IsNull(this.tableMAO.MAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMANull() {
+                this[this.tableMAO.MAColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -5777,22 +6274,22 @@ namespace WpfApplication3 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class MentionsRowChangeEvent : global::System.EventArgs {
+        public class MAPRowChangeEvent : global::System.EventArgs {
             
-            private MentionsRow eventRow;
+            private MAPRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MentionsRowChangeEvent(MentionsRow row, global::System.Data.DataRowAction action) {
+            public MAPRowChangeEvent(MAPRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MentionsRow Row {
+            public MAPRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -5963,6 +6460,40 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ScriptDicRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class MAORowChangeEvent : global::System.EventArgs {
+            
+            private MAORow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAORowChangeEvent(MAORow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAORow Row {
                 get {
                     return this.eventRow;
                 }
@@ -8444,7 +8975,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class MentionsTableAdapter : global::System.ComponentModel.Component {
+    public partial class MAPTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlServerCe.SqlCeDataAdapter _adapter;
         
@@ -8458,7 +8989,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public MentionsTableAdapter() {
+        public MAPTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -8555,7 +9086,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
             this._adapter = new global::System.Data.SqlServerCe.SqlCeDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Mentions";
+            tableMapping.DataSetTable = "MAP";
             tableMapping.ColumnMappings.Add("DID", "DID");
             tableMapping.ColumnMappings.Add("PID", "PID");
             tableMapping.ColumnMappings.Add("MA", "MA");
@@ -8606,7 +9137,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(Database3DataSet.MentionsDataTable dataTable) {
+        public virtual int Fill(Database3DataSet.MAPDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8619,9 +9150,9 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual Database3DataSet.MentionsDataTable GetData() {
+        public virtual Database3DataSet.MAPDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            Database3DataSet.MentionsDataTable dataTable = new Database3DataSet.MentionsDataTable();
+            Database3DataSet.MAPDataTable dataTable = new Database3DataSet.MAPDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8629,7 +9160,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(Database3DataSet.MentionsDataTable dataTable) {
+        public virtual int Update(Database3DataSet.MAPDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -8637,7 +9168,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(Database3DataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Mentions");
+            return this.Adapter.Update(dataSet, "MAP");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10459,6 +10990,359 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class MAOTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlServerCe.SqlCeDataAdapter _adapter;
+        
+        private global::System.Data.SqlServerCe.SqlCeConnection _connection;
+        
+        private global::System.Data.SqlServerCe.SqlCeTransaction _transaction;
+        
+        private global::System.Data.SqlServerCe.SqlCeCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public MAOTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlServerCe.SqlCeDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlServerCe.SqlCeConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlServerCe.SqlCeCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlServerCe.SqlCeTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlServerCe.SqlCeCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlServerCe.SqlCeDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "MAO";
+            tableMapping.ColumnMappings.Add("DID", "DID");
+            tableMapping.ColumnMappings.Add("OID", "OID");
+            tableMapping.ColumnMappings.Add("MA", "MA");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [MentionsAcknowledgementsO] WHERE (([DID] = @p1) AND ([OID] = @p2))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "DID", global::System.Data.DataRowVersion.Original, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "OID", global::System.Data.DataRowVersion.Original, null));
+            this._adapter.InsertCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [MentionsAcknowledgementsO] ([DID], [OID], [MA]) VALUES (@p1, @p2, @p" +
+                "3)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "DID", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "OID", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p3", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "MA", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [MentionsAcknowledgementsO] SET [DID] = @p1, [OID] = @p2, [MA] = @p3 WHERE" +
+                " (([DID] = @p4) AND ([OID] = @p5))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "DID", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "OID", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p3", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "MA", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p4", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "DID", global::System.Data.DataRowVersion.Original, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p5", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "OID", global::System.Data.DataRowVersion.Original, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlServerCe.SqlCeConnection();
+            this._connection.ConnectionString = global::WpfApplication3.Properties.Settings.Default.Database3ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlServerCe.SqlCeCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT [DID], [OID], [MA] FROM [MentionsAcknowledgementsO]";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(Database3DataSet.MAODataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual Database3DataSet.MAODataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            Database3DataSet.MAODataTable dataTable = new Database3DataSet.MAODataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Database3DataSet.MAODataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Database3DataSet dataSet) {
+            return this.Adapter.Update(dataSet, "MAO");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(string p1, string p2) {
+            if ((p1 == null)) {
+                throw new global::System.ArgumentNullException("p1");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(p1));
+            }
+            if ((p2 == null)) {
+                throw new global::System.ArgumentNullException("p2");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(p2));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string p1, string p2, string p3) {
+            if ((p1 == null)) {
+                throw new global::System.ArgumentNullException("p1");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(p1));
+            }
+            if ((p2 == null)) {
+                throw new global::System.ArgumentNullException("p2");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(p2));
+            }
+            if ((p3 == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(p3));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string p1, string p2, string p3, string p4, string p5) {
+            if ((p1 == null)) {
+                throw new global::System.ArgumentNullException("p1");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(p1));
+            }
+            if ((p2 == null)) {
+                throw new global::System.ArgumentNullException("p2");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(p2));
+            }
+            if ((p3 == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(p3));
+            }
+            if ((p4 == null)) {
+                throw new global::System.ArgumentNullException("p4");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(p4));
+            }
+            if ((p5 == null)) {
+                throw new global::System.ArgumentNullException("p5");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(p5));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string p3, string p4, string p5) {
+            return this.Update(p4, p5, p3, p4, p5);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10484,7 +11368,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         
         private LocationTableAdapter _locationTableAdapter;
         
-        private MentionsTableAdapter _mentionsTableAdapter;
+        private MAPTableAdapter _mAPTableAdapter;
         
         private OrganizationsTableAdapter _organizationsTableAdapter;
         
@@ -10495,6 +11379,8 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         private ScriptTableAdapter _scriptTableAdapter;
         
         private ScriptDicTableAdapter _scriptDicTableAdapter;
+        
+        private MAOTableAdapter _mAOTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -10614,12 +11500,12 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public MentionsTableAdapter MentionsTableAdapter {
+        public MAPTableAdapter MAPTableAdapter {
             get {
-                return this._mentionsTableAdapter;
+                return this._mAPTableAdapter;
             }
             set {
-                this._mentionsTableAdapter = value;
+                this._mAPTableAdapter = value;
             }
         }
         
@@ -10695,6 +11581,20 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public MAOTableAdapter MAOTableAdapter {
+            get {
+                return this._mAOTableAdapter;
+            }
+            set {
+                this._mAOTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -10740,9 +11640,9 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                             && (this._locationTableAdapter.Connection != null))) {
                     return this._locationTableAdapter.Connection;
                 }
-                if (((this._mentionsTableAdapter != null) 
-                            && (this._mentionsTableAdapter.Connection != null))) {
-                    return this._mentionsTableAdapter.Connection;
+                if (((this._mAPTableAdapter != null) 
+                            && (this._mAPTableAdapter.Connection != null))) {
+                    return this._mAPTableAdapter.Connection;
                 }
                 if (((this._organizationsTableAdapter != null) 
                             && (this._organizationsTableAdapter.Connection != null))) {
@@ -10763,6 +11663,10 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                 if (((this._scriptDicTableAdapter != null) 
                             && (this._scriptDicTableAdapter.Connection != null))) {
                     return this._scriptDicTableAdapter.Connection;
+                }
+                if (((this._mAOTableAdapter != null) 
+                            && (this._mAOTableAdapter.Connection != null))) {
+                    return this._mAOTableAdapter.Connection;
                 }
                 return null;
             }
@@ -10798,7 +11702,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                 if ((this._locationTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._mentionsTableAdapter != null)) {
+                if ((this._mAPTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._organizationsTableAdapter != null)) {
@@ -10816,6 +11720,9 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                 if ((this._scriptDicTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._mAOTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -10827,30 +11734,21 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(Database3DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._authorTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Author.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._categoryTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Category.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._authorTableAdapter.Update(updatedRows));
+                    result = (result + this._categoryTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._dictionariesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Dictionaries.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._languageTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Language.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._dictionariesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._peopleTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._peopleTableAdapter.Update(updatedRows));
+                    result = (result + this._languageTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -10863,15 +11761,6 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._publisherTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Publisher.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._publisherTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._scriptTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Script.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -10881,48 +11770,21 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._scriptDicTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ScriptDic.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._peopleTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._scriptDicTableAdapter.Update(updatedRows));
+                    result = (result + this._peopleTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._mentionsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Mentions.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._authorTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Author.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._mentionsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._categoryTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Category.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._categoryTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._authDicTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.AuthDic.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._authDicTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._langDicTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.LangDic.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._langDicTableAdapter.Update(updatedRows));
+                    result = (result + this._authorTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -10935,12 +11797,66 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._languageTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Language.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._dictionariesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Dictionaries.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._languageTableAdapter.Update(updatedRows));
+                    result = (result + this._dictionariesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._mAOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.MAO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._mAOTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._scriptDicTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ScriptDic.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._scriptDicTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._publisherTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Publisher.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._publisherTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._langDicTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.LangDic.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._langDicTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._authDicTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.AuthDic.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._authDicTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._mAPTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.MAP.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._mAPTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -10954,27 +11870,19 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(Database3DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._authorTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Author.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._categoryTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Category.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._authorTableAdapter.Update(addedRows));
+                    result = (result + this._categoryTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._dictionariesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Dictionaries.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._languageTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Language.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._dictionariesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._peopleTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._peopleTableAdapter.Update(addedRows));
+                    result = (result + this._languageTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -10986,14 +11894,6 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._publisherTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Publisher.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._publisherTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._scriptTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Script.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -11002,43 +11902,19 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._scriptDicTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ScriptDic.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._peopleTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._scriptDicTableAdapter.Update(addedRows));
+                    result = (result + this._peopleTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._mentionsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Mentions.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._authorTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Author.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._mentionsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._categoryTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Category.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._categoryTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._authDicTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.AuthDic.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._authDicTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._langDicTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.LangDic.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._langDicTableAdapter.Update(addedRows));
+                    result = (result + this._authorTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11050,11 +11926,59 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._languageTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Language.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._dictionariesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Dictionaries.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._languageTableAdapter.Update(addedRows));
+                    result = (result + this._dictionariesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._mAOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.MAO.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._mAOTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._scriptDicTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ScriptDic.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._scriptDicTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._publisherTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Publisher.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._publisherTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._langDicTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.LangDic.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._langDicTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._authDicTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.AuthDic.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._authDicTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._mAPTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.MAP.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._mAPTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11068,27 +11992,11 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(Database3DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._languageTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Language.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._mAPTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.MAP.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._languageTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._locationTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._locationTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._langDicTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.LangDic.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._langDicTableAdapter.Update(deletedRows));
+                    result = (result + this._mAPTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -11100,35 +12008,11 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._categoryTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Category.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._langDicTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.LangDic.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._categoryTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._mentionsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Mentions.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._mentionsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._scriptDicTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ScriptDic.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._scriptDicTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._scriptTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Script.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._scriptTableAdapter.Update(deletedRows));
+                    result = (result + this._langDicTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -11140,19 +12024,19 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._organizationsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Organizations.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._scriptDicTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ScriptDic.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._organizationsTableAdapter.Update(deletedRows));
+                    result = (result + this._scriptDicTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._peopleTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._mAOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.MAO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._peopleTableAdapter.Update(deletedRows));
+                    result = (result + this._mAOTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -11164,11 +12048,59 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._locationTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._locationTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._authorTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Author.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._authorTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._peopleTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._peopleTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._scriptTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Script.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._scriptTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._organizationsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Organizations.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._organizationsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._languageTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Language.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._languageTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._categoryTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Category.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._categoryTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -11246,8 +12178,8 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._mentionsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._mentionsTableAdapter.Connection) == false))) {
+            if (((this._mAPTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._mAPTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -11273,6 +12205,11 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
             }
             if (((this._scriptDicTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._scriptDicTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._mAOTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._mAOTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -11371,13 +12308,13 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._locationTableAdapter.Adapter);
                     }
                 }
-                if ((this._mentionsTableAdapter != null)) {
-                    revertConnections.Add(this._mentionsTableAdapter, this._mentionsTableAdapter.Connection);
-                    this._mentionsTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(workConnection));
-                    this._mentionsTableAdapter.Transaction = ((global::System.Data.SqlServerCe.SqlCeTransaction)(workTransaction));
-                    if (this._mentionsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._mentionsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._mentionsTableAdapter.Adapter);
+                if ((this._mAPTableAdapter != null)) {
+                    revertConnections.Add(this._mAPTableAdapter, this._mAPTableAdapter.Connection);
+                    this._mAPTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(workConnection));
+                    this._mAPTableAdapter.Transaction = ((global::System.Data.SqlServerCe.SqlCeTransaction)(workTransaction));
+                    if (this._mAPTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._mAPTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._mAPTableAdapter.Adapter);
                     }
                 }
                 if ((this._organizationsTableAdapter != null)) {
@@ -11423,6 +12360,15 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     if (this._scriptDicTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._scriptDicTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._scriptDicTableAdapter.Adapter);
+                    }
+                }
+                if ((this._mAOTableAdapter != null)) {
+                    revertConnections.Add(this._mAOTableAdapter, this._mAOTableAdapter.Connection);
+                    this._mAOTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(workConnection));
+                    this._mAOTableAdapter.Transaction = ((global::System.Data.SqlServerCe.SqlCeTransaction)(workTransaction));
+                    if (this._mAOTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._mAOTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._mAOTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -11511,9 +12457,9 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     this._locationTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._locationTableAdapter]));
                     this._locationTableAdapter.Transaction = null;
                 }
-                if ((this._mentionsTableAdapter != null)) {
-                    this._mentionsTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._mentionsTableAdapter]));
-                    this._mentionsTableAdapter.Transaction = null;
+                if ((this._mAPTableAdapter != null)) {
+                    this._mAPTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._mAPTableAdapter]));
+                    this._mAPTableAdapter.Transaction = null;
                 }
                 if ((this._organizationsTableAdapter != null)) {
                     this._organizationsTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._organizationsTableAdapter]));
@@ -11534,6 +12480,10 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                 if ((this._scriptDicTableAdapter != null)) {
                     this._scriptDicTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._scriptDicTableAdapter]));
                     this._scriptDicTableAdapter.Transaction = null;
+                }
+                if ((this._mAOTableAdapter != null)) {
+                    this._mAOTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._mAOTableAdapter]));
+                    this._mAOTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

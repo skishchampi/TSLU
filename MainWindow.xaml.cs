@@ -22,13 +22,13 @@ namespace WpfApplication3
     /// </summary>
     public partial class MainWindow : Window
     {
-        DataAccessTierClass a = new DataAccessTierClass();
+        
         public MainWindow()
         {
             InitializeComponent();
             //Window1 w = new Window1();
             //w.Show();
-            a.fnGetDataConnection();
+            
             
         }
 

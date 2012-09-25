@@ -57,6 +57,7 @@ namespace WpfApplication3
         {
             aao addack = new aao();
             addack.Show();
+
         }
 
         private void AddRecord_Click(object sender, RoutedEventArgs e)

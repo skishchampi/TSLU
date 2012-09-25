@@ -976,7 +976,7 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="Model3" DisplayType="true" >
+      <Diagram Name="Model3" DisplayType="true" ZoomLevel="97" >
         <EntityTypeShape EntityType="Model3.Dictionary" Width="1.5" PointX="0.5" PointY="0.875" Height="3.2357796223958335" IsExpanded="true" />
         <EntityTypeShape EntityType="Model3.Publisher" Width="1.5" PointX="4.5" PointY="0.5" Height="1.5923063151041665" />
         <AssociationConnector Association="Model3.BookPublisher">

@@ -41,6 +41,8 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.publisherTableAdapter1 = new WpfApplication3.Database3DataSetTableAdapters.PublisherTableAdapter();
+            this.AddExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -150,11 +152,25 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Country";
             // 
+            // publisherTableAdapter1
+            // 
+            this.publisherTableAdapter1.ClearBeforeFill = true;
+            // 
+            // AddExit
+            // 
+            this.AddExit.Location = new System.Drawing.Point(192, 310);
+            this.AddExit.Name = "AddExit";
+            this.AddExit.Size = new System.Drawing.Size(84, 23);
+            this.AddExit.TabIndex = 14;
+            this.AddExit.Text = "Add and Exit";
+            this.AddExit.UseVisualStyleBackColor = true;
+            // 
             // AddNewPublisher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(288, 345);
+            this.Controls.Add(this.AddExit);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
@@ -192,5 +208,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label7;
+        private Database3DataSetTableAdapters.PublisherTableAdapter publisherTableAdapter1;
+        private System.Windows.Forms.Button AddExit;
     }
 }

@@ -52,9 +52,27 @@ namespace WpfApplication3 {
         
         private MAODataTable tableMAO;
         
-        private global::System.Data.DataRelation relationFK_AuthDic;
+        private global::System.Data.DataRelation relationFK_Author_AuthDic;
         
-        private global::System.Data.DataRelation relationFK_Dic;
+        private global::System.Data.DataRelation relationFK_Dictionaries_AuthDic;
+        
+        private global::System.Data.DataRelation relationFK_Category_Dictionaries;
+        
+        private global::System.Data.DataRelation relationFK_Language_LangDic;
+        
+        private global::System.Data.DataRelation relationFK_Dictionaries_LangDic;
+        
+        private global::System.Data.DataRelation relationFK_People_MAP;
+        
+        private global::System.Data.DataRelation relationFK_Dictionaries_MAP;
+        
+        private global::System.Data.DataRelation relationFK_Script_ScriptDic;
+        
+        private global::System.Data.DataRelation relationFK_Dictionaries_ScriptDic;
+        
+        private global::System.Data.DataRelation relationFK_Organizations_MAO;
+        
+        private global::System.Data.DataRelation relationFK_Dictionaries_MAO;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -510,8 +528,17 @@ namespace WpfApplication3 {
                     this.tableMAO.InitVars();
                 }
             }
-            this.relationFK_AuthDic = this.Relations["FK_AuthDic"];
-            this.relationFK_Dic = this.Relations["FK_Dic"];
+            this.relationFK_Author_AuthDic = this.Relations["FK_Author_AuthDic"];
+            this.relationFK_Dictionaries_AuthDic = this.Relations["FK_Dictionaries_AuthDic"];
+            this.relationFK_Category_Dictionaries = this.Relations["FK_Category_Dictionaries"];
+            this.relationFK_Language_LangDic = this.Relations["FK_Language_LangDic"];
+            this.relationFK_Dictionaries_LangDic = this.Relations["FK_Dictionaries_LangDic"];
+            this.relationFK_People_MAP = this.Relations["FK_People_MAP"];
+            this.relationFK_Dictionaries_MAP = this.Relations["FK_Dictionaries_MAP"];
+            this.relationFK_Script_ScriptDic = this.Relations["FK_Script_ScriptDic"];
+            this.relationFK_Dictionaries_ScriptDic = this.Relations["FK_Dictionaries_ScriptDic"];
+            this.relationFK_Organizations_MAO = this.Relations["FK_Organizations_MAO"];
+            this.relationFK_Dictionaries_MAO = this.Relations["FK_Dictionaries_MAO"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -551,9 +578,23 @@ namespace WpfApplication3 {
             this.tableMAO = new MAODataTable();
             base.Tables.Add(this.tableMAO);
             global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Author_AuthDic", new global::System.Data.DataColumn[] {
+                        this.tableAuthor.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAuthDic.AIDColumn});
+            this.tableAuthDic.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_AuthDic", new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAuthDic.DIDColumn});
+            this.tableAuthDic.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Category_Dictionaries", new global::System.Data.DataColumn[] {
                         this.tableCategory.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDictionaries.CategoryColumn});
+                        this.tableDictionaries.IDColumn});
             this.tableDictionaries.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -565,10 +606,10 @@ namespace WpfApplication3 {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_MAP", new global::System.Data.DataColumn[] {
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_LangDic", new global::System.Data.DataColumn[] {
                         this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableMAP.DIDColumn});
-            this.tableMAP.Constraints.Add(fkc);
+                        this.tableLangDic.DIDColumn});
+            this.tableLangDic.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
@@ -579,23 +620,23 @@ namespace WpfApplication3 {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Location_Publisher", new global::System.Data.DataColumn[] {
-                        this.tableLocation.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePublisher.LocationColumn});
-            this.tablePublisher.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_ScriptDic", new global::System.Data.DataColumn[] {
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_MAP", new global::System.Data.DataColumn[] {
                         this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableScriptDic.DIDColumn});
-            this.tableScriptDic.Constraints.Add(fkc);
+                        this.tableMAP.DIDColumn});
+            this.tableMAP.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Script_ScriptDic", new global::System.Data.DataColumn[] {
                         this.tableScript.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableScriptDic.SIDColumn});
+            this.tableScriptDic.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_ScriptDic", new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableScriptDic.DIDColumn});
             this.tableScriptDic.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -614,14 +655,50 @@ namespace WpfApplication3 {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_AuthDic = new global::System.Data.DataRelation("FK_AuthDic", new global::System.Data.DataColumn[] {
+            this.relationFK_Author_AuthDic = new global::System.Data.DataRelation("FK_Author_AuthDic", new global::System.Data.DataColumn[] {
                         this.tableAuthor.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableAuthDic.AIDColumn}, false);
-            this.Relations.Add(this.relationFK_AuthDic);
-            this.relationFK_Dic = new global::System.Data.DataRelation("FK_Dic", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_Author_AuthDic);
+            this.relationFK_Dictionaries_AuthDic = new global::System.Data.DataRelation("FK_Dictionaries_AuthDic", new global::System.Data.DataColumn[] {
                         this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableAuthDic.DIDColumn}, false);
-            this.Relations.Add(this.relationFK_Dic);
+            this.Relations.Add(this.relationFK_Dictionaries_AuthDic);
+            this.relationFK_Category_Dictionaries = new global::System.Data.DataRelation("FK_Category_Dictionaries", new global::System.Data.DataColumn[] {
+                        this.tableCategory.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, false);
+            this.Relations.Add(this.relationFK_Category_Dictionaries);
+            this.relationFK_Language_LangDic = new global::System.Data.DataRelation("FK_Language_LangDic", new global::System.Data.DataColumn[] {
+                        this.tableLanguage.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLangDic.LIDColumn}, false);
+            this.Relations.Add(this.relationFK_Language_LangDic);
+            this.relationFK_Dictionaries_LangDic = new global::System.Data.DataRelation("FK_Dictionaries_LangDic", new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLangDic.DIDColumn}, false);
+            this.Relations.Add(this.relationFK_Dictionaries_LangDic);
+            this.relationFK_People_MAP = new global::System.Data.DataRelation("FK_People_MAP", new global::System.Data.DataColumn[] {
+                        this.tablePeople.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAP.PIDColumn}, false);
+            this.Relations.Add(this.relationFK_People_MAP);
+            this.relationFK_Dictionaries_MAP = new global::System.Data.DataRelation("FK_Dictionaries_MAP", new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAP.DIDColumn}, false);
+            this.Relations.Add(this.relationFK_Dictionaries_MAP);
+            this.relationFK_Script_ScriptDic = new global::System.Data.DataRelation("FK_Script_ScriptDic", new global::System.Data.DataColumn[] {
+                        this.tableScript.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableScriptDic.SIDColumn}, false);
+            this.Relations.Add(this.relationFK_Script_ScriptDic);
+            this.relationFK_Dictionaries_ScriptDic = new global::System.Data.DataRelation("FK_Dictionaries_ScriptDic", new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableScriptDic.DIDColumn}, false);
+            this.Relations.Add(this.relationFK_Dictionaries_ScriptDic);
+            this.relationFK_Organizations_MAO = new global::System.Data.DataRelation("FK_Organizations_MAO", new global::System.Data.DataColumn[] {
+                        this.tableOrganizations.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAO.OIDColumn}, false);
+            this.Relations.Add(this.relationFK_Organizations_MAO);
+            this.relationFK_Dictionaries_MAO = new global::System.Data.DataRelation("FK_Dictionaries_MAO", new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAO.DIDColumn}, false);
+            this.Relations.Add(this.relationFK_Dictionaries_MAO);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -902,16 +979,16 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuthDicRow AddAuthDicRow(AuthorRow parentAuthorRowByFK_AuthDic, DictionariesRow parentDictionariesRowByFK_Dic) {
+            public AuthDicRow AddAuthDicRow(AuthorRow parentAuthorRowByFK_Author_AuthDic, DictionariesRow parentDictionariesRowByFK_Dictionaries_AuthDic) {
                 AuthDicRow rowAuthDicRow = ((AuthDicRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null};
-                if ((parentAuthorRowByFK_AuthDic != null)) {
-                    columnValuesArray[0] = parentAuthorRowByFK_AuthDic[0];
+                if ((parentAuthorRowByFK_Author_AuthDic != null)) {
+                    columnValuesArray[0] = parentAuthorRowByFK_Author_AuthDic[0];
                 }
-                if ((parentDictionariesRowByFK_Dic != null)) {
-                    columnValuesArray[1] = parentDictionariesRowByFK_Dic[0];
+                if ((parentDictionariesRowByFK_Dictionaries_AuthDic != null)) {
+                    columnValuesArray[1] = parentDictionariesRowByFK_Dictionaries_AuthDic[0];
                 }
                 rowAuthDicRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAuthDicRow);
@@ -920,7 +997,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuthDicRow FindByAIDDID(string AID, string DID) {
+            public AuthDicRow FindByAIDDID(int AID, int DID) {
                 return ((AuthDicRow)(this.Rows.Find(new object[] {
                             AID,
                             DID})));
@@ -950,17 +1027,15 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnAID = new global::System.Data.DataColumn("AID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnAID = new global::System.Data.DataColumn("AID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAID);
-                this.columnDID = new global::System.Data.DataColumn("DID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDID = new global::System.Data.DataColumn("DID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnAID,
                                 this.columnDID}, true));
                 this.columnAID.AllowDBNull = false;
-                this.columnAID.MaxLength = 100;
                 this.columnDID.AllowDBNull = false;
-                this.columnDID.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1184,10 +1259,10 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuthorRow AddAuthorRow(string ID, string Name) {
+            public AuthorRow AddAuthorRow(string Name) {
                 AuthorRow rowAuthorRow = ((AuthorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Name};
                 rowAuthorRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAuthorRow);
@@ -1196,7 +1271,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuthorRow FindByID(string ID) {
+            public AuthorRow FindByID(int ID) {
                 return ((AuthorRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -1225,15 +1300,17 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnID.MaxLength = 100;
                 this.columnName.MaxLength = 100;
             }
             
@@ -1458,10 +1535,10 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CategoryRow AddCategoryRow(string ID, string Description) {
+            public CategoryRow AddCategoryRow(string Description) {
                 CategoryRow rowCategoryRow = ((CategoryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Description};
                 rowCategoryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCategoryRow);
@@ -1470,7 +1547,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CategoryRow FindByID(string ID) {
+            public CategoryRow FindByID(int ID) {
                 return ((CategoryRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -1499,15 +1576,17 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnID.MaxLength = 100;
                 this.columnDescription.MaxLength = 100;
             }
             
@@ -1802,10 +1881,10 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DictionariesRow AddDictionariesRow(string ID, string Title, string Edition, string Volume, string Part, string Copies, string Words, string Notes, string Category) {
+            public DictionariesRow AddDictionariesRow(string Title, string Edition, string Volume, string Part, string Copies, string Words, string Notes, int Category) {
                 DictionariesRow rowDictionariesRow = ((DictionariesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Title,
                         Edition,
                         Volume,
@@ -1821,7 +1900,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DictionariesRow FindByID(string ID) {
+            public DictionariesRow FindByID(int ID) {
                 return ((DictionariesRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -1857,7 +1936,7 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
@@ -1873,13 +1952,15 @@ namespace WpfApplication3 {
                 base.Columns.Add(this.columnWords);
                 this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNotes);
-                this.columnCategory = new global::System.Data.DataColumn("Category", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCategory = new global::System.Data.DataColumn("Category", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategory);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnID.MaxLength = 100;
                 this.columnTitle.MaxLength = 100;
                 this.columnEdition.MaxLength = 100;
                 this.columnVolume.MaxLength = 100;
@@ -2119,12 +2200,18 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LangDicRow AddLangDicRow(string DID, string LID, string Type) {
+            public LangDicRow AddLangDicRow(DictionariesRow parentDictionariesRowByFK_Dictionaries_LangDic, LanguageRow parentLanguageRowByFK_Language_LangDic, string Type) {
                 LangDicRow rowLangDicRow = ((LangDicRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        DID,
-                        LID,
+                        null,
+                        null,
                         Type};
+                if ((parentDictionariesRowByFK_Dictionaries_LangDic != null)) {
+                    columnValuesArray[0] = parentDictionariesRowByFK_Dictionaries_LangDic[0];
+                }
+                if ((parentLanguageRowByFK_Language_LangDic != null)) {
+                    columnValuesArray[1] = parentLanguageRowByFK_Language_LangDic[0];
+                }
                 rowLangDicRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLangDicRow);
                 return rowLangDicRow;
@@ -2132,7 +2219,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LangDicRow FindByDIDLIDType(string DID, string LID, string Type) {
+            public LangDicRow FindByDIDLIDType(int DID, int LID, string Type) {
                 return ((LangDicRow)(this.Rows.Find(new object[] {
                             DID,
                             LID,
@@ -2164,9 +2251,9 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnDID = new global::System.Data.DataColumn("DID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDID = new global::System.Data.DataColumn("DID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDID);
-                this.columnLID = new global::System.Data.DataColumn("LID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnLID = new global::System.Data.DataColumn("LID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLID);
                 this.columnType = new global::System.Data.DataColumn("Type", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnType);
@@ -2175,11 +2262,8 @@ namespace WpfApplication3 {
                                 this.columnLID,
                                 this.columnType}, true));
                 this.columnDID.AllowDBNull = false;
-                this.columnDID.MaxLength = 100;
                 this.columnLID.AllowDBNull = false;
-                this.columnLID.MaxLength = 100;
                 this.columnType.AllowDBNull = false;
-                this.columnType.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2403,10 +2487,10 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LanguageRow AddLanguageRow(string ID, string Name) {
+            public LanguageRow AddLanguageRow(string Name) {
                 LanguageRow rowLanguageRow = ((LanguageRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Name};
                 rowLanguageRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLanguageRow);
@@ -2415,7 +2499,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LanguageRow FindByID(string ID) {
+            public LanguageRow FindByID(int ID) {
                 return ((LanguageRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -2444,15 +2528,17 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnID.MaxLength = 100;
                 this.columnName.MaxLength = 100;
             }
             
@@ -2784,7 +2870,6 @@ namespace WpfApplication3 {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnID.MaxLength = 100;
                 this.columnStreet.MaxLength = 100;
                 this.columnCity.MaxLength = 100;
                 this._columnProvince_State.MaxLength = 100;
@@ -3023,12 +3108,18 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MAPRow AddMAPRow(string DID, string PID, string MA) {
+            public MAPRow AddMAPRow(DictionariesRow parentDictionariesRowByFK_Dictionaries_MAP, PeopleRow parentPeopleRowByFK_People_MAP, string MA) {
                 MAPRow rowMAPRow = ((MAPRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        DID,
-                        PID,
+                        null,
+                        null,
                         MA};
+                if ((parentDictionariesRowByFK_Dictionaries_MAP != null)) {
+                    columnValuesArray[0] = parentDictionariesRowByFK_Dictionaries_MAP[0];
+                }
+                if ((parentPeopleRowByFK_People_MAP != null)) {
+                    columnValuesArray[1] = parentPeopleRowByFK_People_MAP[0];
+                }
                 rowMAPRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMAPRow);
                 return rowMAPRow;
@@ -3036,7 +3127,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MAPRow FindByDIDPID(string DID, string PID) {
+            public MAPRow FindByDIDPID(int DID, int PID) {
                 return ((MAPRow)(this.Rows.Find(new object[] {
                             DID,
                             PID})));
@@ -3067,9 +3158,9 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnDID = new global::System.Data.DataColumn("DID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDID = new global::System.Data.DataColumn("DID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDID);
-                this.columnPID = new global::System.Data.DataColumn("PID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnPID = new global::System.Data.DataColumn("PID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPID);
                 this.columnMA = new global::System.Data.DataColumn("MA", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMA);
@@ -3077,10 +3168,7 @@ namespace WpfApplication3 {
                                 this.columnDID,
                                 this.columnPID}, true));
                 this.columnDID.AllowDBNull = false;
-                this.columnDID.MaxLength = 100;
                 this.columnPID.AllowDBNull = false;
-                this.columnPID.MaxLength = 100;
-                this.columnMA.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3304,10 +3392,10 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OrganizationsRow AddOrganizationsRow(string ID, string Name) {
+            public OrganizationsRow AddOrganizationsRow(string Name) {
                 OrganizationsRow rowOrganizationsRow = ((OrganizationsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Name};
                 rowOrganizationsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowOrganizationsRow);
@@ -3316,7 +3404,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OrganizationsRow FindByID(string ID) {
+            public OrganizationsRow FindByID(int ID) {
                 return ((OrganizationsRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -3345,15 +3433,17 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnID.MaxLength = 100;
                 this.columnName.MaxLength = 100;
             }
             
@@ -3578,10 +3668,10 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PeopleRow AddPeopleRow(string ID, string Name) {
+            public PeopleRow AddPeopleRow(string Name) {
                 PeopleRow rowPeopleRow = ((PeopleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Name};
                 rowPeopleRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPeopleRow);
@@ -3590,7 +3680,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PeopleRow FindByID(string ID) {
+            public PeopleRow FindByID(int ID) {
                 return ((PeopleRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -3619,15 +3709,17 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnID.MaxLength = 100;
                 this.columnName.MaxLength = 100;
             }
             
@@ -3766,7 +3858,7 @@ namespace WpfApplication3 {
             
             private global::System.Data.DataColumn columnName;
             
-            private global::System.Data.DataColumn columnLocation;
+            private global::System.Data.DataColumn columnLocationID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3819,9 +3911,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LocationColumn {
+            public global::System.Data.DataColumn LocationIDColumn {
                 get {
-                    return this.columnLocation;
+                    return this.columnLocationID;
                 }
             }
             
@@ -3862,12 +3954,12 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PublisherRow AddPublisherRow(string ID, string Name, string Location) {
+            public PublisherRow AddPublisherRow(string Name, int LocationID) {
                 PublisherRow rowPublisherRow = ((PublisherRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Name,
-                        Location};
+                        LocationID};
                 rowPublisherRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPublisherRow);
                 return rowPublisherRow;
@@ -3875,7 +3967,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PublisherRow FindByID(string ID) {
+            public PublisherRow FindByID(int ID) {
                 return ((PublisherRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -3899,25 +3991,26 @@ namespace WpfApplication3 {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnName = base.Columns["Name"];
-                this.columnLocation = base.Columns["Location"];
+                this.columnLocationID = base.Columns["LocationID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
-                this.columnLocation = new global::System.Data.DataColumn("Location", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLocation);
+                this.columnLocationID = new global::System.Data.DataColumn("LocationID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLocationID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnID.MaxLength = 100;
                 this.columnName.MaxLength = 100;
-                this.columnLocation.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4141,10 +4234,10 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ScriptRow AddScriptRow(string ID, string Name) {
+            public ScriptRow AddScriptRow(string Name) {
                 ScriptRow rowScriptRow = ((ScriptRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Name};
                 rowScriptRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowScriptRow);
@@ -4153,7 +4246,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ScriptRow FindByID(string ID) {
+            public ScriptRow FindByID(int ID) {
                 return ((ScriptRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -4182,15 +4275,17 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnID.MaxLength = 100;
                 this.columnName.MaxLength = 100;
             }
             
@@ -4425,12 +4520,18 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ScriptDicRow AddScriptDicRow(string DID, string SID, string Type) {
+            public ScriptDicRow AddScriptDicRow(DictionariesRow parentDictionariesRowByFK_Dictionaries_ScriptDic, ScriptRow parentScriptRowByFK_Script_ScriptDic, string Type) {
                 ScriptDicRow rowScriptDicRow = ((ScriptDicRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        DID,
-                        SID,
+                        null,
+                        null,
                         Type};
+                if ((parentDictionariesRowByFK_Dictionaries_ScriptDic != null)) {
+                    columnValuesArray[0] = parentDictionariesRowByFK_Dictionaries_ScriptDic[0];
+                }
+                if ((parentScriptRowByFK_Script_ScriptDic != null)) {
+                    columnValuesArray[1] = parentScriptRowByFK_Script_ScriptDic[0];
+                }
                 rowScriptDicRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowScriptDicRow);
                 return rowScriptDicRow;
@@ -4438,7 +4539,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ScriptDicRow FindByDIDSIDType(string DID, string SID, string Type) {
+            public ScriptDicRow FindByDIDSIDType(int DID, int SID, string Type) {
                 return ((ScriptDicRow)(this.Rows.Find(new object[] {
                             DID,
                             SID,
@@ -4470,9 +4571,9 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnDID = new global::System.Data.DataColumn("DID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDID = new global::System.Data.DataColumn("DID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDID);
-                this.columnSID = new global::System.Data.DataColumn("SID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSID = new global::System.Data.DataColumn("SID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSID);
                 this.columnType = new global::System.Data.DataColumn("Type", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnType);
@@ -4481,11 +4582,8 @@ namespace WpfApplication3 {
                                 this.columnSID,
                                 this.columnType}, true));
                 this.columnDID.AllowDBNull = false;
-                this.columnDID.MaxLength = 100;
                 this.columnSID.AllowDBNull = false;
-                this.columnSID.MaxLength = 100;
                 this.columnType.AllowDBNull = false;
-                this.columnType.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4719,12 +4817,18 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MAORow AddMAORow(string DID, string OID, string MA) {
+            public MAORow AddMAORow(DictionariesRow parentDictionariesRowByFK_Dictionaries_MAO, OrganizationsRow parentOrganizationsRowByFK_Organizations_MAO, string MA) {
                 MAORow rowMAORow = ((MAORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        DID,
-                        OID,
+                        null,
+                        null,
                         MA};
+                if ((parentDictionariesRowByFK_Dictionaries_MAO != null)) {
+                    columnValuesArray[0] = parentDictionariesRowByFK_Dictionaries_MAO[0];
+                }
+                if ((parentOrganizationsRowByFK_Organizations_MAO != null)) {
+                    columnValuesArray[1] = parentOrganizationsRowByFK_Organizations_MAO[0];
+                }
                 rowMAORow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMAORow);
                 return rowMAORow;
@@ -4732,7 +4836,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MAORow FindByDIDOID(string DID, string OID) {
+            public MAORow FindByDIDOID(int DID, int OID) {
                 return ((MAORow)(this.Rows.Find(new object[] {
                             DID,
                             OID})));
@@ -4763,9 +4867,9 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnDID = new global::System.Data.DataColumn("DID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDID = new global::System.Data.DataColumn("DID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDID);
-                this.columnOID = new global::System.Data.DataColumn("OID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnOID = new global::System.Data.DataColumn("OID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOID);
                 this.columnMA = new global::System.Data.DataColumn("MA", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMA);
@@ -4773,10 +4877,7 @@ namespace WpfApplication3 {
                                 this.columnDID,
                                 this.columnOID}, true));
                 this.columnDID.AllowDBNull = false;
-                this.columnDID.MaxLength = 100;
                 this.columnOID.AllowDBNull = false;
-                this.columnOID.MaxLength = 100;
-                this.columnMA.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4919,9 +5020,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string AID {
+            public int AID {
                 get {
-                    return ((string)(this[this.tableAuthDic.AIDColumn]));
+                    return ((int)(this[this.tableAuthDic.AIDColumn]));
                 }
                 set {
                     this[this.tableAuthDic.AIDColumn] = value;
@@ -4930,9 +5031,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DID {
+            public int DID {
                 get {
-                    return ((string)(this[this.tableAuthDic.DIDColumn]));
+                    return ((int)(this[this.tableAuthDic.DIDColumn]));
                 }
                 set {
                     this[this.tableAuthDic.DIDColumn] = value;
@@ -4943,10 +5044,10 @@ namespace WpfApplication3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AuthorRow AuthorRow {
                 get {
-                    return ((AuthorRow)(this.GetParentRow(this.Table.ParentRelations["FK_AuthDic"])));
+                    return ((AuthorRow)(this.GetParentRow(this.Table.ParentRelations["FK_Author_AuthDic"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_AuthDic"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Author_AuthDic"]);
                 }
             }
             
@@ -4954,10 +5055,10 @@ namespace WpfApplication3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DictionariesRow DictionariesRow {
                 get {
-                    return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dic"])));
+                    return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dictionaries_AuthDic"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Dic"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Dictionaries_AuthDic"]);
                 }
             }
         }
@@ -4978,9 +5079,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    return ((string)(this[this.tableAuthor.IDColumn]));
+                    return ((int)(this[this.tableAuthor.IDColumn]));
                 }
                 set {
                     this[this.tableAuthor.IDColumn] = value;
@@ -5018,11 +5119,11 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AuthDicRow[] GetAuthDicRows() {
-                if ((this.Table.ChildRelations["FK_AuthDic"] == null)) {
+                if ((this.Table.ChildRelations["FK_Author_AuthDic"] == null)) {
                     return new AuthDicRow[0];
                 }
                 else {
-                    return ((AuthDicRow[])(base.GetChildRows(this.Table.ChildRelations["FK_AuthDic"])));
+                    return ((AuthDicRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Author_AuthDic"])));
                 }
             }
         }
@@ -5043,9 +5144,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    return ((string)(this[this.tableCategory.IDColumn]));
+                    return ((int)(this[this.tableCategory.IDColumn]));
                 }
                 set {
                     this[this.tableCategory.IDColumn] = value;
@@ -5079,6 +5180,17 @@ namespace WpfApplication3 {
             public void SetDescriptionNull() {
                 this[this.tableCategory.DescriptionColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DictionariesRow[] GetDictionariesRows() {
+                if ((this.Table.ChildRelations["FK_Category_Dictionaries"] == null)) {
+                    return new DictionariesRow[0];
+                }
+                else {
+                    return ((DictionariesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Category_Dictionaries"])));
+                }
+            }
         }
         
         /// <summary>
@@ -5097,9 +5209,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    return ((string)(this[this.tableDictionaries.IDColumn]));
+                    return ((int)(this[this.tableDictionaries.IDColumn]));
                 }
                 set {
                     this[this.tableDictionaries.IDColumn] = value;
@@ -5220,10 +5332,10 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Category {
+            public int Category {
                 get {
                     try {
-                        return ((string)(this[this.tableDictionaries.CategoryColumn]));
+                        return ((int)(this[this.tableDictionaries.CategoryColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Category\' in table \'Dictionaries\' is DBNull.", e);
@@ -5231,6 +5343,17 @@ namespace WpfApplication3 {
                 }
                 set {
                     this[this.tableDictionaries.CategoryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CategoryRow CategoryRow {
+                get {
+                    return ((CategoryRow)(this.GetParentRow(this.Table.ParentRelations["FK_Category_Dictionaries"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Category_Dictionaries"]);
                 }
             }
             
@@ -5332,12 +5455,56 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAORow[] GetMAORows() {
+                if ((this.Table.ChildRelations["FK_Dictionaries_MAO"] == null)) {
+                    return new MAORow[0];
+                }
+                else {
+                    return ((MAORow[])(base.GetChildRows(this.Table.ChildRelations["FK_Dictionaries_MAO"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ScriptDicRow[] GetScriptDicRows() {
+                if ((this.Table.ChildRelations["FK_Dictionaries_ScriptDic"] == null)) {
+                    return new ScriptDicRow[0];
+                }
+                else {
+                    return ((ScriptDicRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Dictionaries_ScriptDic"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAPRow[] GetMAPRows() {
+                if ((this.Table.ChildRelations["FK_Dictionaries_MAP"] == null)) {
+                    return new MAPRow[0];
+                }
+                else {
+                    return ((MAPRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Dictionaries_MAP"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public LangDicRow[] GetLangDicRows() {
+                if ((this.Table.ChildRelations["FK_Dictionaries_LangDic"] == null)) {
+                    return new LangDicRow[0];
+                }
+                else {
+                    return ((LangDicRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Dictionaries_LangDic"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AuthDicRow[] GetAuthDicRows() {
-                if ((this.Table.ChildRelations["FK_Dic"] == null)) {
+                if ((this.Table.ChildRelations["FK_Dictionaries_AuthDic"] == null)) {
                     return new AuthDicRow[0];
                 }
                 else {
-                    return ((AuthDicRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Dic"])));
+                    return ((AuthDicRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Dictionaries_AuthDic"])));
                 }
             }
         }
@@ -5358,9 +5525,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DID {
+            public int DID {
                 get {
-                    return ((string)(this[this.tableLangDic.DIDColumn]));
+                    return ((int)(this[this.tableLangDic.DIDColumn]));
                 }
                 set {
                     this[this.tableLangDic.DIDColumn] = value;
@@ -5369,9 +5536,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string LID {
+            public int LID {
                 get {
-                    return ((string)(this[this.tableLangDic.LIDColumn]));
+                    return ((int)(this[this.tableLangDic.LIDColumn]));
                 }
                 set {
                     this[this.tableLangDic.LIDColumn] = value;
@@ -5386,6 +5553,28 @@ namespace WpfApplication3 {
                 }
                 set {
                     this[this.tableLangDic.TypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public LanguageRow LanguageRow {
+                get {
+                    return ((LanguageRow)(this.GetParentRow(this.Table.ParentRelations["FK_Language_LangDic"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Language_LangDic"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DictionariesRow DictionariesRow {
+                get {
+                    return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dictionaries_LangDic"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Dictionaries_LangDic"]);
                 }
             }
         }
@@ -5406,9 +5595,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    return ((string)(this[this.tableLanguage.IDColumn]));
+                    return ((int)(this[this.tableLanguage.IDColumn]));
                 }
                 set {
                     this[this.tableLanguage.IDColumn] = value;
@@ -5441,6 +5630,17 @@ namespace WpfApplication3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNameNull() {
                 this[this.tableLanguage.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public LangDicRow[] GetLangDicRows() {
+                if ((this.Table.ChildRelations["FK_Language_LangDic"] == null)) {
+                    return new LangDicRow[0];
+                }
+                else {
+                    return ((LangDicRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Language_LangDic"])));
+                }
             }
         }
         
@@ -5626,9 +5826,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DID {
+            public int DID {
                 get {
-                    return ((string)(this[this.tableMAP.DIDColumn]));
+                    return ((int)(this[this.tableMAP.DIDColumn]));
                 }
                 set {
                     this[this.tableMAP.DIDColumn] = value;
@@ -5637,9 +5837,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PID {
+            public int PID {
                 get {
-                    return ((string)(this[this.tableMAP.PIDColumn]));
+                    return ((int)(this[this.tableMAP.PIDColumn]));
                 }
                 set {
                     this[this.tableMAP.PIDColumn] = value;
@@ -5659,6 +5859,28 @@ namespace WpfApplication3 {
                 }
                 set {
                     this[this.tableMAP.MAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PeopleRow PeopleRow {
+                get {
+                    return ((PeopleRow)(this.GetParentRow(this.Table.ParentRelations["FK_People_MAP"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_People_MAP"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DictionariesRow DictionariesRow {
+                get {
+                    return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dictionaries_MAP"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Dictionaries_MAP"]);
                 }
             }
             
@@ -5691,9 +5913,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    return ((string)(this[this.tableOrganizations.IDColumn]));
+                    return ((int)(this[this.tableOrganizations.IDColumn]));
                 }
                 set {
                     this[this.tableOrganizations.IDColumn] = value;
@@ -5727,6 +5949,17 @@ namespace WpfApplication3 {
             public void SetNameNull() {
                 this[this.tableOrganizations.NameColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAORow[] GetMAORows() {
+                if ((this.Table.ChildRelations["FK_Organizations_MAO"] == null)) {
+                    return new MAORow[0];
+                }
+                else {
+                    return ((MAORow[])(base.GetChildRows(this.Table.ChildRelations["FK_Organizations_MAO"])));
+                }
+            }
         }
         
         /// <summary>
@@ -5745,9 +5978,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    return ((string)(this[this.tablePeople.IDColumn]));
+                    return ((int)(this[this.tablePeople.IDColumn]));
                 }
                 set {
                     this[this.tablePeople.IDColumn] = value;
@@ -5781,6 +6014,17 @@ namespace WpfApplication3 {
             public void SetNameNull() {
                 this[this.tablePeople.NameColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MAPRow[] GetMAPRows() {
+                if ((this.Table.ChildRelations["FK_People_MAP"] == null)) {
+                    return new MAPRow[0];
+                }
+                else {
+                    return ((MAPRow[])(base.GetChildRows(this.Table.ChildRelations["FK_People_MAP"])));
+                }
+            }
         }
         
         /// <summary>
@@ -5799,9 +6043,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    return ((string)(this[this.tablePublisher.IDColumn]));
+                    return ((int)(this[this.tablePublisher.IDColumn]));
                 }
                 set {
                     this[this.tablePublisher.IDColumn] = value;
@@ -5826,17 +6070,17 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Location {
+            public int LocationID {
                 get {
                     try {
-                        return ((string)(this[this.tablePublisher.LocationColumn]));
+                        return ((int)(this[this.tablePublisher.LocationIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Location\' in table \'Publisher\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'LocationID\' in table \'Publisher\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePublisher.LocationColumn] = value;
+                    this[this.tablePublisher.LocationIDColumn] = value;
                 }
             }
             
@@ -5854,14 +6098,14 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLocationNull() {
-                return this.IsNull(this.tablePublisher.LocationColumn);
+            public bool IsLocationIDNull() {
+                return this.IsNull(this.tablePublisher.LocationIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLocationNull() {
-                this[this.tablePublisher.LocationColumn] = global::System.Convert.DBNull;
+            public void SetLocationIDNull() {
+                this[this.tablePublisher.LocationIDColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5881,9 +6125,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    return ((string)(this[this.tableScript.IDColumn]));
+                    return ((int)(this[this.tableScript.IDColumn]));
                 }
                 set {
                     this[this.tableScript.IDColumn] = value;
@@ -5917,6 +6161,17 @@ namespace WpfApplication3 {
             public void SetNameNull() {
                 this[this.tableScript.NameColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ScriptDicRow[] GetScriptDicRows() {
+                if ((this.Table.ChildRelations["FK_Script_ScriptDic"] == null)) {
+                    return new ScriptDicRow[0];
+                }
+                else {
+                    return ((ScriptDicRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Script_ScriptDic"])));
+                }
+            }
         }
         
         /// <summary>
@@ -5935,9 +6190,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DID {
+            public int DID {
                 get {
-                    return ((string)(this[this.tableScriptDic.DIDColumn]));
+                    return ((int)(this[this.tableScriptDic.DIDColumn]));
                 }
                 set {
                     this[this.tableScriptDic.DIDColumn] = value;
@@ -5946,9 +6201,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string SID {
+            public int SID {
                 get {
-                    return ((string)(this[this.tableScriptDic.SIDColumn]));
+                    return ((int)(this[this.tableScriptDic.SIDColumn]));
                 }
                 set {
                     this[this.tableScriptDic.SIDColumn] = value;
@@ -5963,6 +6218,28 @@ namespace WpfApplication3 {
                 }
                 set {
                     this[this.tableScriptDic.TypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ScriptRow ScriptRow {
+                get {
+                    return ((ScriptRow)(this.GetParentRow(this.Table.ParentRelations["FK_Script_ScriptDic"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Script_ScriptDic"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DictionariesRow DictionariesRow {
+                get {
+                    return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dictionaries_ScriptDic"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Dictionaries_ScriptDic"]);
                 }
             }
         }
@@ -5983,9 +6260,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DID {
+            public int DID {
                 get {
-                    return ((string)(this[this.tableMAO.DIDColumn]));
+                    return ((int)(this[this.tableMAO.DIDColumn]));
                 }
                 set {
                     this[this.tableMAO.DIDColumn] = value;
@@ -5994,9 +6271,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string OID {
+            public int OID {
                 get {
-                    return ((string)(this[this.tableMAO.OIDColumn]));
+                    return ((int)(this[this.tableMAO.OIDColumn]));
                 }
                 set {
                     this[this.tableMAO.OIDColumn] = value;
@@ -6016,6 +6293,28 @@ namespace WpfApplication3 {
                 }
                 set {
                     this[this.tableMAO.MAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OrganizationsRow OrganizationsRow {
+                get {
+                    return ((OrganizationsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Organizations_MAO"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Organizations_MAO"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DictionariesRow DictionariesRow {
+                get {
+                    return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dictionaries_MAO"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Dictionaries_MAO"]);
                 }
             }
             
@@ -10085,7 +10384,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
             tableMapping.DataSetTable = "Publisher";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("Location", "Location");
+            tableMapping.ColumnMappings.Add("Location", "LocationID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -11770,15 +12069,6 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._peopleTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._peopleTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._authorTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Author.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -11788,12 +12078,12 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._locationTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._peopleTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._locationTableAdapter.Update(updatedRows));
+                    result = (result + this._peopleTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11860,6 +12150,15 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._locationTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._locationTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -11902,14 +12201,6 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._peopleTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._peopleTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._authorTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Author.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -11918,11 +12209,11 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._locationTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._peopleTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._locationTableAdapter.Update(addedRows));
+                    result = (result + this._peopleTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11982,6 +12273,14 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._locationTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._locationTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -11992,6 +12291,14 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(Database3DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._locationTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._locationTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._mAPTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.MAP.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -12048,11 +12355,11 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._locationTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._peopleTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._locationTableAdapter.Update(deletedRows));
+                    result = (result + this._peopleTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12061,14 +12368,6 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._authorTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._peopleTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._peopleTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

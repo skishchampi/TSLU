@@ -180,8 +180,8 @@
     </None>
     <None Include="Database3DataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Database3DataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Database3DataSet.Designer.cs</LastGenOutput>
     </None>
     <None Include="Database3DataSet.xss">
       <DependentUpon>Database3DataSet.xsd</DependentUpon>

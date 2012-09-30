@@ -12,6 +12,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
+using System.Data.SqlServerCe;
+using System.Data.Common;
+using System.Data;
+
 
 namespace WpfApplication3
 {
@@ -23,6 +27,8 @@ namespace WpfApplication3
         public Window1()
         {
             InitializeComponent();
+            comboBox1_SelectionChanged(comboBox2);
+            comboBox2_SelectionChanged(comboBox2);
         }
 
         private void textBox15_TextChanged(object sender, TextChangedEventArgs e)
@@ -62,14 +68,24 @@ namespace WpfApplication3
 
         private void AddRecord_Click(object sender, RoutedEventArgs e)
         {
-            
+            clsDic dicitem = new clsDic();
+            dicitem.Title = title.Text;
+            dicitem.ISBN = Convert.ToInt32(isbn.Text);
+
+
         }
-        public class clsEmployee
+        public class clsDic
         {
-            public int EmpNo { get; set; }
-            public string EmpName { get; set; }
-            public int Salary { get; set; }
-            public int DeptNo { get; set; }
+            public int ID { get; set; }
+            public string Title { get; set; }
+            public int ISBN { get; set; }
+            public int Edition { get; set; }
+            public int Volume { get; set; }
+            public int Part { get; set; }
+            public int Copies { get; set; }
+            public int Words { get; set; }
+            public string Notes { get; set; }
+            public int Category { get; set; }
         }
 
         public class DataAccess
@@ -79,46 +95,84 @@ namespace WpfApplication3
 
             public DataAccess()
             {
-                Conn = new SqlConnection("Data Source=C:\\Users\\Skish Champi\\Documents\\Visual Studio 2010\\Projects\\TSLU\\Database3.sdf;Initial Catalog=Company;Integrated Security=SSPI");
+                Conn = new SqlConnection("Data Source=D:\\TSLU\\Database3.sdf;Initial Catalog=Company;Integrated Security=SSPI");
             }
-
-            public ObservableCollection<clsEmployee> GetAllEmployee()
+            
+            public ObservableCollection<clsDic> GetAllDictionaries()
             {
-                ObservableCollection<clsEmployee> EmpCol = new ObservableCollection<clsEmployee>();
+                ObservableCollection<clsDic> Dic = new ObservableCollection<clsDic>();
                 Conn.Open();
                 Cmd = new SqlCommand();
                 Cmd.Connection = Conn;
-                Cmd.CommandText = "Select * from Employee";
+                Cmd.CommandText = "Select * from Dictionaries";
                 SqlDataReader Reader = Cmd.ExecuteReader();
-
+                
                 while (Reader.Read())
                 {
-                    EmpCol.Add(new clsEmployee()
+                    Dic.Add(new clsDic()
                     {
-                        EmpNo = Convert.ToInt32(Reader["EmpNo"]),
-                        EmpName = Reader["EmpName"].ToString(),
-                        Salary = Convert.ToInt32(Reader["Salary"]),
-                        DeptNo = Convert.ToInt32(Reader["DeptNo"])
+                        //ID = Convert.ToInt32(Reader["ID"]),
+                        Title = Reader["Title"].ToString(),
+                        ISBN = Convert.ToInt32(Reader["ISBN"]),
+                        Edition = Convert.ToInt32(Reader["Edition"]),
+                        Volume = Convert.ToInt32(Reader["Volume"]),
+                        Part = Convert.ToInt32(Reader["Volume"]),
+                        Copies = Convert.ToInt32(Reader["Copies"]),
+                        Words = Convert.ToInt32(Reader["Words"]),
+                        Notes = Reader["Notes"].ToString(),
+                        Category = Convert.ToInt32(Reader["Category"])
+
                     });
                 }
 
                 Conn.Close();
-                return EmpCol;
+                return Dic;
             }
 
-            public void InsertEmployee(clsEmployee objEmp)
+            public void InsertDic(clsDic objEmp)
             {
                 Conn.Open();
                 Cmd = new SqlCommand();
                 Cmd.Connection = Conn;
-                Cmd.CommandText = "Insert into Employee Values(@EmpNo,@EmpName,@Salary,@DeptNo)";
-                Cmd.Parameters.AddWithValue("@EmpNo", objEmp.EmpNo);
-                Cmd.Parameters.AddWithValue("@EmpName", objEmp.EmpName);
-                Cmd.Parameters.AddWithValue("@Salary", objEmp.Salary);
-                Cmd.Parameters.AddWithValue("@DeptNo", objEmp.DeptNo);
+                Cmd.CommandText = "Insert into Dictionaries Values(@Title,@ISBN,@Edition,@Volume,@Part,@Copies,@Words,@Notes,@Category)";
+                //Cmd.Parameters.AddWithValue("@ID", objEmp.ID);
+                Cmd.Parameters.AddWithValue("@Title", objEmp.Title);
+                Cmd.Parameters.AddWithValue("@ISBN", objEmp.ISBN);
+                Cmd.Parameters.AddWithValue("@Edition", objEmp.Edition);
+                Cmd.Parameters.AddWithValue("@Volume", objEmp.Volume);
+                Cmd.Parameters.AddWithValue("@Part", objEmp.Part);
+                Cmd.Parameters.AddWithValue("@Copies", objEmp.Copies);
+                Cmd.Parameters.AddWithValue("@Words", objEmp.Words);
+                Cmd.Parameters.AddWithValue("@Notes", objEmp.Notes);
+                Cmd.Parameters.AddWithValue("@Category", objEmp.Category);
                 Cmd.ExecuteNonQuery();
                 Conn.Close();
             }
         }
+
+        private void comboBox1_SelectionChanged(ComboBox comboBox)
+        {
+            SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\Database3.sdf; Persist Security Info=False");
+            SqlCeDataAdapter da = new SqlCeDataAdapter("Select * FROM Author", sqlCon);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Author");
+            comboBox1.ItemsSource = ds.Tables["Author"].DefaultView;
+            comboBox1.DisplayMemberPath = ds.Tables["Author"].Columns["Name"].ToString();
+            comboBox1.SelectedValuePath = ds.Tables["Author"].Columns["ID"].ToString();
+
+        }
+
+        private void comboBox2_SelectionChanged(ComboBox comboBox)
+        {
+            SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\Database3.sdf; Persist Security Info=False");
+            SqlCeDataAdapter da = new SqlCeDataAdapter("Select * FROM Category", sqlCon);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Category");
+            comboBox2.ItemsSource = ds.Tables["Category"].DefaultView;
+            comboBox2.DisplayMemberPath = ds.Tables["Category"].Columns["Description"].ToString();
+            comboBox2.SelectedValuePath = ds.Tables["Category"].Columns["ID"].ToString();
+            
+        }
+
     }
 }

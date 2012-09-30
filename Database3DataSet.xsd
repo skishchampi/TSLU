@@ -192,11 +192,11 @@
             <Mappings>
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
               <Mapping SourceColumn="Title" DataSetColumn="Title" />
-              <Mapping SourceColumn="Edition" DataSetColumn="Edition" />
-              <Mapping SourceColumn="Volume" DataSetColumn="Volume" />
-              <Mapping SourceColumn="Part" DataSetColumn="Part" />
-              <Mapping SourceColumn="Copies" DataSetColumn="Copies" />
-              <Mapping SourceColumn="Words" DataSetColumn="Words" />
+              <Mapping SourceColumn="Edition" DataSetColumn="ISBN" />
+              <Mapping SourceColumn="Volume" DataSetColumn="Edition" />
+              <Mapping SourceColumn="Part" DataSetColumn="Volume" />
+              <Mapping SourceColumn="Copies" DataSetColumn="Part" />
+              <Mapping SourceColumn="Words" DataSetColumn="Copies" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -375,7 +375,7 @@
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT [DID], [PID], [MA] FROM [Mentions]</CommandText>
+                    <CommandText>SELECT DID, PID, MA FROM Mentions</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -654,7 +654,7 @@
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT [DID], [OID], [MA] FROM [MentionsAcknowledgementsO]</CommandText>
+                    <CommandText>SELECT DID, OID, MA FROM MentionsAcknowledgementsO</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -712,7 +712,7 @@
         <xs:element name="Category" msprop:Generator_TableClassName="CategoryDataTable" msprop:Generator_TableVarName="tableCategory" msprop:Generator_TablePropName="Category" msprop:Generator_RowDeletingName="CategoryRowDeleting" msprop:Generator_UserTableName="Category" msprop:Generator_RowChangingName="CategoryRowChanging" msprop:Generator_RowEvHandlerName="CategoryRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoryRowDeleted" msprop:Generator_RowEvArgName="CategoryRowChangeEvent" msprop:Generator_RowChangedName="CategoryRowChanged" msprop:Generator_RowClassName="CategoryRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
               <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -728,6 +728,13 @@
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
               <xs:element name="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ISBN" msprop:Generator_ColumnVarNameInTable="columnISBN" msprop:Generator_ColumnPropNameInRow="ISBN" msprop:Generator_ColumnPropNameInTable="ISBNColumn" msprop:Generator_UserColumnName="ISBN" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
@@ -762,15 +769,9 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Words" msprop:Generator_ColumnVarNameInTable="columnWords" msprop:Generator_ColumnPropNameInRow="Words" msprop:Generator_ColumnPropNameInTable="WordsColumn" msprop:Generator_UserColumnName="Words" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" type="xs:string" minOccurs="0" />
-              <xs:element name="Category" msprop:Generator_ColumnVarNameInTable="columnCategory" msprop:Generator_ColumnPropNameInRow="Category" msprop:Generator_ColumnPropNameInTable="CategoryColumn" msprop:Generator_UserColumnName="Category" type="xs:int" minOccurs="0" />
+              <xs:element name="Words" msprop:Generator_ColumnVarNameInTable="columnWords" msprop:Generator_ColumnPropNameInRow="Words" msprop:Generator_ColumnPropNameInTable="WordsColumn" msprop:Generator_UserColumnName="Words" type="xs:string" minOccurs="0" />
+              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" type="xs:int" minOccurs="0" />
+              <xs:element name="Category" msprop:Generator_ColumnVarNameInTable="columnCategory" msprop:Generator_ColumnPropNameInRow="Category" msprop:Generator_ColumnPropNameInTable="CategoryColumn" msprop:Generator_UserColumnName="Category" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -800,7 +801,7 @@
         <xs:element name="Location" msprop:Generator_TableClassName="LocationDataTable" msprop:Generator_TableVarName="tableLocation" msprop:Generator_TablePropName="Location" msprop:Generator_RowDeletingName="LocationRowDeleting" msprop:Generator_UserTableName="Location" msprop:Generator_RowChangingName="LocationRowChanging" msprop:Generator_RowEvHandlerName="LocationRowChangeEventHandler" msprop:Generator_RowDeletedName="LocationRowDeleted" msprop:Generator_RowEvArgName="LocationRowChangeEvent" msprop:Generator_RowChangedName="LocationRowChanged" msprop:Generator_RowClassName="LocationRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
               <xs:element name="Street" msprop:Generator_ColumnVarNameInTable="columnStreet" msprop:Generator_ColumnPropNameInRow="Street" msprop:Generator_ColumnPropNameInTable="StreetColumn" msprop:Generator_UserColumnName="Street" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -988,49 +989,53 @@
       <xs:field xpath="mstns:DID" />
       <xs:field xpath="mstns:OID" />
     </xs:unique>
-    <xs:keyref name="FK_Organizations_MAO" refer="Organizations_Constraint1" msprop:rel_Generator_UserChildTable="MAO" msprop:rel_Generator_ChildPropName="GetMAORows" msprop:rel_Generator_ParentPropName="OrganizationsRow" msprop:rel_Generator_UserRelationName="FK_Organizations_MAO" msprop:rel_Generator_RelationVarName="relationFK_Organizations_MAO" msprop:rel_Generator_UserParentTable="Organizations">
+    <xs:keyref name="FK_Dictionaries_MAO" refer="Dictionaries_Constraint1" msprop:rel_Generator_UserChildTable="MAO" msprop:rel_Generator_ChildPropName="GetMAORows" msprop:rel_Generator_UserParentTable="Dictionaries" msprop:rel_Generator_UserRelationName="FK_Dictionaries_MAO" msprop:rel_Generator_RelationVarName="relationFK_Dictionaries_MAO" msprop:rel_Generator_ParentPropName="DictionariesRow">
+      <xs:selector xpath=".//mstns:MAO" />
+      <xs:field xpath="mstns:DID" />
+    </xs:keyref>
+    <xs:keyref name="FK_Organizations_MAO" refer="Organizations_Constraint1" msprop:rel_Generator_UserChildTable="MAO" msprop:rel_Generator_ChildPropName="GetMAORows" msprop:rel_Generator_UserParentTable="Organizations" msprop:rel_Generator_UserRelationName="FK_Organizations_MAO" msprop:rel_Generator_RelationVarName="relationFK_Organizations_MAO" msprop:rel_Generator_ParentPropName="OrganizationsRow">
       <xs:selector xpath=".//mstns:MAO" />
       <xs:field xpath="mstns:OID" />
     </xs:keyref>
-    <xs:keyref name="FK_Dictionaries_MAO" refer="Dictionaries_Constraint1" msprop:rel_Generator_UserChildTable="MAO" msprop:rel_Generator_ChildPropName="GetMAORows" msprop:rel_Generator_ParentPropName="DictionariesRow" msprop:rel_Generator_UserRelationName="FK_Dictionaries_MAO" msprop:rel_Generator_RelationVarName="relationFK_Dictionaries_MAO" msprop:rel_Generator_UserParentTable="Dictionaries">
-      <xs:selector xpath=".//mstns:MAO" />
+    <xs:keyref name="FK_Dictionaries_ScriptDic" refer="Dictionaries_Constraint1" msprop:rel_Generator_UserChildTable="ScriptDic" msprop:rel_Generator_ChildPropName="GetScriptDicRows" msprop:rel_Generator_UserParentTable="Dictionaries" msprop:rel_Generator_UserRelationName="FK_Dictionaries_ScriptDic" msprop:rel_Generator_RelationVarName="relationFK_Dictionaries_ScriptDic" msprop:rel_Generator_ParentPropName="DictionariesRow">
+      <xs:selector xpath=".//mstns:ScriptDic" />
       <xs:field xpath="mstns:DID" />
     </xs:keyref>
-    <xs:keyref name="FK_Script_ScriptDic" refer="Script_Constraint1" msprop:rel_Generator_UserChildTable="ScriptDic" msprop:rel_Generator_ChildPropName="GetScriptDicRows" msprop:rel_Generator_ParentPropName="ScriptRow" msprop:rel_Generator_UserRelationName="FK_Script_ScriptDic" msprop:rel_Generator_RelationVarName="relationFK_Script_ScriptDic" msprop:rel_Generator_UserParentTable="Script">
+    <xs:keyref name="FK_Script_ScriptDic" refer="Script_Constraint1" msprop:rel_Generator_UserChildTable="ScriptDic" msprop:rel_Generator_ChildPropName="GetScriptDicRows" msprop:rel_Generator_UserParentTable="Script" msprop:rel_Generator_UserRelationName="FK_Script_ScriptDic" msprop:rel_Generator_RelationVarName="relationFK_Script_ScriptDic" msprop:rel_Generator_ParentPropName="ScriptRow">
       <xs:selector xpath=".//mstns:ScriptDic" />
       <xs:field xpath="mstns:SID" />
     </xs:keyref>
-    <xs:keyref name="FK_Dictionaries_ScriptDic" refer="Dictionaries_Constraint1" msprop:rel_Generator_UserChildTable="ScriptDic" msprop:rel_Generator_ChildPropName="GetScriptDicRows" msprop:rel_Generator_ParentPropName="DictionariesRow" msprop:rel_Generator_UserRelationName="FK_Dictionaries_ScriptDic" msprop:rel_Generator_RelationVarName="relationFK_Dictionaries_ScriptDic" msprop:rel_Generator_UserParentTable="Dictionaries">
-      <xs:selector xpath=".//mstns:ScriptDic" />
+    <xs:keyref name="FK_Location_Publisher" refer="Location_Constraint1" msprop:rel_Generator_UserChildTable="Publisher" msprop:rel_Generator_ChildPropName="GetPublisherRows" msprop:rel_Generator_ParentPropName="LocationRow" msprop:rel_Generator_UserRelationName="FK_Location_Publisher" msprop:rel_Generator_RelationVarName="relationFK_Location_Publisher" msprop:rel_Generator_UserParentTable="Location">
+      <xs:selector xpath=".//mstns:Publisher" />
+      <xs:field xpath="mstns:LocationID" />
+    </xs:keyref>
+    <xs:keyref name="FK_Dictionaries_MAP" refer="Dictionaries_Constraint1" msprop:rel_Generator_UserChildTable="MAP" msprop:rel_Generator_ChildPropName="GetMAPRows" msprop:rel_Generator_UserParentTable="Dictionaries" msprop:rel_Generator_UserRelationName="FK_Dictionaries_MAP" msprop:rel_Generator_RelationVarName="relationFK_Dictionaries_MAP" msprop:rel_Generator_ParentPropName="DictionariesRow">
+      <xs:selector xpath=".//mstns:MAP" />
       <xs:field xpath="mstns:DID" />
     </xs:keyref>
-    <xs:keyref name="FK_People_MAP" refer="People_Constraint1" msprop:rel_Generator_UserChildTable="MAP" msprop:rel_Generator_ChildPropName="GetMAPRows" msprop:rel_Generator_ParentPropName="PeopleRow" msprop:rel_Generator_UserRelationName="FK_People_MAP" msprop:rel_Generator_RelationVarName="relationFK_People_MAP" msprop:rel_Generator_UserParentTable="People">
+    <xs:keyref name="FK_People_MAP" refer="People_Constraint1" msprop:rel_Generator_UserChildTable="MAP" msprop:rel_Generator_ChildPropName="GetMAPRows" msprop:rel_Generator_UserParentTable="People" msprop:rel_Generator_UserRelationName="FK_People_MAP" msprop:rel_Generator_RelationVarName="relationFK_People_MAP" msprop:rel_Generator_ParentPropName="PeopleRow">
       <xs:selector xpath=".//mstns:MAP" />
       <xs:field xpath="mstns:PID" />
     </xs:keyref>
-    <xs:keyref name="FK_Dictionaries_MAP" refer="Dictionaries_Constraint1" msprop:rel_Generator_UserChildTable="MAP" msprop:rel_Generator_ChildPropName="GetMAPRows" msprop:rel_Generator_ParentPropName="DictionariesRow" msprop:rel_Generator_UserRelationName="FK_Dictionaries_MAP" msprop:rel_Generator_RelationVarName="relationFK_Dictionaries_MAP" msprop:rel_Generator_UserParentTable="Dictionaries">
-      <xs:selector xpath=".//mstns:MAP" />
+    <xs:keyref name="FK_Dictionaries_LangDic" refer="Dictionaries_Constraint1" msprop:rel_Generator_UserChildTable="LangDic" msprop:rel_Generator_ChildPropName="GetLangDicRows" msprop:rel_Generator_UserParentTable="Dictionaries" msprop:rel_Generator_UserRelationName="FK_Dictionaries_LangDic" msprop:rel_Generator_RelationVarName="relationFK_Dictionaries_LangDic" msprop:rel_Generator_ParentPropName="DictionariesRow">
+      <xs:selector xpath=".//mstns:LangDic" />
       <xs:field xpath="mstns:DID" />
     </xs:keyref>
-    <xs:keyref name="FK_Language_LangDic" refer="Language_Constraint1" msprop:rel_Generator_UserChildTable="LangDic" msprop:rel_Generator_ChildPropName="GetLangDicRows" msprop:rel_Generator_ParentPropName="LanguageRow" msprop:rel_Generator_UserRelationName="FK_Language_LangDic" msprop:rel_Generator_RelationVarName="relationFK_Language_LangDic" msprop:rel_Generator_UserParentTable="Language">
+    <xs:keyref name="FK_Language_LangDic" refer="Language_Constraint1" msprop:rel_Generator_UserChildTable="LangDic" msprop:rel_Generator_ChildPropName="GetLangDicRows" msprop:rel_Generator_UserParentTable="Language" msprop:rel_Generator_UserRelationName="FK_Language_LangDic" msprop:rel_Generator_RelationVarName="relationFK_Language_LangDic" msprop:rel_Generator_ParentPropName="LanguageRow">
       <xs:selector xpath=".//mstns:LangDic" />
       <xs:field xpath="mstns:LID" />
     </xs:keyref>
-    <xs:keyref name="FK_Dictionaries_LangDic" refer="Dictionaries_Constraint1" msprop:rel_Generator_UserChildTable="LangDic" msprop:rel_Generator_ChildPropName="GetLangDicRows" msprop:rel_Generator_ParentPropName="DictionariesRow" msprop:rel_Generator_UserRelationName="FK_Dictionaries_LangDic" msprop:rel_Generator_RelationVarName="relationFK_Dictionaries_LangDic" msprop:rel_Generator_UserParentTable="Dictionaries">
-      <xs:selector xpath=".//mstns:LangDic" />
-      <xs:field xpath="mstns:DID" />
-    </xs:keyref>
-    <xs:keyref name="FK_Category_Dictionaries" refer="Category_Constraint1" msprop:rel_Generator_UserChildTable="Dictionaries" msprop:rel_Generator_ChildPropName="GetDictionariesRows" msprop:rel_Generator_ParentPropName="CategoryRow" msprop:rel_Generator_UserRelationName="FK_Category_Dictionaries" msprop:rel_Generator_RelationVarName="relationFK_Category_Dictionaries" msprop:rel_Generator_UserParentTable="Category">
+    <xs:keyref name="FK_Category_Dictionaries" refer="Category_Constraint1" msprop:rel_Generator_UserChildTable="Dictionaries" msprop:rel_Generator_ChildPropName="GetDictionariesRows" msprop:rel_Generator_UserParentTable="Category" msprop:rel_Generator_UserRelationName="FK_Category_Dictionaries" msprop:rel_Generator_RelationVarName="relationFK_Category_Dictionaries" msprop:rel_Generator_ParentPropName="CategoryRow">
       <xs:selector xpath=".//mstns:Dictionaries" />
       <xs:field xpath="mstns:ID" />
     </xs:keyref>
-    <xs:keyref name="FK_Author_AuthDic" refer="Author_Constraint1" msprop:rel_Generator_UserChildTable="AuthDic" msprop:rel_Generator_ChildPropName="GetAuthDicRows" msprop:rel_Generator_ParentPropName="AuthorRow" msprop:rel_Generator_UserRelationName="FK_Author_AuthDic" msprop:rel_Generator_RelationVarName="relationFK_Author_AuthDic" msprop:rel_Generator_UserParentTable="Author">
-      <xs:selector xpath=".//mstns:AuthDic" />
-      <xs:field xpath="mstns:AID" />
-    </xs:keyref>
-    <xs:keyref name="FK_Dictionaries_AuthDic" refer="Dictionaries_Constraint1" msprop:rel_Generator_UserChildTable="AuthDic" msprop:rel_Generator_ChildPropName="GetAuthDicRows" msprop:rel_Generator_ParentPropName="DictionariesRow" msprop:rel_Generator_UserRelationName="FK_Dictionaries_AuthDic" msprop:rel_Generator_RelationVarName="relationFK_Dictionaries_AuthDic" msprop:rel_Generator_UserParentTable="Dictionaries">
+    <xs:keyref name="FK_Dictionaries_AuthDic" refer="Dictionaries_Constraint1" msprop:rel_Generator_UserChildTable="AuthDic" msprop:rel_Generator_ChildPropName="GetAuthDicRows" msprop:rel_Generator_UserParentTable="Dictionaries" msprop:rel_Generator_UserRelationName="FK_Dictionaries_AuthDic" msprop:rel_Generator_RelationVarName="relationFK_Dictionaries_AuthDic" msprop:rel_Generator_ParentPropName="DictionariesRow">
       <xs:selector xpath=".//mstns:AuthDic" />
       <xs:field xpath="mstns:DID" />
+    </xs:keyref>
+    <xs:keyref name="FK_Author_AuthDic" refer="Author_Constraint1" msprop:rel_Generator_UserChildTable="AuthDic" msprop:rel_Generator_ChildPropName="GetAuthDicRows" msprop:rel_Generator_UserParentTable="Author" msprop:rel_Generator_UserRelationName="FK_Author_AuthDic" msprop:rel_Generator_RelationVarName="relationFK_Author_AuthDic" msprop:rel_Generator_ParentPropName="AuthorRow">
+      <xs:selector xpath=".//mstns:AuthDic" />
+      <xs:field xpath="mstns:AID" />
     </xs:keyref>
   </xs:element>
 </xs:schema>

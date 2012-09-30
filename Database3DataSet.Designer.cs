@@ -52,27 +52,29 @@ namespace WpfApplication3 {
         
         private MAODataTable tableMAO;
         
-        private global::System.Data.DataRelation relationFK_Author_AuthDic;
-        
         private global::System.Data.DataRelation relationFK_Dictionaries_AuthDic;
+        
+        private global::System.Data.DataRelation relationFK_Author_AuthDic;
         
         private global::System.Data.DataRelation relationFK_Category_Dictionaries;
         
-        private global::System.Data.DataRelation relationFK_Language_LangDic;
-        
         private global::System.Data.DataRelation relationFK_Dictionaries_LangDic;
         
-        private global::System.Data.DataRelation relationFK_People_MAP;
+        private global::System.Data.DataRelation relationFK_Language_LangDic;
         
         private global::System.Data.DataRelation relationFK_Dictionaries_MAP;
         
-        private global::System.Data.DataRelation relationFK_Script_ScriptDic;
+        private global::System.Data.DataRelation relationFK_People_MAP;
+        
+        private global::System.Data.DataRelation relationFK_Location_Publisher;
         
         private global::System.Data.DataRelation relationFK_Dictionaries_ScriptDic;
         
-        private global::System.Data.DataRelation relationFK_Organizations_MAO;
+        private global::System.Data.DataRelation relationFK_Script_ScriptDic;
         
         private global::System.Data.DataRelation relationFK_Dictionaries_MAO;
+        
+        private global::System.Data.DataRelation relationFK_Organizations_MAO;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -528,17 +530,18 @@ namespace WpfApplication3 {
                     this.tableMAO.InitVars();
                 }
             }
-            this.relationFK_Author_AuthDic = this.Relations["FK_Author_AuthDic"];
             this.relationFK_Dictionaries_AuthDic = this.Relations["FK_Dictionaries_AuthDic"];
+            this.relationFK_Author_AuthDic = this.Relations["FK_Author_AuthDic"];
             this.relationFK_Category_Dictionaries = this.Relations["FK_Category_Dictionaries"];
-            this.relationFK_Language_LangDic = this.Relations["FK_Language_LangDic"];
             this.relationFK_Dictionaries_LangDic = this.Relations["FK_Dictionaries_LangDic"];
-            this.relationFK_People_MAP = this.Relations["FK_People_MAP"];
+            this.relationFK_Language_LangDic = this.Relations["FK_Language_LangDic"];
             this.relationFK_Dictionaries_MAP = this.Relations["FK_Dictionaries_MAP"];
-            this.relationFK_Script_ScriptDic = this.Relations["FK_Script_ScriptDic"];
+            this.relationFK_People_MAP = this.Relations["FK_People_MAP"];
+            this.relationFK_Location_Publisher = this.Relations["FK_Location_Publisher"];
             this.relationFK_Dictionaries_ScriptDic = this.Relations["FK_Dictionaries_ScriptDic"];
-            this.relationFK_Organizations_MAO = this.Relations["FK_Organizations_MAO"];
+            this.relationFK_Script_ScriptDic = this.Relations["FK_Script_ScriptDic"];
             this.relationFK_Dictionaries_MAO = this.Relations["FK_Dictionaries_MAO"];
+            this.relationFK_Organizations_MAO = this.Relations["FK_Organizations_MAO"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -578,16 +581,16 @@ namespace WpfApplication3 {
             this.tableMAO = new MAODataTable();
             base.Tables.Add(this.tableMAO);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Author_AuthDic", new global::System.Data.DataColumn[] {
-                        this.tableAuthor.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableAuthDic.AIDColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_AuthDic", new global::System.Data.DataColumn[] {
+                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAuthDic.DIDColumn});
             this.tableAuthDic.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_AuthDic", new global::System.Data.DataColumn[] {
-                        this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableAuthDic.DIDColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Author_AuthDic", new global::System.Data.DataColumn[] {
+                        this.tableAuthor.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAuthDic.AIDColumn});
             this.tableAuthDic.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -599,13 +602,6 @@ namespace WpfApplication3 {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Language_LangDic", new global::System.Data.DataColumn[] {
-                        this.tableLanguage.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableLangDic.LIDColumn});
-            this.tableLangDic.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Dictionaries_LangDic", new global::System.Data.DataColumn[] {
                         this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableLangDic.DIDColumn});
@@ -613,10 +609,10 @@ namespace WpfApplication3 {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_People_MAP", new global::System.Data.DataColumn[] {
-                        this.tablePeople.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableMAP.PIDColumn});
-            this.tableMAP.Constraints.Add(fkc);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Language_LangDic", new global::System.Data.DataColumn[] {
+                        this.tableLanguage.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLangDic.LIDColumn});
+            this.tableLangDic.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
@@ -627,10 +623,17 @@ namespace WpfApplication3 {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Script_ScriptDic", new global::System.Data.DataColumn[] {
-                        this.tableScript.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableScriptDic.SIDColumn});
-            this.tableScriptDic.Constraints.Add(fkc);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_People_MAP", new global::System.Data.DataColumn[] {
+                        this.tablePeople.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAP.PIDColumn});
+            this.tableMAP.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Location_Publisher", new global::System.Data.DataColumn[] {
+                        this.tableLocation.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePublisher.LocationIDColumn});
+            this.tablePublisher.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
@@ -641,10 +644,10 @@ namespace WpfApplication3 {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Organizations_MAO", new global::System.Data.DataColumn[] {
-                        this.tableOrganizations.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableMAO.OIDColumn});
-            this.tableMAO.Constraints.Add(fkc);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Script_ScriptDic", new global::System.Data.DataColumn[] {
+                        this.tableScript.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableScriptDic.SIDColumn});
+            this.tableScriptDic.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
@@ -655,50 +658,61 @@ namespace WpfApplication3 {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_Author_AuthDic = new global::System.Data.DataRelation("FK_Author_AuthDic", new global::System.Data.DataColumn[] {
-                        this.tableAuthor.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableAuthDic.AIDColumn}, false);
-            this.Relations.Add(this.relationFK_Author_AuthDic);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Organizations_MAO", new global::System.Data.DataColumn[] {
+                        this.tableOrganizations.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAO.OIDColumn});
+            this.tableMAO.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_Dictionaries_AuthDic = new global::System.Data.DataRelation("FK_Dictionaries_AuthDic", new global::System.Data.DataColumn[] {
                         this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableAuthDic.DIDColumn}, false);
             this.Relations.Add(this.relationFK_Dictionaries_AuthDic);
+            this.relationFK_Author_AuthDic = new global::System.Data.DataRelation("FK_Author_AuthDic", new global::System.Data.DataColumn[] {
+                        this.tableAuthor.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAuthDic.AIDColumn}, false);
+            this.Relations.Add(this.relationFK_Author_AuthDic);
             this.relationFK_Category_Dictionaries = new global::System.Data.DataRelation("FK_Category_Dictionaries", new global::System.Data.DataColumn[] {
                         this.tableCategory.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDictionaries.IDColumn}, false);
             this.Relations.Add(this.relationFK_Category_Dictionaries);
-            this.relationFK_Language_LangDic = new global::System.Data.DataRelation("FK_Language_LangDic", new global::System.Data.DataColumn[] {
-                        this.tableLanguage.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableLangDic.LIDColumn}, false);
-            this.Relations.Add(this.relationFK_Language_LangDic);
             this.relationFK_Dictionaries_LangDic = new global::System.Data.DataRelation("FK_Dictionaries_LangDic", new global::System.Data.DataColumn[] {
                         this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableLangDic.DIDColumn}, false);
             this.Relations.Add(this.relationFK_Dictionaries_LangDic);
-            this.relationFK_People_MAP = new global::System.Data.DataRelation("FK_People_MAP", new global::System.Data.DataColumn[] {
-                        this.tablePeople.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableMAP.PIDColumn}, false);
-            this.Relations.Add(this.relationFK_People_MAP);
+            this.relationFK_Language_LangDic = new global::System.Data.DataRelation("FK_Language_LangDic", new global::System.Data.DataColumn[] {
+                        this.tableLanguage.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLangDic.LIDColumn}, false);
+            this.Relations.Add(this.relationFK_Language_LangDic);
             this.relationFK_Dictionaries_MAP = new global::System.Data.DataRelation("FK_Dictionaries_MAP", new global::System.Data.DataColumn[] {
                         this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableMAP.DIDColumn}, false);
             this.Relations.Add(this.relationFK_Dictionaries_MAP);
-            this.relationFK_Script_ScriptDic = new global::System.Data.DataRelation("FK_Script_ScriptDic", new global::System.Data.DataColumn[] {
-                        this.tableScript.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableScriptDic.SIDColumn}, false);
-            this.Relations.Add(this.relationFK_Script_ScriptDic);
+            this.relationFK_People_MAP = new global::System.Data.DataRelation("FK_People_MAP", new global::System.Data.DataColumn[] {
+                        this.tablePeople.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAP.PIDColumn}, false);
+            this.Relations.Add(this.relationFK_People_MAP);
+            this.relationFK_Location_Publisher = new global::System.Data.DataRelation("FK_Location_Publisher", new global::System.Data.DataColumn[] {
+                        this.tableLocation.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePublisher.LocationIDColumn}, false);
+            this.Relations.Add(this.relationFK_Location_Publisher);
             this.relationFK_Dictionaries_ScriptDic = new global::System.Data.DataRelation("FK_Dictionaries_ScriptDic", new global::System.Data.DataColumn[] {
                         this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableScriptDic.DIDColumn}, false);
             this.Relations.Add(this.relationFK_Dictionaries_ScriptDic);
-            this.relationFK_Organizations_MAO = new global::System.Data.DataRelation("FK_Organizations_MAO", new global::System.Data.DataColumn[] {
-                        this.tableOrganizations.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableMAO.OIDColumn}, false);
-            this.Relations.Add(this.relationFK_Organizations_MAO);
+            this.relationFK_Script_ScriptDic = new global::System.Data.DataRelation("FK_Script_ScriptDic", new global::System.Data.DataColumn[] {
+                        this.tableScript.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableScriptDic.SIDColumn}, false);
+            this.Relations.Add(this.relationFK_Script_ScriptDic);
             this.relationFK_Dictionaries_MAO = new global::System.Data.DataRelation("FK_Dictionaries_MAO", new global::System.Data.DataColumn[] {
                         this.tableDictionaries.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableMAO.DIDColumn}, false);
             this.Relations.Add(this.relationFK_Dictionaries_MAO);
+            this.relationFK_Organizations_MAO = new global::System.Data.DataRelation("FK_Organizations_MAO", new global::System.Data.DataColumn[] {
+                        this.tableOrganizations.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMAO.OIDColumn}, false);
+            this.Relations.Add(this.relationFK_Organizations_MAO);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1583,8 +1597,7 @@ namespace WpfApplication3 {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnDescription.MaxLength = 100;
@@ -1725,6 +1738,8 @@ namespace WpfApplication3 {
             
             private global::System.Data.DataColumn columnTitle;
             
+            private global::System.Data.DataColumn columnISBN;
+            
             private global::System.Data.DataColumn columnEdition;
             
             private global::System.Data.DataColumn columnVolume;
@@ -1785,6 +1800,14 @@ namespace WpfApplication3 {
             public global::System.Data.DataColumn TitleColumn {
                 get {
                     return this.columnTitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ISBNColumn {
+                get {
+                    return this.columnISBN;
                 }
             }
             
@@ -1881,11 +1904,12 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DictionariesRow AddDictionariesRow(string Title, string Edition, string Volume, string Part, string Copies, string Words, string Notes, int Category) {
+            public DictionariesRow AddDictionariesRow(string Title, string ISBN, string Edition, string Volume, string Part, string Copies, string Words, int Notes, string Category) {
                 DictionariesRow rowDictionariesRow = ((DictionariesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Title,
+                        ISBN,
                         Edition,
                         Volume,
                         Part,
@@ -1924,6 +1948,7 @@ namespace WpfApplication3 {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnTitle = base.Columns["Title"];
+                this.columnISBN = base.Columns["ISBN"];
                 this.columnEdition = base.Columns["Edition"];
                 this.columnVolume = base.Columns["Volume"];
                 this.columnPart = base.Columns["Part"];
@@ -1940,6 +1965,8 @@ namespace WpfApplication3 {
                 base.Columns.Add(this.columnID);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
+                this.columnISBN = new global::System.Data.DataColumn("ISBN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnISBN);
                 this.columnEdition = new global::System.Data.DataColumn("Edition", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEdition);
                 this.columnVolume = new global::System.Data.DataColumn("Volume", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1950,9 +1977,9 @@ namespace WpfApplication3 {
                 base.Columns.Add(this.columnCopies);
                 this.columnWords = new global::System.Data.DataColumn("Words", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWords);
-                this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNotes);
-                this.columnCategory = new global::System.Data.DataColumn("Category", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnCategory = new global::System.Data.DataColumn("Category", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategory);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
@@ -1962,11 +1989,11 @@ namespace WpfApplication3 {
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnTitle.MaxLength = 100;
+                this.columnISBN.MaxLength = 100;
                 this.columnEdition.MaxLength = 100;
                 this.columnVolume.MaxLength = 100;
                 this.columnPart.MaxLength = 100;
                 this.columnCopies.MaxLength = 100;
-                this.columnWords.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2803,7 +2830,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LocationRow AddLocationRow(string ID, string Street, string City, string _Province_State, string Country, string PIN) {
+            public LocationRow AddLocationRow(int ID, string Street, string City, string _Province_State, string Country, string PIN) {
                 LocationRow rowLocationRow = ((LocationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -2819,7 +2846,7 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LocationRow FindByID(string ID) {
+            public LocationRow FindByID(int ID) {
                 return ((LocationRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -2852,7 +2879,7 @@ namespace WpfApplication3 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnStreet = new global::System.Data.DataColumn("Street", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStreet);
@@ -3954,12 +3981,15 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PublisherRow AddPublisherRow(string Name, int LocationID) {
+            public PublisherRow AddPublisherRow(string Name, LocationRow parentLocationRowByFK_Location_Publisher) {
                 PublisherRow rowPublisherRow = ((PublisherRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name,
-                        LocationID};
+                        null};
+                if ((parentLocationRowByFK_Location_Publisher != null)) {
+                    columnValuesArray[2] = parentLocationRowByFK_Location_Publisher[0];
+                }
                 rowPublisherRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPublisherRow);
                 return rowPublisherRow;
@@ -5042,23 +5072,23 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuthorRow AuthorRow {
-                get {
-                    return ((AuthorRow)(this.GetParentRow(this.Table.ParentRelations["FK_Author_AuthDic"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Author_AuthDic"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DictionariesRow DictionariesRow {
                 get {
                     return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dictionaries_AuthDic"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Dictionaries_AuthDic"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AuthorRow AuthorRow {
+                get {
+                    return ((AuthorRow)(this.GetParentRow(this.Table.ParentRelations["FK_Author_AuthDic"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Author_AuthDic"]);
                 }
             }
         }
@@ -5236,6 +5266,22 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ISBN {
+                get {
+                    try {
+                        return ((string)(this[this.tableDictionaries.ISBNColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ISBN\' in table \'Dictionaries\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDictionaries.ISBNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Edition {
                 get {
                     try {
@@ -5316,10 +5362,10 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Notes {
+            public int Notes {
                 get {
                     try {
-                        return ((string)(this[this.tableDictionaries.NotesColumn]));
+                        return ((int)(this[this.tableDictionaries.NotesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Notes\' in table \'Dictionaries\' is DBNull.", e);
@@ -5332,10 +5378,10 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Category {
+            public string Category {
                 get {
                     try {
-                        return ((int)(this[this.tableDictionaries.CategoryColumn]));
+                        return ((string)(this[this.tableDictionaries.CategoryColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Category\' in table \'Dictionaries\' is DBNull.", e);
@@ -5367,6 +5413,18 @@ namespace WpfApplication3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTitleNull() {
                 this[this.tableDictionaries.TitleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsISBNNull() {
+                return this.IsNull(this.tableDictionaries.ISBNColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetISBNNull() {
+                this[this.tableDictionaries.ISBNColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5558,23 +5616,23 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LanguageRow LanguageRow {
-                get {
-                    return ((LanguageRow)(this.GetParentRow(this.Table.ParentRelations["FK_Language_LangDic"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Language_LangDic"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DictionariesRow DictionariesRow {
                 get {
                     return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dictionaries_LangDic"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Dictionaries_LangDic"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public LanguageRow LanguageRow {
+                get {
+                    return ((LanguageRow)(this.GetParentRow(this.Table.ParentRelations["FK_Language_LangDic"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Language_LangDic"]);
                 }
             }
         }
@@ -5660,9 +5718,9 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    return ((string)(this[this.tableLocation.IDColumn]));
+                    return ((int)(this[this.tableLocation.IDColumn]));
                 }
                 set {
                     this[this.tableLocation.IDColumn] = value;
@@ -5808,6 +5866,17 @@ namespace WpfApplication3 {
             public void SetPINNull() {
                 this[this.tableLocation.PINColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PublisherRow[] GetPublisherRows() {
+                if ((this.Table.ChildRelations["FK_Location_Publisher"] == null)) {
+                    return new PublisherRow[0];
+                }
+                else {
+                    return ((PublisherRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Location_Publisher"])));
+                }
+            }
         }
         
         /// <summary>
@@ -5864,23 +5933,23 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PeopleRow PeopleRow {
-                get {
-                    return ((PeopleRow)(this.GetParentRow(this.Table.ParentRelations["FK_People_MAP"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_People_MAP"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DictionariesRow DictionariesRow {
                 get {
                     return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dictionaries_MAP"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Dictionaries_MAP"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PeopleRow PeopleRow {
+                get {
+                    return ((PeopleRow)(this.GetParentRow(this.Table.ParentRelations["FK_People_MAP"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_People_MAP"]);
                 }
             }
             
@@ -6086,6 +6155,17 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public LocationRow LocationRow {
+                get {
+                    return ((LocationRow)(this.GetParentRow(this.Table.ParentRelations["FK_Location_Publisher"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Location_Publisher"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tablePublisher.NameColumn);
             }
@@ -6223,23 +6303,23 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ScriptRow ScriptRow {
-                get {
-                    return ((ScriptRow)(this.GetParentRow(this.Table.ParentRelations["FK_Script_ScriptDic"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Script_ScriptDic"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DictionariesRow DictionariesRow {
                 get {
                     return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dictionaries_ScriptDic"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Dictionaries_ScriptDic"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ScriptRow ScriptRow {
+                get {
+                    return ((ScriptRow)(this.GetParentRow(this.Table.ParentRelations["FK_Script_ScriptDic"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Script_ScriptDic"]);
                 }
             }
         }
@@ -6298,23 +6378,23 @@ namespace WpfApplication3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OrganizationsRow OrganizationsRow {
-                get {
-                    return ((OrganizationsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Organizations_MAO"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Organizations_MAO"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DictionariesRow DictionariesRow {
                 get {
                     return ((DictionariesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Dictionaries_MAO"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Dictionaries_MAO"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OrganizationsRow OrganizationsRow {
+                get {
+                    return ((OrganizationsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Organizations_MAO"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Organizations_MAO"]);
                 }
             }
             
@@ -7915,11 +7995,11 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
             tableMapping.DataSetTable = "Dictionaries";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Title", "Title");
-            tableMapping.ColumnMappings.Add("Edition", "Edition");
-            tableMapping.ColumnMappings.Add("Volume", "Volume");
-            tableMapping.ColumnMappings.Add("Part", "Part");
-            tableMapping.ColumnMappings.Add("Copies", "Copies");
-            tableMapping.ColumnMappings.Add("Words", "Words");
+            tableMapping.ColumnMappings.Add("Edition", "ISBN");
+            tableMapping.ColumnMappings.Add("Volume", "Edition");
+            tableMapping.ColumnMappings.Add("Part", "Volume");
+            tableMapping.ColumnMappings.Add("Copies", "Part");
+            tableMapping.ColumnMappings.Add("Words", "Copies");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -9428,7 +9508,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlServerCe.SqlCeCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [DID], [PID], [MA] FROM [Mentions]";
+            this._commandCollection[0].CommandText = "SELECT DID, PID, MA FROM Mentions";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11452,7 +11532,7 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlServerCe.SqlCeCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [DID], [OID], [MA] FROM [MentionsAcknowledgementsO]";
+            this._commandCollection[0].CommandText = "SELECT DID, OID, MA FROM MentionsAcknowledgementsO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12069,6 +12149,15 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._peopleTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._peopleTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._authorTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Author.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -12078,12 +12167,12 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._peopleTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._locationTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._peopleTableAdapter.Update(updatedRows));
+                    result = (result + this._locationTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -12150,15 +12239,6 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._locationTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._locationTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -12201,6 +12281,14 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._peopleTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._peopleTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._authorTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Author.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -12209,11 +12297,11 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._peopleTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._locationTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._peopleTableAdapter.Update(addedRows));
+                    result = (result + this._locationTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -12273,14 +12361,6 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._locationTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._locationTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -12291,14 +12371,6 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(Database3DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._locationTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._locationTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._mAPTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.MAP.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -12355,11 +12427,11 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._peopleTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._locationTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Location.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._peopleTableAdapter.Update(deletedRows));
+                    result = (result + this._locationTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12368,6 +12440,14 @@ namespace WpfApplication3.Database3DataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._authorTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._peopleTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.People.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._peopleTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

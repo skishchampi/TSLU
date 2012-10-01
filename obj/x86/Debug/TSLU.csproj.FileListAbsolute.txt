@@ -64,3 +64,5 @@ D:\TSLU\obj\x86\Debug\WpfApplication3.aao.resources
 D:\TSLU\obj\x86\Debug\WpfApplication3.Properties.Resources.resources
 D:\TSLU\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\TSLU\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\TSLU\bin\Debug\Database4.sdf
+D:\TSLU\bin\Debug\MyDatabase4.sdf

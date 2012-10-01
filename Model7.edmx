@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MyDatabase4Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MyDatabase4ModelStoreContainer">
+          <EntitySet Name="AuthDic" EntityType="MyDatabase4Model.Store.AuthDic" store:Type="Tables" />
+          <EntitySet Name="Author" EntityType="MyDatabase4Model.Store.Author" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="MyDatabase4Model.Store.Category" store:Type="Tables" />
+          <EntitySet Name="Dictionaries" EntityType="MyDatabase4Model.Store.Dictionaries" store:Type="Tables" />
+          <EntitySet Name="LangDic" EntityType="MyDatabase4Model.Store.LangDic" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="MyDatabase4Model.Store.Language" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="MyDatabase4Model.Store.Location" store:Type="Tables" />
+          <EntitySet Name="MAOrganizations" EntityType="MyDatabase4Model.Store.MAOrganizations" store:Type="Tables" />
+          <EntitySet Name="MAPeople" EntityType="MyDatabase4Model.Store.MAPeople" store:Type="Tables" />
+          <EntitySet Name="Organizations" EntityType="MyDatabase4Model.Store.Organizations" store:Type="Tables" />
+          <EntitySet Name="People" EntityType="MyDatabase4Model.Store.People" store:Type="Tables" />
+          <EntitySet Name="Publisher" EntityType="MyDatabase4Model.Store.Publisher" store:Type="Tables" />
+          <EntitySet Name="Script" EntityType="MyDatabase4Model.Store.Script" store:Type="Tables" />
+          <EntitySet Name="ScriptDic" EntityType="MyDatabase4Model.Store.ScriptDic" store:Type="Tables" />
+        </EntityContainer>
+        <EntityType Name="AuthDic">
+          <Key>
+            <PropertyRef Name="AID" />
+            <PropertyRef Name="DID" />
+          </Key>
+          <Property Name="AID" Type="int" Nullable="false" />
+          <Property Name="DID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Dictionaries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="ISBN" Type="int" />
+          <Property Name="Edition" Type="int" />
+          <Property Name="Volume" Type="int" />
+          <Property Name="Part" Type="int" />
+          <Property Name="Copies" Type="int" />
+          <Property Name="Words" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+          <Property Name="Category" Type="int" />
+          <Property Name="Publisher" Type="int" />
+        </EntityType>
+        <EntityType Name="LangDic">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="LID" />
+            <PropertyRef Name="TYPE" />
+          </Key>
+          <Property Name="DID" Type="int" Nullable="false" />
+          <Property Name="LID" Type="int" Nullable="false" />
+          <Property Name="TYPE" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="Province/State" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="PIN" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MAOrganizations">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="DID" Type="int" Nullable="false" />
+          <Property Name="OID" Type="int" Nullable="false" />
+          <Property Name="MA" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MAPeople">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="DID" Type="int" Nullable="false" />
+          <Property Name="PID" Type="int" Nullable="false" />
+          <Property Name="MA" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Organizations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="int" />
+        </EntityType>
+        <EntityType Name="Script">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ScriptDic">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="SID" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="DID" Type="int" Nullable="false" />
+          <Property Name="SID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyDatabase4Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MyDatabase4Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AuthDics" EntityType="MyDatabase4Model.AuthDic" />
+          <EntitySet Name="Authors" EntityType="MyDatabase4Model.Author" />
+          <EntitySet Name="Categories" EntityType="MyDatabase4Model.Category" />
+          <EntitySet Name="Dictionaries" EntityType="MyDatabase4Model.Dictionary" />
+          <EntitySet Name="LangDics" EntityType="MyDatabase4Model.LangDic" />
+          <EntitySet Name="Languages" EntityType="MyDatabase4Model.Language" />
+          <EntitySet Name="Locations" EntityType="MyDatabase4Model.Location" />
+          <EntitySet Name="MAOrganizations" EntityType="MyDatabase4Model.MAOrganization" />
+          <EntitySet Name="MAPeoples" EntityType="MyDatabase4Model.MAPeople" />
+          <EntitySet Name="Organizations" EntityType="MyDatabase4Model.Organization" />
+          <EntitySet Name="People" EntityType="MyDatabase4Model.Person" />
+          <EntitySet Name="Publishers" EntityType="MyDatabase4Model.Publisher" />
+          <EntitySet Name="Scripts" EntityType="MyDatabase4Model.Script" />
+          <EntitySet Name="ScriptDics" EntityType="MyDatabase4Model.ScriptDic" />
+        </EntityContainer>
+        <EntityType Name="AuthDic">
+          <Key>
+            <PropertyRef Name="AID" />
+            <PropertyRef Name="DID" />
+          </Key>
+          <Property Name="AID" Type="Int32" Nullable="false" />
+          <Property Name="DID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ISBN" Type="Int32" />
+          <Property Name="Edition" Type="Int32" />
+          <Property Name="Volume" Type="Int32" />
+          <Property Name="Part" Type="Int32" />
+          <Property Name="Copies" Type="Int32" />
+          <Property Name="Words" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Category" Type="Int32" />
+          <Property Name="Publisher" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LangDic">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="LID" />
+            <PropertyRef Name="TYPE" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" />
+          <Property Name="LID" Type="Int32" Nullable="false" />
+          <Property Name="TYPE" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Province_State" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="PIN" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="MAOrganization">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" />
+          <Property Name="OID" Type="Int32" Nullable="false" />
+          <Property Name="MA" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="MAPeople">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" />
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="MA" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Location" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Script">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ScriptDic">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="SID" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" />
+          <Property Name="SID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyDatabase4ModelStoreContainer" CdmEntityContainer="MyDatabase4Entities">
+          <EntitySetMapping Name="AuthDics"><EntityTypeMapping TypeName="MyDatabase4Model.AuthDic"><MappingFragment StoreEntitySet="AuthDic">
+            <ScalarProperty Name="AID" ColumnName="AID" />
+            <ScalarProperty Name="DID" ColumnName="DID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Authors"><EntityTypeMapping TypeName="MyDatabase4Model.Author"><MappingFragment StoreEntitySet="Author">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Categories"><EntityTypeMapping TypeName="MyDatabase4Model.Category"><MappingFragment StoreEntitySet="Category">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Dictionaries"><EntityTypeMapping TypeName="MyDatabase4Model.Dictionary"><MappingFragment StoreEntitySet="Dictionaries">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+            <ScalarProperty Name="Edition" ColumnName="Edition" />
+            <ScalarProperty Name="Volume" ColumnName="Volume" />
+            <ScalarProperty Name="Part" ColumnName="Part" />
+            <ScalarProperty Name="Copies" ColumnName="Copies" />
+            <ScalarProperty Name="Words" ColumnName="Words" />
+            <ScalarProperty Name="Notes" ColumnName="Notes" />
+            <ScalarProperty Name="Category" ColumnName="Category" />
+            <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LangDics"><EntityTypeMapping TypeName="MyDatabase4Model.LangDic"><MappingFragment StoreEntitySet="LangDic">
+            <ScalarProperty Name="DID" ColumnName="DID" />
+            <ScalarProperty Name="LID" ColumnName="LID" />
+            <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Languages"><EntityTypeMapping TypeName="MyDatabase4Model.Language"><MappingFragment StoreEntitySet="Language">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Locations"><EntityTypeMapping TypeName="MyDatabase4Model.Location"><MappingFragment StoreEntitySet="Location">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Street" ColumnName="Street" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="Province_State" ColumnName="Province/State" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="PIN" ColumnName="PIN" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MAOrganizations"><EntityTypeMapping TypeName="MyDatabase4Model.MAOrganization"><MappingFragment StoreEntitySet="MAOrganizations">
+            <ScalarProperty Name="DID" ColumnName="DID" />
+            <ScalarProperty Name="OID" ColumnName="OID" />
+            <ScalarProperty Name="MA" ColumnName="MA" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MAPeoples"><EntityTypeMapping TypeName="MyDatabase4Model.MAPeople"><MappingFragment StoreEntitySet="MAPeople">
+            <ScalarProperty Name="DID" ColumnName="DID" />
+            <ScalarProperty Name="PID" ColumnName="PID" />
+            <ScalarProperty Name="MA" ColumnName="MA" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Organizations"><EntityTypeMapping TypeName="MyDatabase4Model.Organization"><MappingFragment StoreEntitySet="Organizations">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="People"><EntityTypeMapping TypeName="MyDatabase4Model.Person"><MappingFragment StoreEntitySet="People">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Publishers"><EntityTypeMapping TypeName="MyDatabase4Model.Publisher"><MappingFragment StoreEntitySet="Publisher">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Location" ColumnName="Location" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Scripts"><EntityTypeMapping TypeName="MyDatabase4Model.Script"><MappingFragment StoreEntitySet="Script">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ScriptDics"><EntityTypeMapping TypeName="MyDatabase4Model.ScriptDic"><MappingFragment StoreEntitySet="ScriptDic">
+            <ScalarProperty Name="DID" ColumnName="DID" />
+            <ScalarProperty Name="SID" ColumnName="SID" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model7">
+        <EntityTypeShape EntityType="MyDatabase4Model.AuthDic" Width="1.5" PointX="0.75" PointY="0.75" Height="1.2636116536458335" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Author" Width="1.5" PointX="2.75" PointY="0.75" Height="1.2636116536458335" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Category" Width="1.5" PointX="0.75" PointY="3.75" Height="1.2636116536458335" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Dictionary" Width="1.5" PointX="2.75" PointY="3.75" Height="2.7427376302083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.LangDic" Width="1.5" PointX="4.75" PointY="0.75" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Language" Width="1.5" PointX="4.75" PointY="3.75" Height="1.2636116536458322" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Location" Width="1.5" PointX="6.75" PointY="0.75" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.MAOrganization" Width="1.5" PointX="6.75" PointY="3.75" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.MAPeople" Width="1.5" PointX="4.75" PointY="6.75" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Organization" Width="1.5" PointX="6.75" PointY="6.75" Height="1.2636116536458317" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Person" Width="1.5" PointX="0.75" PointY="7.75" Height="1.2636116536458353" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Publisher" Width="1.5" PointX="8.75" PointY="0.75" Height="1.4279589843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Script" Width="1.5" PointX="8.75" PointY="3.75" Height="1.2636116536458388" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.ScriptDic" Width="1.5" PointX="8.75" PointY="6.75" Height="1.4279589843750031" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

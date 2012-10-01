@@ -164,6 +164,7 @@
             this.AddExit.TabIndex = 14;
             this.AddExit.Text = "Add and Exit";
             this.AddExit.UseVisualStyleBackColor = true;
+            this.AddExit.Click += new System.EventHandler(this.AddExit_Click);
             // 
             // AddNewPublisher
             // 

@@ -110,15 +110,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database3DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Model3.Designer.cs">
+    <Compile Include="MyDatabase4DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model3.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model6.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model6.edmx</DependentUpon>
+      <DependentUpon>MyDatabase4DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
@@ -171,10 +166,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.Config" />
-    <EntityDeploy Include="Model3.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model3.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="Database3DataSet.xsc">
       <DependentUpon>Database3DataSet.xsd</DependentUpon>
     </None>
@@ -186,11 +177,17 @@
     <None Include="Database3DataSet.xss">
       <DependentUpon>Database3DataSet.xsd</DependentUpon>
     </None>
-    <None Include="Model3.edmx.sqlce" />
-    <EntityDeploy Include="Model6.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model6.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <None Include="MyDatabase4DataSet.xsc">
+      <DependentUpon>MyDatabase4DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MyDatabase4DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyDatabase4DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MyDatabase4DataSet.xss">
+      <DependentUpon>MyDatabase4DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\Model3Container.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -227,6 +224,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database3.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database4.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyDatabase4.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

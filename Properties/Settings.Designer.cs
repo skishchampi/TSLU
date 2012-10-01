@@ -32,5 +32,15 @@ namespace WpfApplication3.Properties {
                 return ((string)(this["Database3ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\MyDatabase4.sdf")]
+        public string MyDatabase4ConnectionString {
+            get {
+                return ((string)(this["MyDatabase4ConnectionString"]));
+            }
+        }
     }
 }

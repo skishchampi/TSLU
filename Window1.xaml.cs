@@ -86,6 +86,7 @@ namespace WpfApplication3
             public int Words { get; set; }
             public string Notes { get; set; }
             public int Category { get; set; }
+            public int Publisher { get; set; }
         }
 
         public class DataAccess
@@ -95,7 +96,7 @@ namespace WpfApplication3
 
             public DataAccess()
             {
-                Conn = new SqlConnection("Data Source=D:\\TSLU\\Database3.sdf;Initial Catalog=Company;Integrated Security=SSPI");
+                Conn = new SqlConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
             }
             
             public ObservableCollection<clsDic> GetAllDictionaries()
@@ -120,7 +121,8 @@ namespace WpfApplication3
                         Copies = Convert.ToInt32(Reader["Copies"]),
                         Words = Convert.ToInt32(Reader["Words"]),
                         Notes = Reader["Notes"].ToString(),
-                        Category = Convert.ToInt32(Reader["Category"])
+                        Category = Convert.ToInt32(Reader["Category"]),
+                        Publisher = Convert.ToInt32(Reader["Publisher"])
 
                     });
                 }
@@ -152,7 +154,7 @@ namespace WpfApplication3
 
         private void comboBox1_SelectionChanged(ComboBox comboBox)
         {
-            SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\Database3.sdf; Persist Security Info=False");
+            SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
             SqlCeDataAdapter da = new SqlCeDataAdapter("Select * FROM Author", sqlCon);
             DataSet ds = new DataSet();
             da.Fill(ds, "Author");
@@ -164,7 +166,7 @@ namespace WpfApplication3
 
         private void comboBox2_SelectionChanged(ComboBox comboBox)
         {
-            SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\Database3.sdf; Persist Security Info=False");
+            SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
             SqlCeDataAdapter da = new SqlCeDataAdapter("Select * FROM Category", sqlCon);
             DataSet ds = new DataSet();
             da.Fill(ds, "Category");

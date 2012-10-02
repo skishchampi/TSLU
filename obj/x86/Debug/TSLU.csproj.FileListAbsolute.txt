@@ -50,9 +50,7 @@ D:\TSLU\bin\Debug\WpfApplication3.exe
 D:\TSLU\bin\Debug\WpfApplication3.pdb
 D:\TSLU\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\TSLU\obj\x86\Debug\MainWindow.baml
-D:\TSLU\obj\x86\Debug\Window1.baml
 D:\TSLU\obj\x86\Debug\MainWindow.g.cs
-D:\TSLU\obj\x86\Debug\Window1.g.cs
 D:\TSLU\obj\x86\Debug\App.g.cs
 D:\TSLU\obj\x86\Debug\WpfApplication3_Content.g.cs
 D:\TSLU\obj\x86\Debug\WpfApplication3_MarkupCompile.cache
@@ -60,9 +58,12 @@ D:\TSLU\obj\x86\Debug\WpfApplication3.g.resources
 D:\TSLU\obj\x86\Debug\WpfApplication3.ana.resources
 D:\TSLU\obj\x86\Debug\WpfApplication3.AddNewCategory.resources
 D:\TSLU\obj\x86\Debug\WpfApplication3.AddNewPublisher.resources
-D:\TSLU\obj\x86\Debug\WpfApplication3.aao.resources
 D:\TSLU\obj\x86\Debug\WpfApplication3.Properties.Resources.resources
 D:\TSLU\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\TSLU\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\TSLU\bin\Debug\Database4.sdf
 D:\TSLU\bin\Debug\MyDatabase4.sdf
+D:\TSLU\obj\x86\Debug\WpfApplication3.organizations.resources
+D:\TSLU\obj\x86\Debug\WpfApplication3.People.resources
+D:\TSLU\obj\x86\Debug\AddRecord.baml
+D:\TSLU\obj\x86\Debug\AddRecord.g.cs

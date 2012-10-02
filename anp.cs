@@ -29,7 +29,7 @@ namespace WpfApplication3
         {
             //Name and ID for publishers
             public string Name { get; set; }
-            public int location { get; set; }
+            public int location  { get; set; }
             //The below information goes into Location Table
             public string Street { get; set; }
             public string City { get; set; }
@@ -50,7 +50,17 @@ namespace WpfApplication3
                 Cmd.Parameters.AddWithValue("@Pin", pl.Pin);
                 Cmd.Parameters.AddWithValue("@Country", pl.Country);
                 Cmd.ExecuteNonQuery();
-                Cmd.CommandText = "Insert into Publisher (Name)Values(@Name)";
+                //Conn.Close();
+                {//Getting the ID of the location record last entered. This will go as foreign key in Publisher's location column.
+                    SqlCeDataAdapter adap = new SqlCeDataAdapter("SELECT max(ID) FROM Location", "Data Source=D:\\TSLU\\MyDatabase4.sdf");
+                    DataSet dat = new DataSet();
+                    adap.Fill(dat);
+                    Int32 First = Convert.ToInt32(dat.Tables[0].Rows[0]["Column1"].ToString());
+                    pl.location = First;
+                }
+                //Conn.Open();
+                //SqlCeCommand Cmd2 = new SqlCeCommand();
+                Cmd.CommandText = "Insert into Publisher (Name, Location)Values(@Name,@Location)";
                 Cmd.Parameters.AddWithValue("@Name", pl.Name);
                 Cmd.Parameters.AddWithValue("@Location", pl.location);
                 Cmd.ExecuteNonQuery();
@@ -58,7 +68,7 @@ namespace WpfApplication3
 
             }
         }
-        public class Location
+        public class location
         {
             public int ID { get; set;}
             public string Street { get; set; }
@@ -76,13 +86,15 @@ namespace WpfApplication3
             pl.State = textBox4.Text;
             pl.Pin = Convert.ToInt32(textBox5.Text);
             pl.Country = textBox6.Text;
-            {//Getting the ID of the location record last entered. This will go as foreign key in Publisher's location column.
-                SqlCeDataAdapter adap = new SqlCeDataAdapter("SELECT ID FROM Location WHERE  ID = IDENT_CURRENT('Location')", "Data Source=D:\\TSLU\\MyDatabase4.sdf");
-                DataTable dat = new DataTable();
+            /*{//Getting the ID of the location record last entered. This will go as foreign key in Publisher's location column.
+                SqlCeDataAdapter adap = new SqlCeDataAdapter("SELECT max(ID) FROM Location", "Data Source=D:\\TSLU\\MyDatabase4.sdf");
+                DataSet dat = new DataSet();
                 adap.Fill(dat);
-                pl.location = Convert.ToInt32(dat.Rows);
-            }
+                Int32 First = Convert.ToInt32(dat.Tables[0].Rows[0]["Column1"].ToString());
+                pl.location = First;
+            }*/
             //Finally calling the method
+            pl.location = 0;
             pl.publoc(pl);
             Close();
         }

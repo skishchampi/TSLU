@@ -19,8 +19,8 @@
         <TextBox Height="20" Margin="129,156,0,0" Name="volume" VerticalAlignment="Top" HorizontalAlignment="Left" Width="61" />
         <TextBox Height="20" HorizontalAlignment="Left" Margin="129,94,0,0" Name="isbn" VerticalAlignment="Top" Width="193" ToolTip="Enter numbers only without dashes and spaces" AcceptsTab="True" />
         <TextBox Height="20" HorizontalAlignment="Left" Margin="129,265,0,0" Name="numberofcopies" VerticalAlignment="Top" Width="61" />
-        <Button Content="Add Author/s Information" Height="21" HorizontalAlignment="Left" Margin="325,35,0,0" Name="addmoreauthor" VerticalAlignment="Top" Width="93" ToolTip="In case the book is written by more than one person" Click="addmoreauthor_Click" />
-        <Button Content="Add New Publisher" Height="20" HorizontalAlignment="Left" Margin="325,62,0,0" Name="addnewpublisher" VerticalAlignment="Top" Width="98" Click="addnewpublisher_Click" />
+        <Button Content="Add New Author" Height="21" HorizontalAlignment="Left" Margin="333,35,0,0" Name="addmoreauthor" VerticalAlignment="Top" Width="145" ToolTip="In case the book is written by more than one person" Click="addmoreauthor_Click" />
+        <Button Content="Add New Publisher" Height="20" HorizontalAlignment="Left" Margin="333,66,0,0" Name="addnewpublisher" VerticalAlignment="Top" Width="145" Click="addnewpublisher_Click" />
         <Button Content="Add New Category" Height="22" HorizontalAlignment="Left" Margin="325,0,0,132" Name="addnewcategory" VerticalAlignment="Bottom" Width="101" Click="addnewcategory_Click" />
         <Label Content="Edition" Height="28" HorizontalAlignment="Left" Margin="48,122,0,0" Name="label18" VerticalAlignment="Top" />
         <TextBox Height="20" HorizontalAlignment="Left" Margin="130,122,0,0" Name="textBox3" VerticalAlignment="Top" Width="60" />
@@ -31,7 +31,8 @@
         <Button Content="Add Record" Height="23" HorizontalAlignment="Left" Margin="386,426,0,0" Name="AddRecord" VerticalAlignment="Top" Width="75" Click="AddRecord_Click" />
         <ComboBox Height="21" HorizontalAlignment="Left" Margin="129,35,0,0" Name="comboBox1" VerticalAlignment="Top" Width="193" ItemsSource="{Binding}" IsEditable="False" />
         <ComboBox Height="23" HorizontalAlignment="Left" Margin="129,301,0,0" Name="comboBox2" VerticalAlignment="Top" Width="188" ItemsSource="{Binding}" IsEditable="False" />
-        <TextBox Height="156" HorizontalAlignment="Left" Margin="325,122,0,0" Name="textBox1" VerticalAlignment="Top" Width="153" AcceptsTab="True" TextWrapping="Wrap"/>
-        <Label Content="Notes" Height="28" HorizontalAlignment="Left" Margin="281,176,0,0" Name="Notes" VerticalAlignment="Top" />
+        <TextBox Height="156" HorizontalAlignment="Left" Margin="232,122,0,0" Name="textBox1" VerticalAlignment="Top" Width="246" AcceptsTab="True" TextWrapping="Wrap"/>
+        <Label Content="Notes" Height="28" HorizontalAlignment="Left" Margin="196,178,0,0" Name="Notes" VerticalAlignment="Top" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="129,63,0,0" Name="comboBox3" VerticalAlignment="Top" Width="193"  ItemsSource="{Binding}" />
     </Grid>
 </Window>

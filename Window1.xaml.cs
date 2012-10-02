@@ -29,6 +29,7 @@ namespace WpfApplication3
             InitializeComponent();
             comboBox1_SelectionChanged(comboBox2);
             comboBox2_SelectionChanged(comboBox2);
+            comboBox3_SelectionChanged(comboBox3);
         }
 
         private void textBox15_TextChanged(object sender, TextChangedEventArgs e)
@@ -174,6 +175,17 @@ namespace WpfApplication3
             comboBox2.DisplayMemberPath = ds.Tables["Category"].Columns["Description"].ToString();
             comboBox2.SelectedValuePath = ds.Tables["Category"].Columns["ID"].ToString();
             
+        }
+
+        private void comboBox3_SelectionChanged(ComboBox comboBox)
+        {
+            SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
+            SqlCeDataAdapter da = new SqlCeDataAdapter("Select * FROM Publisher", sqlCon);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Publisher");
+            comboBox3.ItemsSource = ds.Tables["Publisher"].DefaultView;
+            comboBox3.DisplayMemberPath = ds.Tables["Publisher"].Columns["Name"].ToString();
+            comboBox3.SelectedValuePath = ds.Tables["Publisher"].Columns["ID"].ToString();
         }
 
     }

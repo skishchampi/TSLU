@@ -78,6 +78,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "AddMore";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -87,6 +88,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "AddExit";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // People
             // 
@@ -101,6 +103,7 @@
             this.Controls.Add(this.label1);
             this.Name = "People";
             this.Text = "People";
+            this.Load += new System.EventHandler(this.People_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -75,6 +75,7 @@ namespace WpfApplication3
 
 
         }
+
         public class clsDic
         {
             public int ID { get; set; }
@@ -192,6 +193,22 @@ namespace WpfApplication3
         {
             People addp = new People();
             addp.Show();
+        }
+
+        private void button1_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, RoutedEventArgs e)
+        {
+
+
+        }
+
+        private void AddNewRecord_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }

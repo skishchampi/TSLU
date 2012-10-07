@@ -69,4 +69,6 @@ D:\TSLU\obj\x86\Debug\AddRecord.baml
 D:\TSLU\obj\x86\Debug\AddRecord.g.cs
 D:\TSLU\obj\x86\Debug\Page1.baml
 D:\TSLU\obj\x86\Debug\Page1.g.cs
-D:\TSLU\obj\x86\Debug\WpfApplication3.LS.resources
+D:\TSLU\obj\x86\Debug\WpfApplication3.addlang.resources
+D:\TSLU\obj\x86\Debug\WpfApplication3.languagescript.resources
+D:\TSLU\obj\x86\Debug\WpfApplication3.addscript.resources

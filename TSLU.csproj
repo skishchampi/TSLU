@@ -76,6 +76,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="addLang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addLang.Designer.cs">
+      <DependentUpon>addLang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addscript.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addscript.Designer.cs">
+      <DependentUpon>addscript.cs</DependentUpon>
+    </Compile>
     <Compile Include="ama.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +179,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="addLang.resx">
+      <DependentUpon>addLang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addscript.resx">
+      <DependentUpon>addscript.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ama.resx">
       <DependentUpon>ama.cs</DependentUpon>
     </EmbeddedResource>

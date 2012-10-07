@@ -202,7 +202,9 @@ namespace WpfApplication3
 
         private void button1_Click_2(object sender, RoutedEventArgs e)
         {
-
+            languagescript ls = new languagescript();
+            ls.Show();
+            
 
         }
 

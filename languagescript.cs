@@ -24,5 +24,17 @@ namespace WpfApplication3
             this.languageTableAdapter.Fill(this.myDatabase4DataSet.Language);
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            addlang lang = new addlang();
+            lang.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            addscript script = new addscript();
+            script.Show();
+        }
     }
 }

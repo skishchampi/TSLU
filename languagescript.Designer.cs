@@ -30,8 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.languageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.scriptBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,13 +44,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
-            this.languageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.languageTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.LanguageTableAdapter();
-            this.scriptBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.scriptTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.ScriptTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.languageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scriptBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +61,16 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.ValueMember = "ID";
+            // 
+            // languageBindingSource
+            // 
+            this.languageBindingSource.DataMember = "Language";
+            this.languageBindingSource.DataSource = this.myDatabase4DataSet;
+            // 
+            // myDatabase4DataSet
+            // 
+            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
+            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // comboBox2
             // 
@@ -83,6 +93,11 @@
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 2;
             this.comboBox3.ValueMember = "ID";
+            // 
+            // scriptBindingSource
+            // 
+            this.scriptBindingSource.DataMember = "Script";
+            this.scriptBindingSource.DataSource = this.myDatabase4DataSet;
             // 
             // comboBox4
             // 
@@ -151,40 +166,28 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(254, 53);
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.Location = new System.Drawing.Point(260, 52);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(47, 21);
             this.button3.TabIndex = 10;
-            this.button3.Text = "button3";
+            this.button3.Text = "Add";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(254, 141);
+            this.button4.Location = new System.Drawing.Point(260, 135);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(51, 21);
             this.button4.TabIndex = 11;
-            this.button4.Text = "button4";
+            this.button4.Text = "Add";
             this.button4.UseVisualStyleBackColor = true;
-            // 
-            // myDatabase4DataSet
-            // 
-            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
-            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // languageBindingSource
-            // 
-            this.languageBindingSource.DataMember = "Language";
-            this.languageBindingSource.DataSource = this.myDatabase4DataSet;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // languageTableAdapter
             // 
             this.languageTableAdapter.ClearBeforeFill = true;
-            // 
-            // scriptBindingSource
-            // 
-            this.scriptBindingSource.DataMember = "Script";
-            this.scriptBindingSource.DataSource = this.myDatabase4DataSet;
             // 
             // scriptTableAdapter
             // 
@@ -213,8 +216,8 @@
             this.Name = "languagescript";
             this.Text = "LS";
             this.Load += new System.EventHandler(this.languagescript_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.languageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.scriptBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

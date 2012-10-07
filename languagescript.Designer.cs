@@ -32,15 +32,10 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.languageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.scriptBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -72,23 +67,12 @@
             this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
             this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // comboBox2
-            // 
-            this.comboBox2.DataSource = this.languageBindingSource;
-            this.comboBox2.DisplayMember = "Name";
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(114, 75);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 1;
-            this.comboBox2.ValueMember = "ID";
-            // 
             // comboBox3
             // 
             this.comboBox3.DataSource = this.scriptBindingSource;
             this.comboBox3.DisplayMember = "Name";
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(114, 119);
+            this.comboBox3.Location = new System.Drawing.Point(114, 85);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 2;
@@ -98,17 +82,6 @@
             // 
             this.scriptBindingSource.DataMember = "Script";
             this.scriptBindingSource.DataSource = this.myDatabase4DataSet;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.DataSource = this.scriptBindingSource;
-            this.comboBox4.DisplayMember = "Name";
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(114, 164);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 3;
-            this.comboBox4.ValueMember = "ID";
             // 
             // label1
             // 
@@ -122,42 +95,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 122);
+            this.label2.Location = new System.Drawing.Point(27, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "From Script";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "To Language";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 167);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "To Script";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(36, 219);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "AddMore";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(160, 219);
+            this.button2.Location = new System.Drawing.Point(160, 145);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 9;
@@ -167,7 +113,7 @@
             // button3
             // 
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button3.Location = new System.Drawing.Point(260, 52);
+            this.button3.Location = new System.Drawing.Point(264, 34);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(47, 21);
             this.button3.TabIndex = 10;
@@ -177,9 +123,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(260, 135);
+            this.button4.Location = new System.Drawing.Point(264, 84);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(51, 21);
+            this.button4.Size = new System.Drawing.Size(47, 21);
             this.button4.TabIndex = 11;
             this.button4.Text = "Add";
             this.button4.UseVisualStyleBackColor = true;
@@ -197,24 +143,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 273);
+            this.ClientSize = new System.Drawing.Size(353, 193);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "languagescript";
-            this.Text = "LS";
+            this.Text = "From: Language and Script";
             this.Load += new System.EventHandler(this.languagescript_Load);
             ((System.ComponentModel.ISupportInitialize)(this.languageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
@@ -227,14 +168,9 @@
         #endregion
 
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;

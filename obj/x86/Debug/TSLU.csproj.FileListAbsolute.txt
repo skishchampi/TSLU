@@ -72,3 +72,4 @@ D:\TSLU\obj\x86\Debug\Page1.g.cs
 D:\TSLU\obj\x86\Debug\WpfApplication3.addlang.resources
 D:\TSLU\obj\x86\Debug\WpfApplication3.languagescript.resources
 D:\TSLU\obj\x86\Debug\WpfApplication3.addscript.resources
+D:\TSLU\obj\x86\Debug\WpfApplication3.scriptlanguage.resources

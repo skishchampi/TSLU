@@ -33,8 +33,9 @@
         <TextBox Height="156" HorizontalAlignment="Left" Margin="232,140,0,0" Name="textBox1" VerticalAlignment="Top" Width="246" AcceptsTab="True" TextWrapping="Wrap"/>
         <Label Content="Notes" Height="28" HorizontalAlignment="Left" Margin="196,196,0,0" Name="Notes" VerticalAlignment="Top" />
         <ComboBox Height="23" HorizontalAlignment="Left" Margin="129,81,0,0" Name="comboBox3" VerticalAlignment="Top" Width="193"  ItemsSource="{Binding}" />
-        <Button Content="Orgnizations referred" Name="button4" Click="button4_Click" Margin="130,371,232,115" />
-        <Button Content="People referred" Name="button3" Click="button3_Click" Margin="129,411,233,75" />
-        <Button Content="Language-Script Information" Name="button1" Margin="129,448,233,38" Click="button1_Click_2" />
+        <Button Content="Orgnizations referred" Name="button4" Click="button4_Click" Margin="32,371,330,115" />
+        <Button Content="People referred" Name="button3" Click="button3_Click" Margin="32,409,330,77" />
+        <Button Content="From: Language(and Script)" Name="button1" Margin="0,371,96,115" Click="button1_Click_2" HorizontalAlignment="Right" Width="168" />
+        <Button Content="To: Language(and Script)" HorizontalAlignment="Right" Margin="0,409,96,77" Name="button2" Width="168" Click="button2_Click" />
     </Grid>
     </Window>

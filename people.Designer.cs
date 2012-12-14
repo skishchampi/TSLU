@@ -101,6 +101,8 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "People";
             this.Text = "People";
             this.Load += new System.EventHandler(this.People_Load);

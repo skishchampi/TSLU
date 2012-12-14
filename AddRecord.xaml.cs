@@ -27,9 +27,9 @@ namespace WpfApplication3
         public Window1()
         {
             InitializeComponent();
-            comboBox1_SelectionChanged(comboBox2);
-            comboBox2_SelectionChanged(comboBox2);
-            comboBox3_SelectionChanged(comboBox3);
+            comboBox1_SelectionChanged(authorcombo);
+            comboBox2_SelectionChanged(publishercombo);
+            comboBox3_SelectionChanged(categorycombo);
         }
 
         private void textBox15_TextChanged(object sender, TextChangedEventArgs e)
@@ -72,6 +72,16 @@ namespace WpfApplication3
             clsDic dicitem = new clsDic();
             dicitem.Title = title.Text;
             dicitem.ISBN = Convert.ToInt32(isbn.Text);
+            dicitem.Edition = Convert.ToInt32(edition.Text);
+            dicitem.Part = Convert.ToInt32(part.Text);
+            dicitem.Copies = Convert.ToInt32(numberofcopies.Text);
+            dicitem.Words = Convert.ToInt32(numberofwords.Text);
+            dicitem.Notes = notes.Text;
+            dicitem.Category = Convert.ToInt32(categorycombo.Text);
+            dicitem.Publisher = Convert.ToInt32(publishercombo.Text);
+
+
+
 
 
         }
@@ -160,9 +170,9 @@ namespace WpfApplication3
             SqlCeDataAdapter da = new SqlCeDataAdapter("Select * FROM Author", sqlCon);
             DataSet ds = new DataSet();
             da.Fill(ds, "Author");
-            comboBox1.ItemsSource = ds.Tables["Author"].DefaultView;
-            comboBox1.DisplayMemberPath = ds.Tables["Author"].Columns["Name"].ToString();
-            comboBox1.SelectedValuePath = ds.Tables["Author"].Columns["ID"].ToString();
+            authorcombo.ItemsSource = ds.Tables["Author"].DefaultView;
+            authorcombo.DisplayMemberPath = ds.Tables["Author"].Columns["Name"].ToString();
+            authorcombo.SelectedValuePath = ds.Tables["Author"].Columns["ID"].ToString();
 
         }
 
@@ -172,9 +182,9 @@ namespace WpfApplication3
             SqlCeDataAdapter da = new SqlCeDataAdapter("Select * FROM Category", sqlCon);
             DataSet ds = new DataSet();
             da.Fill(ds, "Category");
-            comboBox2.ItemsSource = ds.Tables["Category"].DefaultView;
-            comboBox2.DisplayMemberPath = ds.Tables["Category"].Columns["Description"].ToString();
-            comboBox2.SelectedValuePath = ds.Tables["Category"].Columns["ID"].ToString();
+            categorycombo.ItemsSource = ds.Tables["Category"].DefaultView;
+            categorycombo.DisplayMemberPath = ds.Tables["Category"].Columns["Description"].ToString();
+            categorycombo.SelectedValuePath = ds.Tables["Category"].Columns["ID"].ToString();
             
         }
 
@@ -184,9 +194,9 @@ namespace WpfApplication3
             SqlCeDataAdapter da = new SqlCeDataAdapter("Select * FROM Publisher", sqlCon);
             DataSet ds = new DataSet();
             da.Fill(ds, "Publisher");
-            comboBox3.ItemsSource = ds.Tables["Publisher"].DefaultView;
-            comboBox3.DisplayMemberPath = ds.Tables["Publisher"].Columns["Name"].ToString();
-            comboBox3.SelectedValuePath = ds.Tables["Publisher"].Columns["ID"].ToString();
+            publishercombo.ItemsSource = ds.Tables["Publisher"].DefaultView;
+            publishercombo.DisplayMemberPath = ds.Tables["Publisher"].Columns["Name"].ToString();
+            publishercombo.SelectedValuePath = ds.Tables["Publisher"].Columns["ID"].ToString();
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)
@@ -217,6 +227,11 @@ namespace WpfApplication3
         {
             scriptlanguage sl = new scriptlanguage();
             sl.Show();
+        }
+
+        private void publishercombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
     }

@@ -27,7 +27,7 @@
         <Button Content="Add New Category" Height="22" Margin="333,0,96,165" Name="addnewcategory" VerticalAlignment="Bottom" Click="addnewcategory_Click" />
         <Label Content="Edition" Height="28" HorizontalAlignment="Left" Margin="42,140,0,0" Name="label18" VerticalAlignment="Top" />
         <TextBox Height="20" HorizontalAlignment="Left" Margin="130,140,0,0" Name="edition" VerticalAlignment="Top" Width="60" />
-        <Button Content="Add Record" Height="23" HorizontalAlignment="Left" Margin="387,474,0,0" Name="AddRecord" VerticalAlignment="Top" Width="75" Click="AddRecord_Click" />
+        <Button Content="Add Record" Height="23" HorizontalAlignment="Left" Margin="266,471,0,0" Name="AddRecord" VerticalAlignment="Top" Width="75" Click="AddRecord_Click" />
         <ComboBox Height="21" HorizontalAlignment="Left" Margin="129,53,0,0" Name="authorcombo" VerticalAlignment="Top" Width="193" ItemsSource="{Binding}" IsEditable="False" />
         <ComboBox Height="23" HorizontalAlignment="Left" Margin="129,319,0,0" Name="categorycombo" VerticalAlignment="Top" Width="188" ItemsSource="{Binding}" IsEditable="False" />
         <TextBox Height="156" HorizontalAlignment="Left" Margin="232,140,0,0" Name="notes" VerticalAlignment="Top" Width="246" AcceptsTab="True" TextWrapping="Wrap"/>
@@ -37,5 +37,6 @@
         <Button Content="People referred" Name="button3" Click="button3_Click" Margin="32,409,330,77" />
         <Button Content="From: Language(and Script)" Name="button1" Margin="0,371,96,115" Click="button1_Click_2" HorizontalAlignment="Right" Width="168" />
         <Button Content="To: Language(and Script)" HorizontalAlignment="Right" Margin="0,409,96,77" Name="button2" Width="168" Click="button2_Click" />
+        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="359,471,0,0" Name="button5" VerticalAlignment="Top" Width="75" Click="button5_Click" />
     </Grid>
     </Window>

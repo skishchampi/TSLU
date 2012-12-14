@@ -234,5 +234,10 @@ namespace WpfApplication3
 
         }
 
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
     }
 }

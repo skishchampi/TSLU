@@ -28,12 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
+            this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.PeopleTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,13 +70,6 @@
             this.comboBox1.TabIndex = 2;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(79, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(163, 20);
-            this.textBox1.TabIndex = 3;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(79, 101);
@@ -90,14 +90,51 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // comboBox2
+            // 
+            this.comboBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.peopleBindingSource, "ID", true));
+            this.comboBox2.DataSource = this.peopleBindingSource;
+            this.comboBox2.DisplayMember = "Name";
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(79, 30);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(163, 21);
+            this.comboBox2.TabIndex = 6;
+            this.comboBox2.ValueMember = "ID";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(248, 30);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(59, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Add ";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // myDatabase4DataSet
+            // 
+            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
+            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // peopleBindingSource
+            // 
+            this.peopleBindingSource.DataMember = "People";
+            this.peopleBindingSource.DataSource = this.myDatabase4DataSet;
+            // 
+            // peopleTableAdapter
+            // 
+            this.peopleTableAdapter.ClearBeforeFill = true;
+            // 
             // People
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(270, 153);
+            this.ClientSize = new System.Drawing.Size(319, 153);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -106,6 +143,8 @@
             this.Name = "People";
             this.Text = "People";
             this.Load += new System.EventHandler(this.People_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,8 +155,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button button3;
+        private MyDatabase4DataSet myDatabase4DataSet;
+        private System.Windows.Forms.BindingSource peopleBindingSource;
+        private MyDatabase4DataSetTableAdapters.PeopleTableAdapter peopleTableAdapter;
     }
 }

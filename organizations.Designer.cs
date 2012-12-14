@@ -74,6 +74,7 @@
             this.addexitAO.TabIndex = 3;
             this.addexitAO.Text = "AddExit";
             this.addexitAO.UseVisualStyleBackColor = true;
+            this.addexitAO.Click += new System.EventHandler(this.addexitAO_Click);
             // 
             // comboBox1
             // 

@@ -31,6 +31,8 @@ namespace WpfApplication3
         
         private void People_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'myDatabase4DataSet.People' table. You can move, or remove it, as needed.
+            this.peopleTableAdapter.Fill(this.myDatabase4DataSet.People);
             
 
         }
@@ -38,7 +40,7 @@ namespace WpfApplication3
         private void button1_Click(object sender, EventArgs e)
         {
             people p = new people();
-            p.Name = textBox1.Text;
+            p.Name = comboBox2.Text;
             p.MA = comboBox1.Text;
             peoplelist.Add(p);
         }
@@ -47,7 +49,7 @@ namespace WpfApplication3
         {
             people p = new people();
             people q = new people();
-            p.Name = textBox1.Text;
+            p.Name = comboBox2.Text;
             p.MA = comboBox1.Text;
             peoplelist.Add(p);
             int i=0;
@@ -57,6 +59,12 @@ namespace WpfApplication3
                 q.MA = peoplelist[i].MA;
                 i++;
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form add = new addorg();
+            add.Show();
         }
 
 

@@ -35,5 +35,10 @@ namespace WpfApplication3
             Form add = new addorg();
             add.Show();
         }
+
+        private void addexitAO_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

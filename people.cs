@@ -63,7 +63,7 @@ namespace WpfApplication3
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form add = new addorg();
+            Form add = new addp();
             add.Show();
         }
 

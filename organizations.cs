@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace WpfApplication3
 {
+    
+
+
     public partial class organizations : Form
     {
         public organizations()
@@ -38,6 +41,13 @@ namespace WpfApplication3
 
         private void addexitAO_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void addmoreAO_Click(object sender, EventArgs e)
+        {
+            string name = comboBox2.Text;
+            string ma = comboBox1.Text;
 
         }
     }

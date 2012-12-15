@@ -109,3 +109,4 @@ D:\TSLU\bin\Debug\Lucene.Net.Contrib.Snowball.xml
 D:\TSLU\bin\Debug\Lucene.Net.Contrib.SpellChecker.pdb
 D:\TSLU\bin\Debug\Lucene.Net.Contrib.SpellChecker.xml
 D:\TSLU\obj\x86\Debug\WpfApplication3.addorg.resources
+D:\TSLU\obj\x86\Debug\WpfApplication3.addp.resources

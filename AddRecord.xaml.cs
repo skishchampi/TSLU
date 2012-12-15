@@ -22,6 +22,7 @@ namespace WpfApplication3
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
+    
     public partial class Window1 : Window
     {
         public Window1()
@@ -237,6 +238,11 @@ namespace WpfApplication3
         private void button5_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void isbn_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
 
     }

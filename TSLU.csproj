@@ -121,6 +121,12 @@
     <Compile Include="addLang.Designer.cs">
       <DependentUpon>addLang.cs</DependentUpon>
     </Compile>
+    <Compile Include="addp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addp.Designer.cs">
+      <DependentUpon>addp.cs</DependentUpon>
+    </Compile>
     <Compile Include="addscript.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,7 @@
     <Compile Include="addorg.Designer.cs">
       <DependentUpon>addorg.cs</DependentUpon>
     </Compile>
+    <Compile Include="dictionaryitems.cs" />
     <Compile Include="languagescript.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +240,9 @@
     <EmbeddedResource Include="addLang.resx">
       <DependentUpon>addLang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="addp.resx">
+      <DependentUpon>addp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addscript.resx">
       <DependentUpon>addscript.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,6 +275,7 @@
       <DependentUpon>scriptlanguage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Config" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Database3DataSet.xsc">
       <DependentUpon>Database3DataSet.xsd</DependentUpon>
     </None>

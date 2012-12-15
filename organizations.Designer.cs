@@ -35,17 +35,17 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
+            this.organizationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.myDatabase4DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
+            this.button1 = new System.Windows.Forms.Button();
             this.mAOrganizationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mAOrganizationsTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.MAOrganizationsTableAdapter();
-            this.organizationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.organizationsTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.OrganizationsTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mAOrganizationsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.organizationsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mAOrganizationsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -65,6 +65,7 @@
             this.addmoreAO.TabIndex = 2;
             this.addmoreAO.Text = "Add More";
             this.addmoreAO.UseVisualStyleBackColor = true;
+            this.addmoreAO.Click += new System.EventHandler(this.addmoreAO_Click);
             // 
             // addexitAO
             // 
@@ -108,6 +109,21 @@
             this.comboBox2.TabIndex = 6;
             this.comboBox2.ValueMember = "ID";
             // 
+            // organizationsBindingSource
+            // 
+            this.organizationsBindingSource.DataMember = "Organizations";
+            this.organizationsBindingSource.DataSource = this.myDatabase4DataSetBindingSource;
+            // 
+            // myDatabase4DataSetBindingSource
+            // 
+            this.myDatabase4DataSetBindingSource.DataSource = this.myDatabase4DataSet;
+            this.myDatabase4DataSetBindingSource.Position = 0;
+            // 
+            // myDatabase4DataSet
+            // 
+            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
+            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(274, 37);
@@ -118,16 +134,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // myDatabase4DataSet
-            // 
-            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
-            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // myDatabase4DataSetBindingSource
-            // 
-            this.myDatabase4DataSetBindingSource.DataSource = this.myDatabase4DataSet;
-            this.myDatabase4DataSetBindingSource.Position = 0;
-            // 
             // mAOrganizationsBindingSource
             // 
             this.mAOrganizationsBindingSource.DataMember = "MAOrganizations";
@@ -136,11 +142,6 @@
             // mAOrganizationsTableAdapter
             // 
             this.mAOrganizationsTableAdapter.ClearBeforeFill = true;
-            // 
-            // organizationsBindingSource
-            // 
-            this.organizationsBindingSource.DataMember = "Organizations";
-            this.organizationsBindingSource.DataSource = this.myDatabase4DataSetBindingSource;
             // 
             // organizationsTableAdapter
             // 
@@ -161,12 +162,13 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "organizations";
+            this.ShowInTaskbar = false;
             this.Text = "Organizations";
             this.Load += new System.EventHandler(this.organizations_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mAOrganizationsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.organizationsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mAOrganizationsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

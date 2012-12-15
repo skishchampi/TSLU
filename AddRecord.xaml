@@ -24,19 +24,19 @@
         <TextBox Height="20" HorizontalAlignment="Left" Margin="129,286,0,0" Name="numberofcopies" VerticalAlignment="Top" Width="61" />
         <Button Content="Add New Author" Height="21" HorizontalAlignment="Left" Margin="333,53,0,0" Name="addmoreauthor" VerticalAlignment="Top" Width="145" ToolTip="In case the book is written by more than one person" Click="addmoreauthor_Click" />
         <Button Content="Add New Publisher" Height="20" HorizontalAlignment="Left" Margin="333,84,0,0" Name="addnewpublisher" VerticalAlignment="Top" Width="145" Click="addnewpublisher_Click" />
-        <Button Content="Add New Category" Height="22" Margin="333,0,96,165" Name="addnewcategory" VerticalAlignment="Bottom" Click="addnewcategory_Click" />
+        <Button Content="Add New Category" Height="20" Margin="333,0,52,164" Name="addnewcategory" VerticalAlignment="Bottom" Click="addnewcategory_Click" />
         <Label Content="Edition" Height="28" HorizontalAlignment="Left" Margin="42,140,0,0" Name="label18" VerticalAlignment="Top" />
         <TextBox Height="20" HorizontalAlignment="Left" Margin="130,140,0,0" Name="edition" VerticalAlignment="Top" Width="60" />
         <Button Content="Add Record" Height="23" HorizontalAlignment="Left" Margin="266,471,0,0" Name="AddRecord" VerticalAlignment="Top" Width="75" Click="AddRecord_Click" />
         <ComboBox Height="21" HorizontalAlignment="Left" Margin="129,53,0,0" Name="authorcombo" VerticalAlignment="Top" Width="193" ItemsSource="{Binding}" IsEditable="False" />
         <ComboBox Height="23" HorizontalAlignment="Left" Margin="129,319,0,0" Name="categorycombo" VerticalAlignment="Top" Width="188" ItemsSource="{Binding}" IsEditable="False" />
-        <TextBox Height="156" HorizontalAlignment="Left" Margin="232,140,0,0" Name="notes" VerticalAlignment="Top" Width="246" AcceptsTab="True" TextWrapping="Wrap"/>
-        <Label Content="Notes" Height="28" HorizontalAlignment="Left" Margin="196,196,0,0" Name="Notes" VerticalAlignment="Top" />
+        <TextBox Height="86" HorizontalAlignment="Left" Margin="35,379,0,0" Name="notes" VerticalAlignment="Top" Width="451" AcceptsTab="True" TextWrapping="Wrap"/>
+        <Label Content="Notes" Height="28" HorizontalAlignment="Left" Margin="32,349,0,0" Name="Notes" VerticalAlignment="Top" />
         <ComboBox Height="23" HorizontalAlignment="Left" Margin="129,81,0,0" Name="publishercombo" VerticalAlignment="Top" Width="193"  ItemsSource="{Binding}" SelectionChanged="publishercombo_SelectionChanged" />
-        <Button Content="Orgnizations referred" Name="button4" Click="button4_Click" Margin="32,371,330,115" />
-        <Button Content="People referred" Name="button3" Click="button3_Click" Margin="32,409,330,77" />
-        <Button Content="From: Language(and Script)" Name="button1" Margin="0,371,96,115" Click="button1_Click_2" HorizontalAlignment="Right" Width="168" />
-        <Button Content="To: Language(and Script)" HorizontalAlignment="Right" Margin="0,409,96,77" Name="button2" Width="168" Click="button2_Click" />
+        <Button Content="Orgnizations referred" Name="button4" Click="button4_Click" Margin="333,148,52,338" />
+        <Button Content="People referred" Name="button3" Click="button3_Click" Margin="333,178,52,308" />
+        <Button Content="From: Language(and Script)" Name="button1" Margin="0,216,52,270" Click="button1_Click_2" HorizontalAlignment="Right" Width="145" />
+        <Button Content="To: Language(and Script)" HorizontalAlignment="Right" Margin="0,249,52,237" Name="button2" Width="145" Click="button2_Click" />
         <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="359,471,0,0" Name="button5" VerticalAlignment="Top" Width="75" Click="button5_Click" />
     </Grid>
     </Window>

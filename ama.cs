@@ -29,6 +29,8 @@ namespace WpfApplication3
 
         private void ana_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'myDatabase4DataSet.Author' table. You can move, or remove it, as needed.
+            this.authorTableAdapter1.Fill(this.myDatabase4DataSet.Author);
             // TODO: This line of code loads data into the 'database3DataSet.Author' table. You can move, or remove it, as needed.
            // this.authorTableAdapter.Fill(this.database3DataSet.Author);
 
@@ -50,20 +52,35 @@ namespace WpfApplication3
                 
             }
         }
+        public static int i = 0;
+        public static int[] array = new int[10];
         private void button1_Click(object sender, EventArgs e)
+        {
+            
+            array[i] = (int)comboBox1.SelectedValue;
+            Console.WriteLine(array[i]);
+            i++;
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            /* author author = new author();
+             author.Name = textBox1.Text;
+             author.InsertAuth(author.Name);
+             * i=0;
+             * return array;
+             Close();
+            
+             */
+        }
+
+        private void button3_Click(object sender, EventArgs e)
         {
             author author = new author();
             author.Name = textBox1.Text;
             author.InsertAuth(author.Name);
             textBox1.Text = "";
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            author author = new author();
-            author.Name = textBox1.Text;
-            author.InsertAuth(author.Name);
-            Close();
         }
 
         

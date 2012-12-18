@@ -36,6 +36,6 @@
 
             </MenuItem>
         </Menu>
-        <DataGrid AutoGenerateColumns="False" Height="324" Margin="1,97,0,0" Name="dataGrid1" VerticalAlignment="Top" />
+        <DataGrid AutoGenerateColumns="True" Height="324" Margin="1,97,0,0" Name="dataGrid1" VerticalAlignment="Top" />
     </Grid>
 </Window>

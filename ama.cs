@@ -81,6 +81,7 @@ namespace WpfApplication3
             author.Name = textBox1.Text;
             author.InsertAuth(author.Name);
             textBox1.Text = "";
+
         }
 
         

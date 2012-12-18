@@ -72,24 +72,30 @@ namespace WpfApplication3
         {
             clsDic dicitem = new clsDic();
             dicitem.Title = title.Text;
-            dicitem.ISBN = Convert.ToInt32(isbn.Text);
+            Console.WriteLine(dicitem.Title);
+            dicitem.ISBN = Convert.ToUInt64(isbn.Text);
             dicitem.Edition = Convert.ToInt32(edition.Text);
             dicitem.Part = Convert.ToInt32(part.Text);
             dicitem.Copies = Convert.ToInt32(numberofcopies.Text);
             dicitem.Words = Convert.ToInt32(numberofwords.Text);
             dicitem.Notes = notes.Text;
-            dicitem.Category = Convert.ToInt32(categorycombo.Text);
-            dicitem.Publisher = Convert.ToInt32(publishercombo.Text);
-
+            dicitem.Category = Convert.ToInt32(categorycombo.SelectedValue);
+            dicitem.Publisher = Convert.ToInt32(publishercombo.SelectedValue);
+            //call author list
+            //call org list
+            //call people list
+            //call to lang list
+            //call fr lang list
 
 
 
 
         }
-
+        /*
         public class clsDic
         {
-            public int ID { get; set; }
+            
+            public int ID {get; set;}
             public string Title { get; set; }
             public int ISBN { get; set; }
             public int Edition { get; set; }
@@ -100,9 +106,34 @@ namespace WpfApplication3
             public string Notes { get; set; }
             public int Category { get; set; }
             public int Publisher { get; set; }
-        }
+            
+              
 
-        public class DataAccess
+        }*/
+       /* private void AddRecord_Click(object sender, RoutedEventArgs e)
+        {
+            clsDic dicitem = new clsDic();
+            dicitem.Title = title.Text;
+            dicitem.ISBN = Convert.ToInt32(isbn.Text);
+            dicitem.Edition = Convert.ToInt32(edition.Text);
+            dicitem.Part = Convert.ToInt32(part.Text);
+            dicitem.Copies = Convert.ToInt32(numberofcopies.Text);
+            dicitem.Words = Convert.ToInt32(numberofwords.Text);
+            dicitem.Notes = notes.Text;
+            dicitem.Category = Convert.ToInt32(categorycombo.SelectedValue);
+            dicitem.Publisher = Convert.ToInt32(publishercombo.SelectedValue);
+            //call author list
+            //call org list
+            //call people list
+            //call to lang list
+            //call fr lang list
+                  
+
+
+
+        }*/
+
+      /*  public class DataAccess
         {
             SqlConnection Conn;
             SqlCommand Cmd;
@@ -143,9 +174,12 @@ namespace WpfApplication3
                 Conn.Close();
                 return Dic;
             }
-
+       
             public void InsertDic(clsDic objEmp)
             {
+                Conn = new SqlConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
+                Cmd = new SqlCommand();
+                Cmd.Connection = Conn;
                 Conn.Open();
                 Cmd = new SqlCommand();
                 Cmd.Connection = Conn;
@@ -163,7 +197,7 @@ namespace WpfApplication3
                 Cmd.ExecuteNonQuery();
                 Conn.Close();
             }
-        }
+        }*/
 
         private void comboBox1_SelectionChanged(ComboBox comboBox)
         {

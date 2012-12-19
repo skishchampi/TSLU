@@ -5,13 +5,11 @@ using System.Text;
 
 namespace WpfApplication3
 {
-    class orgp
+    public class orgp
     {
-        public int id{get; set;}
-        public int ma{get; set;}
-        public orgp()
-        {
-            
-        }
+        public int id;
+        public int ma;
+
+
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace WpfApplication3
 {
     
@@ -14,6 +15,8 @@ namespace WpfApplication3
 
     public partial class organizations : Form
     {
+        
+
         public organizations()
         {
             InitializeComponent();
@@ -44,20 +47,24 @@ namespace WpfApplication3
         {
 
         }
-        public int i = 0;
-        public orgp[] orgarray;
+
+
+        public static orgp[] array = new orgp[5];
+        public static int i = 0;
+
         private void addmoreAO_Click(object sender, EventArgs e)
         {
-            int name = (int)comboBox2.SelectedValue;
-            string ma = comboBox1.Text;
-            orgarray[i].id = (int)comboBox1.SelectedValue;
-            if (comboBox1.Text == "Mention")
-                orgarray[i].ma = 1;
+            
+            array[i].id = (int)comboBox2.SelectedValue;
+            if ((string)comboBox2.SelectedValue == "Mention")
+                array[i].ma = 1;
             else
-                orgarray[i].ma = 2;
-            Console.WriteLine(orgarray[i].id);
-            Console.WriteLine(orgarray[i].ma);
-            i++;
+                array[i].ma = 2;
+            i = i + 1;
+
+                
+            
         }
     }
+    
 }

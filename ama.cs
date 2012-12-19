@@ -54,6 +54,7 @@ namespace WpfApplication3
         }
         public static int i = 0;
         public static int[] array = new int[10];
+
         private void button1_Click(object sender, EventArgs e)
         {
             

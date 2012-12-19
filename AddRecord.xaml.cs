@@ -70,11 +70,11 @@ namespace WpfApplication3
 
         private void AddRecord_Click(object sender, RoutedEventArgs e)
         {
-            clsDic dicitem = new clsDic();
+            /*clsDic dicitem = new clsDic();
             dicitem.Title = title.Text;
             Console.WriteLine(dicitem.Title);
             dicitem.ISBN = Convert.ToUInt64(isbn.Text);
-            dicitem.Edition = Convert.ToInt32(edition.Text);
+            dicitem.Edition = Convert.ToDateTime(datePicker1.Text);
             dicitem.Part = Convert.ToInt32(part.Text);
             dicitem.Copies = Convert.ToInt32(numberofcopies.Text);
             dicitem.Words = Convert.ToInt32(numberofwords.Text);
@@ -85,8 +85,9 @@ namespace WpfApplication3
             //call org list
             //call people list
             //call to lang list
-            //call fr lang list
-
+            //call fr lang list*/
+            int i = ana.array[0];
+            Console.WriteLine(i);
 
 
 
@@ -271,6 +272,7 @@ namespace WpfApplication3
 
         private void button5_Click(object sender, RoutedEventArgs e)
         {
+            //Console.WriteLine(datePicker1.Text);
             Close();
         }
 
@@ -279,5 +281,6 @@ namespace WpfApplication3
 
         }
 
+        
     }
 }

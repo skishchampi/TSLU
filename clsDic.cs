@@ -10,7 +10,7 @@ namespace WpfApplication3
         public int ID;
         public string Title;
         public ulong ISBN;
-        public int Edition;
+        public DateTime Edition;
         public int Volume;
         public int Part;
         public int Copies;

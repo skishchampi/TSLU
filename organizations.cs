@@ -17,6 +17,7 @@ namespace WpfApplication3
         public organizations()
         {
             InitializeComponent();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -43,12 +44,20 @@ namespace WpfApplication3
         {
 
         }
-
+        public int i = 0;
+        public orgp[] orgarray;
         private void addmoreAO_Click(object sender, EventArgs e)
         {
-            string name = comboBox2.Text;
+            int name = (int)comboBox2.SelectedValue;
             string ma = comboBox1.Text;
-
+            orgarray[i].id = (int)comboBox1.SelectedValue;
+            if (comboBox1.Text == "Mention")
+                orgarray[i].ma = 1;
+            else
+                orgarray[i].ma = 2;
+            Console.WriteLine(orgarray[i].id);
+            Console.WriteLine(orgarray[i].ma);
+            i++;
         }
     }
 }

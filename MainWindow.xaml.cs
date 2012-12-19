@@ -29,15 +29,7 @@ namespace WpfApplication3
             InitializeComponent();
             //Window1 w = new Window1();
             //w.Show();
-            SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
-            string sql = "SELECT * FROM Category";
-            SqlCeDataAdapter dataadapter = new SqlCeDataAdapter(sql, sqlCon);
-            DataTable ds = new DataTable("Category");
-            sqlCon.Open();
-            //dataadapter.Fill(ds, "Author");
-            sqlCon.Close();
-            dataadapter.Fill(ds);
-            dataGrid1.ItemsSource = ds.DefaultView; 
+             
             
         }
 
@@ -53,6 +45,21 @@ namespace WpfApplication3
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+                  
+                SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
+                string sql = "SELECT * FROM Category";
+                SqlCeDataAdapter dataadapter = new SqlCeDataAdapter(sql, sqlCon);
+                DataTable ds = new DataTable("Category");
+                sqlCon.Open();
+                //dataadapter.Fill(ds, "Author");
+                sqlCon.Close();
+                dataadapter.Fill(ds);
+                dataGrid1.ItemsSource = ds.DefaultView;
+            
         }
 
     }

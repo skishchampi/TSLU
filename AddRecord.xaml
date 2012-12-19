@@ -26,7 +26,7 @@
         <Button Content="Add New Publisher" Height="20" HorizontalAlignment="Left" Margin="333,84,0,0" Name="addnewpublisher" VerticalAlignment="Top" Width="145" Click="addnewpublisher_Click" />
         <Button Content="Add New Category" Height="20" Margin="333,0,52,326" Name="addnewcategory" VerticalAlignment="Bottom" Click="addnewcategory_Click" />
         <Label Content="Edition" Height="28" HorizontalAlignment="Left" Margin="42,140,0,0" Name="label18" VerticalAlignment="Top" />
-        <TextBox Height="20" HorizontalAlignment="Left" Margin="130,140,0,0" Name="edition" VerticalAlignment="Top" Width="60" />
+        <TextBox Height="20" HorizontalAlignment="Left" Margin="355,139,0,0" Name="edition" VerticalAlignment="Top" Width="60" />
         <Button Content="Add Record" Height="23" HorizontalAlignment="Left" Margin="282,621,0,0" Name="AddRecord" VerticalAlignment="Top" Width="75" Click="AddRecord_Click" />
         <ComboBox Height="23" HorizontalAlignment="Left" Margin="129,319,0,0" Name="categorycombo" VerticalAlignment="Top" Width="188" ItemsSource="{Binding}" IsEditable="False" />
         <TextBox Height="86" HorizontalAlignment="Left" Margin="32,529,0,0" Name="notes" VerticalAlignment="Top" Width="451" AcceptsTab="True" TextWrapping="Wrap"/>
@@ -37,5 +37,6 @@
         <Button Content="From: Language(and Script)" Name="button1" Margin="0,399,252,240" Click="button1_Click_2" HorizontalAlignment="Right" Width="145" />
         <Button Content="To: Language(and Script)" HorizontalAlignment="Right" Margin="0,433,252,200" Name="button2" Width="145" Click="button2_Click" />
         <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="373,621,0,0" Name="button5" VerticalAlignment="Top" Width="75" Click="button5_Click" />
+        <DatePicker Height="25" HorizontalAlignment="Left" Margin="130,138,0,0" Name="datePicker1" VerticalAlignment="Top" Width="187" />
     </Grid>
     </Window>

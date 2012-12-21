@@ -48,6 +48,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.languageBindingSource, "ID", true));
             this.comboBox1.DataSource = this.languageBindingSource;
             this.comboBox1.DisplayMember = "Name";
             this.comboBox1.FormattingEnabled = true;
@@ -69,6 +70,7 @@
             // 
             // comboBox3
             // 
+            this.comboBox3.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.scriptBindingSource, "ID", true));
             this.comboBox3.DataSource = this.scriptBindingSource;
             this.comboBox3.DisplayMember = "Name";
             this.comboBox3.FormattingEnabled = true;
@@ -109,6 +111,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "AddExit";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 

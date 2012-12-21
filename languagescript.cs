@@ -38,5 +38,12 @@ namespace WpfApplication3
             addscript script = new addscript();
             script.Show();
         }
+        public int f_lang = 0;
+        public int f_script = 0;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            f_lang = Convert.ToInt32(comboBox1.SelectedValue);
+            f_script = Convert.ToInt32(comboBox3.SelectedValue);
+        }
     }
 }

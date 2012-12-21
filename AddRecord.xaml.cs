@@ -70,7 +70,7 @@ namespace WpfApplication3
 
         private void AddRecord_Click(object sender, RoutedEventArgs e)
         {
-            clsDic dicitem = new clsDic();
+            /*clsDic dicitem = new clsDic();
             dicitem.title = title.Text;
             Console.WriteLine(dicitem.title);
             dicitem.ISBN = Convert.ToUInt64(isbn.Text);
@@ -86,10 +86,11 @@ namespace WpfApplication3
             //call people list
             //call to lang list
             //call fr lang list*/
-            int i = ana.array[0];
-            int k = organizations.array[0].id;
             
-             
+            Console.WriteLine(ana.array[0]);
+            Console.WriteLine(organizations.array[0].id);
+            Console.WriteLine(People.array_p[0].id);
+            Console.WriteLine(scriptlanguage.array_l[0].id);
 
 
         }

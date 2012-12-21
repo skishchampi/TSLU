@@ -54,9 +54,13 @@ namespace WpfApplication3
 
         private void addmoreAO_Click(object sender, EventArgs e)
         {
+            for (int hujintao = 0; hujintao < 5; hujintao++)
+            {
+                array[hujintao] = new orgp();
+            }
             
             array[i].id = (int)comboBox2.SelectedValue;
-            if ((string)comboBox2.SelectedValue == "Mention")
+            if ((string)comboBox1.SelectedValue == "Mention")
                 array[i].ma = 1;
             else
                 array[i].ma = 2;

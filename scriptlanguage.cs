@@ -36,5 +36,18 @@ namespace WpfApplication3
             this.languageTableAdapter.Fill(this.myDatabase4DataSet.Language);
 
         }
+        public static orgp[] array_l = new orgp[5];
+
+        public static int i_l = 0;
+        private void button4_Click(object sender, EventArgs e)
+        {
+            for (int hujintao = 0; hujintao < 5; hujintao++)
+            {
+                array_l[hujintao] = new orgp();
+            }
+            array_l[i_l].id = Convert.ToInt32(comboBox1.SelectedValue);//id from language table
+            array_l[i_l].ma = Convert.ToInt32(comboBox2.SelectedValue);//id from script table
+            i_l = i_l + 1;
+        }
     }
 }

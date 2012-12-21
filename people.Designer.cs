@@ -35,12 +35,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
             this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
+            this.button3 = new System.Windows.Forms.Button();
             this.peopleTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.PeopleTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -64,6 +64,9 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Mention",
+            "Acknowledgement"});
             this.comboBox1.Location = new System.Drawing.Point(79, 66);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(163, 21);
@@ -102,6 +105,16 @@
             this.comboBox2.TabIndex = 6;
             this.comboBox2.ValueMember = "ID";
             // 
+            // peopleBindingSource
+            // 
+            this.peopleBindingSource.DataMember = "People";
+            this.peopleBindingSource.DataSource = this.myDatabase4DataSet;
+            // 
+            // myDatabase4DataSet
+            // 
+            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
+            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(248, 30);
@@ -111,16 +124,6 @@
             this.button3.Text = "Add ";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // myDatabase4DataSet
-            // 
-            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
-            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // peopleBindingSource
-            // 
-            this.peopleBindingSource.DataMember = "People";
-            this.peopleBindingSource.DataSource = this.myDatabase4DataSet;
             // 
             // peopleTableAdapter
             // 
@@ -143,8 +146,8 @@
             this.Name = "People";
             this.Text = "People";
             this.Load += new System.EventHandler(this.People_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -11,7 +11,7 @@ namespace WpfApplication3
 {
     public partial class People : Form
     {
-        List<people> peoplelist = new List<people>();
+        public List<people> peoplelist = new List<people>();
 
         public People()
         {
@@ -23,11 +23,7 @@ namespace WpfApplication3
         {
 
         }
-        public class people
-        {
-            public string Name { get; set; }
-            public string MA { get; set; }
-        }
+        
         
         private void People_Load(object sender, EventArgs e)
         {
@@ -36,18 +32,33 @@ namespace WpfApplication3
             
 
         }
-
+        public static orgp[] array_p = new orgp[5];
+        
+        public static int i_p = 0;
         private void button1_Click(object sender, EventArgs e)
         {
-            people p = new people();
+            for (int hujintao = 0; hujintao < 5;hujintao++ )
+            {
+                array_p[hujintao] = new orgp();
+            }
+            /*people p = new people();
             p.Name = comboBox2.Text;
             p.MA = comboBox1.Text;
             peoplelist.Add(p);
+             */
+            array_p[i_p].id = Convert.ToInt32(comboBox2.SelectedValue);
+
+            if ((string)comboBox1.SelectedValue == "Mention")
+                array_p[i_p].ma = 1;
+            else
+                array_p[i_p].ma = 2;
+
+            i_p = i_p + 1;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            people p = new people();
+            /*people p = new people();
             people q = new people();
             p.Name = comboBox2.Text;
             p.MA = comboBox1.Text;
@@ -59,6 +70,7 @@ namespace WpfApplication3
                 q.MA = peoplelist[i].MA;
                 i++;
             }
+              */
         }
 
         private void button3_Click(object sender, EventArgs e)

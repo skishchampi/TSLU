@@ -157,6 +157,7 @@
     <Compile Include="addorg.Designer.cs">
       <DependentUpon>addorg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="clsDic.cs" />
     <Compile Include="languagescript.cs">
       <SubType>Form</SubType>

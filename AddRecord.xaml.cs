@@ -130,7 +130,7 @@ namespace WpfApplication3
             Cmd.CommandText = "Insert into LangDic (DID, LID, TYPE)Values(@DID, @LID, @TYPE)";
             Cmd.Parameters["@DID"].Value = current_dic_id;   //AddWithValue("@DID",current_dic_id)
             Cmd.Parameters.AddWithValue("@LID",languagescript.f_lang);
-            Cmd.Parameters.AddWithValue("@TYPE",1);
+            Cmd.Parameters.AddWithValue("@TYPE","from");
             Cmd.ExecuteNonQuery();
             Conn.Close();
             Conn.Open();
@@ -152,7 +152,7 @@ namespace WpfApplication3
             {
                 Cmd.Parameters["@DID"].Value = current_dic_id; //Cmd.Parameters.AddWithValue("@DID", current_dic_id);
                 Cmd.Parameters["@LID"].Value = scriptlanguage.array_l[iota].id;//AddWithValue("@LID", scriptlanguage.array_l[counter].id)
-                Cmd.Parameters["@TYPE"].Value = 2;
+                Cmd.Parameters["@TYPE"].Value = "to";
                 Cmd.ExecuteNonQuery();
             }
             Conn.Close();
@@ -164,14 +164,14 @@ namespace WpfApplication3
             Cmd.CommandText = "Insert into ScriptDic (DID, SID, TYPE)Values(@DID, @SID, @TYPE)";
             Cmd.Parameters["@DID"].Value = current_dic_id; //Cmd.Parameters.AddWithValue("@DID", current_dic_id);
             Cmd.Parameters.AddWithValue("@SID", languagescript.f_script);
-            Cmd.Parameters["@TYPE"].Value = 1;
+            Cmd.Parameters["@TYPE"].Value = "from";
             Cmd.ExecuteNonQuery();
 
             for (int iota = 0; iota < counter; iota++)
             {
                 Cmd.Parameters["@DID"].Value = current_dic_id; //Cmd.Parameters.AddWithValue("@DID", current_dic_id);
                 Cmd.Parameters["@SID"].Value = scriptlanguage.array_l[iota].ma;
-                Cmd.Parameters["@TYPE"].Value = 2;
+                Cmd.Parameters["@TYPE"].Value = "to";
                 Cmd.ExecuteNonQuery();
             }
             Conn.Close();
@@ -193,13 +193,13 @@ namespace WpfApplication3
                 }
             }
             Cmd.Parameters.AddWithValue("@PID", 0);
-            //Cmd.Parameters.Add("@TYPE", SqlDbType.Int);
+            Cmd.Parameters.AddWithValue("@MA",0);
             for (int iota = 0; iota < counter; iota++)
             {
                 Cmd.Parameters["@DID"].Value = current_dic_id; //Cmd.Parameters.AddWithValue("@DID", current_dic_id);
                 Cmd.Parameters["@PID"].Value = People.array_p[iota].id;
                 //Console.WriteLine(People.array_p[iota].ma);
-                Cmd.Parameters["@TYPE"].Value = "Mention";//People.array_p[iota].ma
+                Cmd.Parameters["@MA"].Value = People.array_p[iota].ma;
                 Cmd.ExecuteNonQuery();
             }
             Conn.Close();
@@ -208,7 +208,7 @@ namespace WpfApplication3
             
             
             //Organizations associated with the Dictionary
-            Cmd.CommandText = "Insert into MAOrganizations (DID, PID, MA)Values(@DID, @OID, @MA)";
+            Cmd.CommandText = "Insert into MAOrganizations (DID, OID, MA)Values(@DID, @OID, @MA)";
             //Loop will determine the number of non-zero values in the given array
             counter = 0;
             while (counter < 5)
@@ -221,12 +221,12 @@ namespace WpfApplication3
                 }
             }
             Cmd.Parameters.AddWithValue("@OID",0);
-            //Cmd.Parameters.AddWithValue("@TYPE", 0);
+            //Cmd.Parameters.AddWithValue("@MA", 0);
             for (int iota = 0; iota < counter; iota++)
             {
                 Cmd.Parameters["@DID"].Value = current_dic_id; //Cmd.Parameters.AddWithValue("@DID", current_dic_id);
                 Cmd.Parameters["@OID"].Value = organizations.array[iota].id;
-                Cmd.Parameters["@TYPE"].Value = "Acknowledgement"; //organizations.array[iota].ma
+                Cmd.Parameters["@MA"].Value = organizations.array[iota].ma;
                 Cmd.ExecuteNonQuery();
             }
             Conn.Close();

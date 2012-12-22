@@ -70,9 +70,9 @@ namespace WpfApplication3
 
         private void AddRecord_Click(object sender, RoutedEventArgs e)
         {
-            /*clsDic dicitem = new clsDic();
+            clsDic dicitem = new clsDic();
             dicitem.title = title.Text;
-            Console.WriteLine(dicitem.title);
+            //Console.WriteLine(dicitem.title);
             dicitem.ISBN = Convert.ToUInt64(isbn.Text);
             dicitem.Edition = Convert.ToDateTime(datePicker1.Text);
             dicitem.Part = Convert.ToInt32(part.Text);
@@ -81,17 +81,159 @@ namespace WpfApplication3
             dicitem.Notes = notes.Text;
             dicitem.Category = Convert.ToInt32(categorycombo.SelectedValue);
             dicitem.Publisher = Convert.ToInt32(publishercombo.SelectedValue);
-            //call author list
+            /*call author list
             //call org list
             //call people list
             //call to lang list
-            //call fr lang list*/
+            */
             
-            Console.WriteLine(ana.array[0]);
-            Console.WriteLine(organizations.array[0].id);
-            Console.WriteLine(People.array_p[0].id);
-            Console.WriteLine(scriptlanguage.array_l[0].id);
+            //Console.WriteLine(ana.array[0]);
+            //Console.WriteLine(organizations.array[0].id);
+            //Console.WriteLine(People.array_p[0].id);
+            //Console.WriteLine(scriptlanguage.array_l[0].id);
 
+            SqlCeConnection Conn = new SqlCeConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
+            Conn.Open();
+            SqlCeCommand Cmd = new SqlCeCommand();
+            Cmd.Connection = Conn;
+            
+            //Insert Information that directly goes into the Dictionaries table without any other dependencies
+            Cmd.CommandText = "Insert into Dictionaries (Title, ISBN, Edition, Volume, Part, Copies, Words, Notes, Category, Publisher)Values(@Title, @ISBN, @Edition, @Volume, @Part, @Copies, @Words, @Notes, @Category, @Publisher)";
+            Cmd.Parameters.AddWithValue("@Title",dicitem.title);
+            Cmd.Parameters.AddWithValue("@ISBN",dicitem.ISBN);
+            Cmd.Parameters.AddWithValue("@Edition",dicitem.Edition);
+            Cmd.Parameters.AddWithValue("@Volume",dicitem.Volume);
+            Cmd.Parameters.AddWithValue("@Part",dicitem.Part);
+            Cmd.Parameters.AddWithValue("@Copies",dicitem.Copies);
+            Cmd.Parameters.AddWithValue("@Words",dicitem.Words);
+            Cmd.Parameters.AddWithValue("@Notes",dicitem.Notes);
+            Cmd.Parameters.AddWithValue("@Category",Convert.ToInt32(categorycombo.SelectedValue));
+            Cmd.Parameters.AddWithValue("@Publisher",Convert.ToInt32(publishercombo.SelectedValue));
+            Cmd.ExecuteNonQuery();
+            
+            int counter = 0;
+
+            //Insert Information about Authors and Dictionary
+            Cmd.CommandText = "Select max(ID) from Dictionaries";
+            int current_dic_id = Convert.ToInt32(Cmd.ExecuteScalar());
+            Cmd.CommandText = "Insert into AuthDic (AID, DID)Values(@AID, @DID)";
+            Cmd.Parameters.AddWithValue("@AID", ana.array[0]);
+            Cmd.Parameters.AddWithValue("@DID", current_dic_id);
+            Cmd.ExecuteNonQuery();
+
+            Conn.Close();
+            Conn.Open();
+            Cmd.Connection = Conn;
+            
+            
+            //Insert information about language and dictionary
+            Cmd.CommandText = "Insert into LangDic (DID, LID, TYPE)Values(@DID, @LID, @TYPE)";
+            Cmd.Parameters["@DID"].Value = current_dic_id;   //AddWithValue("@DID",current_dic_id)
+            Cmd.Parameters.AddWithValue("@LID",languagescript.f_lang);
+            Cmd.Parameters.AddWithValue("@TYPE",1);
+            Cmd.ExecuteNonQuery();
+            Conn.Close();
+            Conn.Open();
+            Cmd.Connection = Conn;
+            
+            //find number of languages the meaning of the dictionary word is in
+            //Loop will determine the number of non-zero values in the given array
+            while (counter < 5)
+            {
+                if (scriptlanguage.array_l[counter].id == 0)
+                    break;
+                else
+                {
+                    counter++;                   
+                }
+            }
+            
+            for(int iota=0; iota<counter;iota++)
+            {
+                Cmd.Parameters["@DID"].Value = current_dic_id; //Cmd.Parameters.AddWithValue("@DID", current_dic_id);
+                Cmd.Parameters["@LID"].Value = scriptlanguage.array_l[iota].id;//AddWithValue("@LID", scriptlanguage.array_l[counter].id)
+                Cmd.Parameters["@TYPE"].Value = 2;
+                Cmd.ExecuteNonQuery();
+            }
+            Conn.Close();
+            Conn.Open();
+            Cmd.Connection = Conn;
+
+            
+            //Insert information about Script and dictionary
+            Cmd.CommandText = "Insert into ScriptDic (DID, SID, TYPE)Values(@DID, @SID, @TYPE)";
+            Cmd.Parameters["@DID"].Value = current_dic_id; //Cmd.Parameters.AddWithValue("@DID", current_dic_id);
+            Cmd.Parameters.AddWithValue("@SID", languagescript.f_script);
+            Cmd.Parameters["@TYPE"].Value = 1;
+            Cmd.ExecuteNonQuery();
+
+            for (int iota = 0; iota < counter; iota++)
+            {
+                Cmd.Parameters["@DID"].Value = current_dic_id; //Cmd.Parameters.AddWithValue("@DID", current_dic_id);
+                Cmd.Parameters["@SID"].Value = scriptlanguage.array_l[iota].ma;
+                Cmd.Parameters["@TYPE"].Value = 2;
+                Cmd.ExecuteNonQuery();
+            }
+            Conn.Close();
+            Conn.Open();
+            Cmd.Connection = Conn;
+            
+            
+            //People associated with the Dictionary
+            Cmd.CommandText = "Insert into MAPeople (DID, PID, MA)Values(@DID, @PID, @MA)";
+            //Loop will determine the number of non-zero values in the given array
+            counter = 0;
+            while (counter < 5)
+            {
+                if (People.array_p[counter].id == 0)
+                    break;
+                else
+                {
+                    counter++;
+                }
+            }
+            Cmd.Parameters.AddWithValue("@PID", 0);
+            //Cmd.Parameters.Add("@TYPE", SqlDbType.Int);
+            for (int iota = 0; iota < counter; iota++)
+            {
+                Cmd.Parameters["@DID"].Value = current_dic_id; //Cmd.Parameters.AddWithValue("@DID", current_dic_id);
+                Cmd.Parameters["@PID"].Value = People.array_p[iota].id;
+                //Console.WriteLine(People.array_p[iota].ma);
+                Cmd.Parameters["@TYPE"].Value = "Mention";//People.array_p[iota].ma
+                Cmd.ExecuteNonQuery();
+            }
+            Conn.Close();
+            Conn.Open();
+            Cmd.Connection = Conn;
+            
+            
+            //Organizations associated with the Dictionary
+            Cmd.CommandText = "Insert into MAOrganizations (DID, PID, MA)Values(@DID, @OID, @MA)";
+            //Loop will determine the number of non-zero values in the given array
+            counter = 0;
+            while (counter < 5)
+            {
+                if (organizations.array[counter].id == 0)
+                    break;
+                else
+                {
+                    counter++;
+                }
+            }
+            Cmd.Parameters.AddWithValue("@OID",0);
+            //Cmd.Parameters.AddWithValue("@TYPE", 0);
+            for (int iota = 0; iota < counter; iota++)
+            {
+                Cmd.Parameters["@DID"].Value = current_dic_id; //Cmd.Parameters.AddWithValue("@DID", current_dic_id);
+                Cmd.Parameters["@OID"].Value = organizations.array[iota].id;
+                Cmd.Parameters["@TYPE"].Value = "Acknowledgement"; //organizations.array[iota].ma
+                Cmd.ExecuteNonQuery();
+            }
+            Conn.Close();
+
+
+
+            
 
         }
         /*
@@ -223,6 +365,7 @@ namespace WpfApplication3
             categorycombo.ItemsSource = ds.Tables["Category"].DefaultView;
             categorycombo.DisplayMemberPath = ds.Tables["Category"].Columns["Description"].ToString();
             categorycombo.SelectedValuePath = ds.Tables["Category"].Columns["ID"].ToString();
+            categorycombo.SelectedValue = ds.Tables["Category"].Columns["ID"];
             
         }
 
@@ -235,6 +378,7 @@ namespace WpfApplication3
             publishercombo.ItemsSource = ds.Tables["Publisher"].DefaultView;
             publishercombo.DisplayMemberPath = ds.Tables["Publisher"].Columns["Name"].ToString();
             publishercombo.SelectedValuePath = ds.Tables["Publisher"].Columns["ID"].ToString();
+            publishercombo.SelectedValue = ds.Tables["Publisher"].Columns["ID"];
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)

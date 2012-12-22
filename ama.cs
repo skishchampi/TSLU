@@ -59,7 +59,7 @@ namespace WpfApplication3
         {
             
             array[i] = (int)comboBox1.SelectedValue;
-            Console.WriteLine(array[i]);
+           // Console.WriteLine(array[i]);
             i++;
             
         }

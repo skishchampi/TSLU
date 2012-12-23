@@ -729,7 +729,7 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="ISBN" msprop:Generator_ColumnVarNameInTable="columnISBN" msprop:Generator_ColumnPropNameInRow="ISBN" msprop:Generator_ColumnPropNameInTable="ISBNColumn" msprop:Generator_UserColumnName="ISBN" type="xs:int" minOccurs="0" />
-              <xs:element name="Edition" msprop:Generator_ColumnVarNameInTable="columnEdition" msprop:Generator_ColumnPropNameInRow="Edition" msprop:Generator_ColumnPropNameInTable="EditionColumn" msprop:Generator_UserColumnName="Edition" type="xs:int" minOccurs="0" />
+              <xs:element name="Edition" msprop:Generator_ColumnVarNameInTable="columnEdition" msprop:Generator_ColumnPropNameInRow="Edition" msprop:Generator_ColumnPropNameInTable="EditionColumn" msprop:Generator_UserColumnName="Edition" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Volume" msprop:Generator_ColumnVarNameInTable="columnVolume" msprop:Generator_ColumnPropNameInRow="Volume" msprop:Generator_ColumnPropNameInTable="VolumeColumn" msprop:Generator_UserColumnName="Volume" type="xs:int" minOccurs="0" />
               <xs:element name="Part" msprop:Generator_ColumnVarNameInTable="columnPart" msprop:Generator_ColumnPropNameInRow="Part" msprop:Generator_ColumnPropNameInTable="PartColumn" msprop:Generator_UserColumnName="Part" type="xs:int" minOccurs="0" />
               <xs:element name="Copies" msprop:Generator_ColumnVarNameInTable="columnCopies" msprop:Generator_ColumnPropNameInRow="Copies" msprop:Generator_ColumnPropNameInTable="CopiesColumn" msprop:Generator_UserColumnName="Copies" type="xs:int" minOccurs="0" />

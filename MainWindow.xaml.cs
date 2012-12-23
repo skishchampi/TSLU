@@ -27,9 +27,16 @@ namespace WpfApplication3
         public MainWindow()
         {
             InitializeComponent();
-            //Window1 w = new Window1();
+            /*Window1 w = new Window1();
             //w.Show();
-             
+            MyDatabase4DataSet ds = new MyDatabase4DataSet();
+            WpfApplication3.MyDatabase4DataSetTableAdapters.DictionariesTableAdapter adapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.DictionariesTableAdapter();
+            adapter.Fill(ds.Dictionaries);
+
+            this.DataContext = ds.Dictionaries;
+            */
+            DictionariesDataProvider db = new DictionariesDataProvider();
+            this.dataGrid1.ItemsSource = db.GetDictionaries();
             
         }
 
@@ -48,11 +55,11 @@ namespace WpfApplication3
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
-        {
+        {/*
                   
                 SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
                 string sql = "SELECT * FROM Dictionaries ";
-              /*  switch (comboBox1.Text)
+                switch (comboBox1.Text)
                 {
                     case "":
                     case "Title":
@@ -64,7 +71,7 @@ namespace WpfApplication3
                     default:
                     break;
                 }
-                */
+                
                 SqlCeDataAdapter dataadapter = new SqlCeDataAdapter(sql, sqlCon);
                 DataTable ds = new DataTable("Category");
                 
@@ -74,6 +81,7 @@ namespace WpfApplication3
                 sqlCon.Close();
                 dataadapter.Fill(ds);
                 dataGrid1.ItemsSource = ds.DefaultView;
+            */
             
         }
         
@@ -81,6 +89,37 @@ namespace WpfApplication3
         {
             
         }
+        
 
     }
+
+    public class DictionariesDataProvider
+    {
+        private WpfApplication3.MyDatabase4DataSetTableAdapters.DictionariesTableAdapter adapter;
+
+        private WpfApplication3.MyDatabase4DataSet dataset;
+
+        public DictionariesDataProvider()
+        {
+            dataset = new MyDatabase4DataSet();
+            adapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.DictionariesTableAdapter();
+            adapter.Fill(dataset.Dictionaries);
+
+            dataset.Dictionaries.DictionariesRowChanged +=
+        new MyDatabase4DataSet.DictionariesRowChangeEventHandler(DictionariesRowModified);
+            dataset.Dictionaries.DictionariesRowDeleted +=
+                new MyDatabase4DataSet.DictionariesRowChangeEventHandler(DictionariesRowModified);
+        }
+
+        public DataView GetDictionaries()
+        {
+            return dataset.Dictionaries.DefaultView;
+        }
+
+        void DictionariesRowModified(object sender, MyDatabase4DataSet.DictionariesRowChangeEvent e)
+        {
+            adapter.Update(dataset.Dictionaries);
+        }
+    }
+
 }

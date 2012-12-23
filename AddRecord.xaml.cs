@@ -75,6 +75,7 @@ namespace WpfApplication3
             //Console.WriteLine(dicitem.title);
             dicitem.ISBN = Convert.ToUInt64(isbn.Text);
             dicitem.Edition = Convert.ToDateTime(datePicker1.Text);
+            dicitem.Volume = Convert.ToInt32(volume.Text);
             dicitem.Part = Convert.ToInt32(part.Text);
             dicitem.Copies = Convert.ToInt32(numberofcopies.Text);
             dicitem.Words = Convert.ToInt32(numberofwords.Text);

@@ -55,15 +55,16 @@ namespace WpfApplication3
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
-        {/*
+        {
                   
                 SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
                 string sql = "SELECT * FROM Dictionaries ";
+                string query = textBox1.Text;
                 switch (comboBox1.Text)
                 {
                     case "":
                     case "Title":
-                        sql = "SELECT * FROM Dictionaries where Title = + textBox1.Text + ";
+                        sql = "SELECT * FROM Dictionaries where Title LIKE '%"+query+"%'";
                         break;
                     case "Author":
                          sql = "Select * From Dictionaries where Title = ";
@@ -81,7 +82,7 @@ namespace WpfApplication3
                 sqlCon.Close();
                 dataadapter.Fill(ds);
                 dataGrid1.ItemsSource = ds.DefaultView;
-            */
+            
             
         }
         

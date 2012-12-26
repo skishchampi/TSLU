@@ -111,4 +111,3 @@ D:\TSLU\bin\Debug\Lucene.Net.Contrib.SpellChecker.xml
 D:\TSLU\obj\x86\Debug\WpfApplication3.addorg.resources
 D:\TSLU\obj\x86\Debug\WpfApplication3.addp.resources
 D:\TSLU\obj\x86\Debug\WpfApplication3_MarkupCompile.lref
-D:\TSLU\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs

@@ -60,6 +60,7 @@ namespace WpfApplication3
                 SqlCeConnection sqlCon = new SqlCeConnection("Data Source=D:\\TSLU\\MyDatabase4.sdf");
                 string sql = "SELECT * FROM Dictionaries ";
                 string query = textBox1.Text;
+                
                 switch (comboBox1.Text)
                 {
                     case "":
@@ -69,12 +70,18 @@ namespace WpfApplication3
                     case "Author":
                          sql = "Select * From Dictionaries where Title = ";
                          break;
+                    case "Category":
+                         sql = "Select * From Dictionaries where Category = " + Convert.ToInt32(query) +"";
+                         break;
+                    case "Publisher":
+                         sql = "Select * From Dictionaries where Publisher = " + Convert.ToInt32(query) + "";
+                         break;
                     default:
                     break;
                 }
                 
                 SqlCeDataAdapter dataadapter = new SqlCeDataAdapter(sql, sqlCon);
-                DataTable ds = new DataTable("Category");
+                DataTable ds = new DataTable("Dictionaries");
                 
                 
                 sqlCon.Open();
@@ -89,6 +96,12 @@ namespace WpfApplication3
         private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        private void UpdateForm_Click(object sender, RoutedEventArgs e)
+        {
+            Form2 update = new Form2();
+            update.Show();
         }
         
 
@@ -106,10 +119,8 @@ namespace WpfApplication3
             adapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.DictionariesTableAdapter();
             adapter.Fill(dataset.Dictionaries);
 
-            dataset.Dictionaries.DictionariesRowChanged +=
-        new MyDatabase4DataSet.DictionariesRowChangeEventHandler(DictionariesRowModified);
-            dataset.Dictionaries.DictionariesRowDeleted +=
-                new MyDatabase4DataSet.DictionariesRowChangeEventHandler(DictionariesRowModified);
+            dataset.Dictionaries.DictionariesRowChanged += new MyDatabase4DataSet.DictionariesRowChangeEventHandler(DictionariesRowModified);
+            dataset.Dictionaries.DictionariesRowDeleted += new MyDatabase4DataSet.DictionariesRowChangeEventHandler(DictionariesRowModified);
         }
 
         public DataView GetDictionaries()
@@ -119,8 +130,14 @@ namespace WpfApplication3
 
         void DictionariesRowModified(object sender, MyDatabase4DataSet.DictionariesRowChangeEvent e)
         {
+           // SqlCeConnection connection = new SqlCeConnection("Data Source=|Data Directory|\\MyDatabase4.sdf");
+           // SqlCeCommand myupdatecommand = new SqlCeCommand("UPDATE Dictionaries SET Title=@p1, ", connection);
+           // adapter.Adapter.UpdateCommand = myupdatecommand;
             adapter.Update(dataset.Dictionaries);
+            
+            
         }
+        
     }
 
 }

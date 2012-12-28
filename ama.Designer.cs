@@ -33,10 +33,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.authorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.database3DataSet = new WpfApplication3.Database3DataSet();
-            this.authorTableAdapter = new WpfApplication3.Database3DataSetTableAdapters.AuthorTableAdapter();
-            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
-            this.myDatabase4DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            //this.MyDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
+            this.authorTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.AuthorTableAdapter();
+            this.MyDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
+            this.MyDatabase4DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.authorTableAdapter1 = new WpfApplication3.MyDatabase4DataSetTableAdapters.AuthorTableAdapter();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -47,9 +47,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database3DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,31 +85,31 @@
             // authorBindingSource
             // 
             this.authorBindingSource.DataMember = "Author";
-            this.authorBindingSource.DataSource = this.database3DataSet;
+            this.authorBindingSource.DataSource = this.MyDatabase4DataSet;
             // 
-            // database3DataSet
+            // MyDatabase4DataSet
             // 
-            this.database3DataSet.DataSetName = "Database3DataSet";
-            this.database3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.MyDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
+            this.MyDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // authorTableAdapter
             // 
             this.authorTableAdapter.ClearBeforeFill = true;
             // 
-            // myDatabase4DataSet
+            // MyDatabase4DataSet
             // 
-            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
-            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.MyDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
+            this.MyDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // myDatabase4DataSetBindingSource
+            // MyDatabase4DataSetBindingSource
             // 
-            this.myDatabase4DataSetBindingSource.DataSource = this.myDatabase4DataSet;
-            this.myDatabase4DataSetBindingSource.Position = 0;
+            this.MyDatabase4DataSetBindingSource.DataSource = this.MyDatabase4DataSet;
+            this.MyDatabase4DataSetBindingSource.Position = 0;
             // 
             // authorBindingSource1
             // 
             this.authorBindingSource1.DataMember = "Author";
-            this.authorBindingSource1.DataSource = this.myDatabase4DataSetBindingSource;
+            this.authorBindingSource1.DataSource = this.MyDatabase4DataSetBindingSource;
             // 
             // authorTableAdapter1
             // 
@@ -202,9 +202,9 @@
             this.Text = "Add More Authors";
             this.Load += new System.EventHandler(this.ana_Load);
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database3DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -216,11 +216,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
-        private Database3DataSet database3DataSet;
+        private MyDatabase4DataSet MyDatabase4DataSet;
         private System.Windows.Forms.BindingSource authorBindingSource;
-        private Database3DataSetTableAdapters.AuthorTableAdapter authorTableAdapter;
-        private System.Windows.Forms.BindingSource myDatabase4DataSetBindingSource;
-        private MyDatabase4DataSet myDatabase4DataSet;
+        private MyDatabase4DataSetTableAdapters.AuthorTableAdapter authorTableAdapter;
+        private System.Windows.Forms.BindingSource MyDatabase4DataSetBindingSource;
+        //private MyDatabase4DataSet MyDatabase4DataSet;
         private System.Windows.Forms.BindingSource authorBindingSource1;
         private MyDatabase4DataSetTableAdapters.AuthorTableAdapter authorTableAdapter1;
         private System.Windows.Forms.ComboBox comboBox1;

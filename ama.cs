@@ -29,10 +29,10 @@ namespace WpfApplication3
 
         private void ana_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'myDatabase4DataSet.Author' table. You can move, or remove it, as needed.
-            this.authorTableAdapter1.Fill(this.myDatabase4DataSet.Author);
-            // TODO: This line of code loads data into the 'database3DataSet.Author' table. You can move, or remove it, as needed.
-           // this.authorTableAdapter.Fill(this.database3DataSet.Author);
+            // TODO: This line of code loads data into the 'MyDatabase4DataSet.Author' table. You can move, or remove it, as needed.
+            this.authorTableAdapter1.Fill(this.MyDatabase4DataSet.Author);
+            // TODO: This line of code loads data into the 'MyDatabase4DataSet.Author' table. You can move, or remove it, as needed.
+           this.authorTableAdapter.Fill(this.MyDatabase4DataSet.Author);
 
         }
         public class author

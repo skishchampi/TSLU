@@ -41,7 +41,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.publisherTableAdapter1 = new WpfApplication3.Database3DataSetTableAdapters.PublisherTableAdapter();
+            this.publisherTableAdapter1 = new WpfApplication3.MyDatabase4DataSetTableAdapters.PublisherTableAdapter();
             this.AddExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -209,7 +209,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label7;
-        private Database3DataSetTableAdapters.PublisherTableAdapter publisherTableAdapter1;
+        private MyDatabase4DataSetTableAdapters.PublisherTableAdapter publisherTableAdapter1;
         private System.Windows.Forms.Button AddExit;
     }
 }

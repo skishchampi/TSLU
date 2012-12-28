@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database3.sdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database4.sdf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mydatabase4.sdf")]
 
 

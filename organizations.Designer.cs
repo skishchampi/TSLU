@@ -36,15 +36,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.organizationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.myDatabase4DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
+            this.MyDatabase4DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.MyDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
             this.button1 = new System.Windows.Forms.Button();
             this.mAOrganizationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mAOrganizationsTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.MAOrganizationsTableAdapter();
             this.organizationsTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.OrganizationsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.organizationsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mAOrganizationsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,17 +112,17 @@
             // organizationsBindingSource
             // 
             this.organizationsBindingSource.DataMember = "Organizations";
-            this.organizationsBindingSource.DataSource = this.myDatabase4DataSetBindingSource;
+            this.organizationsBindingSource.DataSource = this.MyDatabase4DataSetBindingSource;
             // 
-            // myDatabase4DataSetBindingSource
+            // MyDatabase4DataSetBindingSource
             // 
-            this.myDatabase4DataSetBindingSource.DataSource = this.myDatabase4DataSet;
-            this.myDatabase4DataSetBindingSource.Position = 0;
+            this.MyDatabase4DataSetBindingSource.DataSource = this.MyDatabase4DataSet;
+            this.MyDatabase4DataSetBindingSource.Position = 0;
             // 
-            // myDatabase4DataSet
+            // MyDatabase4DataSet
             // 
-            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
-            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.MyDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
+            this.MyDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button1
             // 
@@ -137,7 +137,7 @@
             // mAOrganizationsBindingSource
             // 
             this.mAOrganizationsBindingSource.DataMember = "MAOrganizations";
-            this.mAOrganizationsBindingSource.DataSource = this.myDatabase4DataSetBindingSource;
+            this.mAOrganizationsBindingSource.DataSource = this.MyDatabase4DataSetBindingSource;
             // 
             // mAOrganizationsTableAdapter
             // 
@@ -166,8 +166,8 @@
             this.Text = "Organizations";
             this.Load += new System.EventHandler(this.organizations_Load);
             ((System.ComponentModel.ISupportInitialize)(this.organizationsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mAOrganizationsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -182,8 +182,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.BindingSource myDatabase4DataSetBindingSource;
-        private MyDatabase4DataSet myDatabase4DataSet;
+        private System.Windows.Forms.BindingSource MyDatabase4DataSetBindingSource;
+        private MyDatabase4DataSet MyDatabase4DataSet;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource mAOrganizationsBindingSource;
         private MyDatabase4DataSetTableAdapters.MAOrganizationsTableAdapter mAOrganizationsTableAdapter;

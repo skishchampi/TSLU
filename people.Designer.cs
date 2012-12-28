@@ -36,11 +36,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
+            this.MyDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
             this.button3 = new System.Windows.Forms.Button();
             this.peopleTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.PeopleTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -108,12 +108,12 @@
             // peopleBindingSource
             // 
             this.peopleBindingSource.DataMember = "People";
-            this.peopleBindingSource.DataSource = this.myDatabase4DataSet;
+            this.peopleBindingSource.DataSource = this.MyDatabase4DataSet;
             // 
-            // myDatabase4DataSet
+            // MyDatabase4DataSet
             // 
-            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
-            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.MyDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
+            this.MyDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button3
             // 
@@ -147,7 +147,7 @@
             this.Text = "People";
             this.Load += new System.EventHandler(this.People_Load);
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,7 +162,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button3;
-        private MyDatabase4DataSet myDatabase4DataSet;
+        private MyDatabase4DataSet MyDatabase4DataSet;
         private System.Windows.Forms.BindingSource peopleBindingSource;
         private MyDatabase4DataSetTableAdapters.PeopleTableAdapter peopleTableAdapter;
     }

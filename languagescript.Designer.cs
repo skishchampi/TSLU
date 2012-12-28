@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.languageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.myDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
+            this.MyDatabase4DataSet = new WpfApplication3.MyDatabase4DataSet();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.scriptBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +42,7 @@
             this.languageTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.LanguageTableAdapter();
             this.scriptTableAdapter = new WpfApplication3.MyDatabase4DataSetTableAdapters.ScriptTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.languageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scriptBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,12 +61,12 @@
             // languageBindingSource
             // 
             this.languageBindingSource.DataMember = "Language";
-            this.languageBindingSource.DataSource = this.myDatabase4DataSet;
+            this.languageBindingSource.DataSource = this.MyDatabase4DataSet;
             // 
-            // myDatabase4DataSet
+            // MyDatabase4DataSet
             // 
-            this.myDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
-            this.myDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.MyDatabase4DataSet.DataSetName = "MyDatabase4DataSet";
+            this.MyDatabase4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // comboBox3
             // 
@@ -83,7 +83,7 @@
             // scriptBindingSource
             // 
             this.scriptBindingSource.DataMember = "Script";
-            this.scriptBindingSource.DataSource = this.myDatabase4DataSet;
+            this.scriptBindingSource.DataSource = this.MyDatabase4DataSet;
             // 
             // label1
             // 
@@ -161,7 +161,7 @@
             this.Text = "From: Language and Script";
             this.Load += new System.EventHandler(this.languagescript_Load);
             ((System.ComponentModel.ISupportInitialize)(this.languageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabase4DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyDatabase4DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.scriptBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -177,7 +177,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private MyDatabase4DataSet myDatabase4DataSet;
+        private MyDatabase4DataSet MyDatabase4DataSet;
         private System.Windows.Forms.BindingSource languageBindingSource;
         private MyDatabase4DataSetTableAdapters.LanguageTableAdapter languageTableAdapter;
         private System.Windows.Forms.BindingSource scriptBindingSource;

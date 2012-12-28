@@ -27,8 +27,8 @@ namespace WpfApplication3
         
         private void People_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'myDatabase4DataSet.People' table. You can move, or remove it, as needed.
-            this.peopleTableAdapter.Fill(this.myDatabase4DataSet.People);
+            // TODO: This line of code loads data into the 'MyDatabase4DataSet.People' table. You can move, or remove it, as needed.
+            this.peopleTableAdapter.Fill(this.MyDatabase4DataSet.People);
             
 
         }

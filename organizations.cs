@@ -30,10 +30,10 @@ namespace WpfApplication3
 
         private void organizations_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'myDatabase4DataSet.Organizations' table. You can move, or remove it, as needed.
-            this.organizationsTableAdapter.Fill(this.myDatabase4DataSet.Organizations);
-            // TODO: This line of code loads data into the 'myDatabase4DataSet.MAOrganizations' table. You can move, or remove it, as needed.
-            this.mAOrganizationsTableAdapter.Fill(this.myDatabase4DataSet.MAOrganizations);
+            // TODO: This line of code loads data into the 'MyDatabase4DataSet.Organizations' table. You can move, or remove it, as needed.
+            this.organizationsTableAdapter.Fill(this.MyDatabase4DataSet.Organizations);
+            // TODO: This line of code loads data into the 'MyDatabase4DataSet.MAOrganizations' table. You can move, or remove it, as needed.
+            this.mAOrganizationsTableAdapter.Fill(this.MyDatabase4DataSet.MAOrganizations);
 
         }
 

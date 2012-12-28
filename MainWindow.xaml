@@ -37,6 +37,9 @@
             <MenuItem Height="25" Width="40" Name="HelpMenu" FontWeight="Normal" Header="Help">
 
             </MenuItem>
+            <MenuItem Height="25" Width="50" Name="UpdateForm" FontWeight="Normal" Header="Update" Click="UpdateForm_Click">
+                
+            </MenuItem>
         </Menu>
 
         

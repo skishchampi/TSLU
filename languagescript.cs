@@ -18,12 +18,12 @@ namespace WpfApplication3
 
         private void languagescript_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'myDatabase4DataSet.Author' table. You can move, or remove it, as needed.
-            //this.authorTableAdapter.Fill(this.myDatabase4DataSet.Author);
-            // TODO: This line of code loads data into the 'myDatabase4DataSet.Script' table. You can move, or remove it, as needed.
-            this.scriptTableAdapter.Fill(this.myDatabase4DataSet.Script);
-            // TODO: This line of code loads data into the 'myDatabase4DataSet.Language' table. You can move, or remove it, as needed.
-            this.languageTableAdapter.Fill(this.myDatabase4DataSet.Language);
+            // TODO: This line of code loads data into the 'MyDatabase4DataSet.Author' table. You can move, or remove it, as needed.
+            //this.authorTableAdapter.Fill(this.MyDatabase4DataSet.Author);
+            // TODO: This line of code loads data into the 'MyDatabase4DataSet.Script' table. You can move, or remove it, as needed.
+            this.scriptTableAdapter.Fill(this.MyDatabase4DataSet.Script);
+            // TODO: This line of code loads data into the 'MyDatabase4DataSet.Language' table. You can move, or remove it, as needed.
+            this.languageTableAdapter.Fill(this.MyDatabase4DataSet.Language);
 
         }
 

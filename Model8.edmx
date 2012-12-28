@@ -1,0 +1,1094 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MyDatabase4Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MyDatabase4ModelStoreContainer">
+          <EntitySet Name="AuthDic" EntityType="MyDatabase4Model.Store.AuthDic" store:Type="Tables" />
+          <EntitySet Name="Author" EntityType="MyDatabase4Model.Store.Author" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="MyDatabase4Model.Store.Category" store:Type="Tables" />
+          <EntitySet Name="Dictionaries" EntityType="MyDatabase4Model.Store.Dictionaries" store:Type="Tables" />
+          <EntitySet Name="LangDic" EntityType="MyDatabase4Model.Store.LangDic" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="MyDatabase4Model.Store.Language" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="MyDatabase4Model.Store.Location" store:Type="Tables" />
+          <EntitySet Name="LSD" EntityType="MyDatabase4Model.Store.LSD" store:Type="Tables" />
+          <EntitySet Name="MAOrganizations" EntityType="MyDatabase4Model.Store.MAOrganizations" store:Type="Tables" />
+          <EntitySet Name="MAPeople" EntityType="MyDatabase4Model.Store.MAPeople" store:Type="Tables" />
+          <EntitySet Name="Organizations" EntityType="MyDatabase4Model.Store.Organizations" store:Type="Tables" />
+          <EntitySet Name="People" EntityType="MyDatabase4Model.Store.People" store:Type="Tables" />
+          <EntitySet Name="Publisher" EntityType="MyDatabase4Model.Store.Publisher" store:Type="Tables" />
+          <EntitySet Name="Script" EntityType="MyDatabase4Model.Store.Script" store:Type="Tables" />
+          <EntitySet Name="ScriptDic" EntityType="MyDatabase4Model.Store.ScriptDic" store:Type="Tables" />
+          <AssociationSet Name="authdic1" Association="MyDatabase4Model.Store.authdic1">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="AuthDic" EntitySet="AuthDic" />
+          </AssociationSet>
+          <AssociationSet Name="catdic" Association="MyDatabase4Model.Store.catdic">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+          </AssociationSet>
+          <AssociationSet Name="D" Association="MyDatabase4Model.Store.D">
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+            <End Role="LSD" EntitySet="LSD" />
+          </AssociationSet>
+          <AssociationSet Name="diclang" Association="MyDatabase4Model.Store.diclang">
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+            <End Role="LangDic" EntitySet="LangDic" />
+          </AssociationSet>
+          <AssociationSet Name="dico" Association="MyDatabase4Model.Store.dico">
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+            <End Role="MAOrganizations" EntitySet="MAOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="dicp" Association="MyDatabase4Model.Store.dicp">
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+            <End Role="MAPeople" EntitySet="MAPeople" />
+          </AssociationSet>
+          <AssociationSet Name="dicscrip" Association="MyDatabase4Model.Store.dicscrip">
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+            <End Role="ScriptDic" EntitySet="ScriptDic" />
+          </AssociationSet>
+          <AssociationSet Name="L" Association="MyDatabase4Model.Store.L">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="LSD" EntitySet="LSD" />
+          </AssociationSet>
+          <AssociationSet Name="langdic1" Association="MyDatabase4Model.Store.langdic1">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="LangDic" EntitySet="LangDic" />
+          </AssociationSet>
+          <AssociationSet Name="oo" Association="MyDatabase4Model.Store.oo">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="MAOrganizations" EntitySet="MAOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="pp" Association="MyDatabase4Model.Store.pp">
+            <End Role="People" EntitySet="People" />
+            <End Role="MAPeople" EntitySet="MAPeople" />
+          </AssociationSet>
+          <AssociationSet Name="pubdic" Association="MyDatabase4Model.Store.pubdic">
+            <End Role="Publisher" EntitySet="Publisher" />
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+          </AssociationSet>
+          <AssociationSet Name="publoc" Association="MyDatabase4Model.Store.publoc">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Publisher" EntitySet="Publisher" />
+          </AssociationSet>
+          <AssociationSet Name="S" Association="MyDatabase4Model.Store.S">
+            <End Role="Script" EntitySet="Script" />
+            <End Role="LSD" EntitySet="LSD" />
+          </AssociationSet>
+          <AssociationSet Name="scripscrip" Association="MyDatabase4Model.Store.scripscrip">
+            <End Role="Script" EntitySet="Script" />
+            <End Role="ScriptDic" EntitySet="ScriptDic" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AuthDic">
+          <Key>
+            <PropertyRef Name="AID" />
+            <PropertyRef Name="DID" />
+          </Key>
+          <Property Name="AID" Type="int" Nullable="false" />
+          <Property Name="DID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Dictionaries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="ISBN" Type="int" />
+          <Property Name="Edition" Type="datetime" />
+          <Property Name="Volume" Type="int" />
+          <Property Name="Part" Type="int" />
+          <Property Name="Copies" Type="int" />
+          <Property Name="Words" Type="int" />
+          <Property Name="Notes" Type="nvarchar" />
+          <Property Name="Category" Type="int" />
+          <Property Name="Publisher" Type="int" />
+        </EntityType>
+        <EntityType Name="LangDic">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="LID" />
+            <PropertyRef Name="TYPE" />
+          </Key>
+          <Property Name="DID" Type="int" Nullable="false" />
+          <Property Name="LID" Type="int" Nullable="false" />
+          <Property Name="TYPE" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="PIN" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LSD">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="LID" />
+            <PropertyRef Name="SID" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="DID" Type="int" Nullable="false" />
+          <Property Name="LID" Type="int" Nullable="false" />
+          <Property Name="SID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MAOrganizations">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="DID" Type="int" Nullable="false" />
+          <Property Name="OID" Type="int" Nullable="false" />
+          <Property Name="MA" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MAPeople">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="DID" Type="int" Nullable="false" />
+          <Property Name="PID" Type="int" Nullable="false" />
+          <Property Name="MA" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Organizations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="int" />
+        </EntityType>
+        <EntityType Name="Script">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ScriptDic">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="SID" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="DID" Type="int" Nullable="false" />
+          <Property Name="SID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <Association Name="authdic1">
+          <End Role="Author" Type="MyDatabase4Model.Store.Author" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AuthDic" Type="MyDatabase4Model.Store.AuthDic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AuthDic">
+              <PropertyRef Name="AID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="catdic">
+          <End Role="Category" Type="MyDatabase4Model.Store.Category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dictionaries" Type="MyDatabase4Model.Store.Dictionaries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dictionaries">
+              <PropertyRef Name="Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="D">
+          <End Role="Dictionaries" Type="MyDatabase4Model.Store.Dictionaries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LSD" Type="MyDatabase4Model.Store.LSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionaries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LSD">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="diclang">
+          <End Role="Dictionaries" Type="MyDatabase4Model.Store.Dictionaries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LangDic" Type="MyDatabase4Model.Store.LangDic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionaries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LangDic">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dico">
+          <End Role="Dictionaries" Type="MyDatabase4Model.Store.Dictionaries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MAOrganizations" Type="MyDatabase4Model.Store.MAOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionaries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MAOrganizations">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dicp">
+          <End Role="Dictionaries" Type="MyDatabase4Model.Store.Dictionaries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MAPeople" Type="MyDatabase4Model.Store.MAPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionaries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MAPeople">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dicscrip">
+          <End Role="Dictionaries" Type="MyDatabase4Model.Store.Dictionaries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ScriptDic" Type="MyDatabase4Model.Store.ScriptDic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionaries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ScriptDic">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="L">
+          <End Role="Language" Type="MyDatabase4Model.Store.Language" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LSD" Type="MyDatabase4Model.Store.LSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LSD">
+              <PropertyRef Name="LID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="langdic1">
+          <End Role="Language" Type="MyDatabase4Model.Store.Language" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LangDic" Type="MyDatabase4Model.Store.LangDic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LangDic">
+              <PropertyRef Name="LID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="oo">
+          <End Role="Organizations" Type="MyDatabase4Model.Store.Organizations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MAOrganizations" Type="MyDatabase4Model.Store.MAOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MAOrganizations">
+              <PropertyRef Name="OID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pp">
+          <End Role="People" Type="MyDatabase4Model.Store.People" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MAPeople" Type="MyDatabase4Model.Store.MAPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MAPeople">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pubdic">
+          <End Role="Publisher" Type="MyDatabase4Model.Store.Publisher" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dictionaries" Type="MyDatabase4Model.Store.Dictionaries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dictionaries">
+              <PropertyRef Name="Publisher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publoc">
+          <End Role="Location" Type="MyDatabase4Model.Store.Location" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Publisher" Type="MyDatabase4Model.Store.Publisher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Publisher">
+              <PropertyRef Name="Location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="S">
+          <End Role="Script" Type="MyDatabase4Model.Store.Script" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LSD" Type="MyDatabase4Model.Store.LSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Script">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LSD">
+              <PropertyRef Name="SID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="scripscrip">
+          <End Role="Script" Type="MyDatabase4Model.Store.Script" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ScriptDic" Type="MyDatabase4Model.Store.ScriptDic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Script">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ScriptDic">
+              <PropertyRef Name="SID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyDatabase4Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MyDatabase4Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AuthDics" EntityType="MyDatabase4Model.AuthDic" />
+          <EntitySet Name="Authors" EntityType="MyDatabase4Model.Author" />
+          <EntitySet Name="Categories" EntityType="MyDatabase4Model.Category" />
+          <EntitySet Name="Dictionaries" EntityType="MyDatabase4Model.Dictionary" />
+          <EntitySet Name="LangDics" EntityType="MyDatabase4Model.LangDic" />
+          <EntitySet Name="Languages" EntityType="MyDatabase4Model.Language" />
+          <EntitySet Name="Locations" EntityType="MyDatabase4Model.Location" />
+          <EntitySet Name="LSDs" EntityType="MyDatabase4Model.LSD" />
+          <EntitySet Name="MAOrganizations" EntityType="MyDatabase4Model.MAOrganization" />
+          <EntitySet Name="MAPeoples" EntityType="MyDatabase4Model.MAPeople" />
+          <EntitySet Name="Organizations" EntityType="MyDatabase4Model.Organization" />
+          <EntitySet Name="People" EntityType="MyDatabase4Model.Person" />
+          <EntitySet Name="Publishers" EntityType="MyDatabase4Model.Publisher" />
+          <EntitySet Name="Scripts" EntityType="MyDatabase4Model.Script" />
+          <EntitySet Name="ScriptDics" EntityType="MyDatabase4Model.ScriptDic" />
+          <AssociationSet Name="authdic1" Association="MyDatabase4Model.authdic1">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="AuthDic" EntitySet="AuthDics" />
+          </AssociationSet>
+          <AssociationSet Name="catdic" Association="MyDatabase4Model.catdic">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+          </AssociationSet>
+          <AssociationSet Name="D" Association="MyDatabase4Model.D">
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+            <End Role="LSD" EntitySet="LSDs" />
+          </AssociationSet>
+          <AssociationSet Name="diclang" Association="MyDatabase4Model.diclang">
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+            <End Role="LangDic" EntitySet="LangDics" />
+          </AssociationSet>
+          <AssociationSet Name="dico" Association="MyDatabase4Model.dico">
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+            <End Role="MAOrganizations" EntitySet="MAOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="dicp" Association="MyDatabase4Model.dicp">
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+            <End Role="MAPeople" EntitySet="MAPeoples" />
+          </AssociationSet>
+          <AssociationSet Name="dicscrip" Association="MyDatabase4Model.dicscrip">
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+            <End Role="ScriptDic" EntitySet="ScriptDics" />
+          </AssociationSet>
+          <AssociationSet Name="pubdic" Association="MyDatabase4Model.pubdic">
+            <End Role="Publisher" EntitySet="Publishers" />
+            <End Role="Dictionaries" EntitySet="Dictionaries" />
+          </AssociationSet>
+          <AssociationSet Name="langdic1" Association="MyDatabase4Model.langdic1">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="LangDic" EntitySet="LangDics" />
+          </AssociationSet>
+          <AssociationSet Name="L" Association="MyDatabase4Model.L">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="LSD" EntitySet="LSDs" />
+          </AssociationSet>
+          <AssociationSet Name="publoc" Association="MyDatabase4Model.publoc">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Publisher" EntitySet="Publishers" />
+          </AssociationSet>
+          <AssociationSet Name="S" Association="MyDatabase4Model.S">
+            <End Role="Script" EntitySet="Scripts" />
+            <End Role="LSD" EntitySet="LSDs" />
+          </AssociationSet>
+          <AssociationSet Name="oo" Association="MyDatabase4Model.oo">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="MAOrganizations" EntitySet="MAOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="pp" Association="MyDatabase4Model.pp">
+            <End Role="People" EntitySet="People" />
+            <End Role="MAPeople" EntitySet="MAPeoples" />
+          </AssociationSet>
+          <AssociationSet Name="scripscrip" Association="MyDatabase4Model.scripscrip">
+            <End Role="Script" EntitySet="Scripts" />
+            <End Role="ScriptDic" EntitySet="ScriptDics" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AuthDic">
+          <Key>
+            <PropertyRef Name="AID" />
+            <PropertyRef Name="DID" />
+          </Key>
+          <Property Name="AID" Type="Int32" Nullable="false" />
+          <Property Name="DID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="MyDatabase4Model.authdic1" FromRole="AuthDic" ToRole="Author" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="AuthDics" Relationship="MyDatabase4Model.authdic1" FromRole="Author" ToRole="AuthDic" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Dictionaries" Relationship="MyDatabase4Model.catdic" FromRole="Category" ToRole="Dictionaries" />
+        </EntityType>
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ISBN" Type="Int32" />
+          <Property Name="Edition" Type="DateTime" />
+          <Property Name="Volume" Type="Int32" />
+          <Property Name="Part" Type="Int32" />
+          <Property Name="Copies" Type="Int32" />
+          <Property Name="Words" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Category" Type="Int32" />
+          <Property Name="Publisher" Type="Int32" />
+          <NavigationProperty Name="Category1" Relationship="MyDatabase4Model.catdic" FromRole="Dictionaries" ToRole="Category" />
+          <NavigationProperty Name="LSDs" Relationship="MyDatabase4Model.D" FromRole="Dictionaries" ToRole="LSD" />
+          <NavigationProperty Name="LangDics" Relationship="MyDatabase4Model.diclang" FromRole="Dictionaries" ToRole="LangDic" />
+          <NavigationProperty Name="MAOrganizations" Relationship="MyDatabase4Model.dico" FromRole="Dictionaries" ToRole="MAOrganizations" />
+          <NavigationProperty Name="MAPeoples" Relationship="MyDatabase4Model.dicp" FromRole="Dictionaries" ToRole="MAPeople" />
+          <NavigationProperty Name="ScriptDics" Relationship="MyDatabase4Model.dicscrip" FromRole="Dictionaries" ToRole="ScriptDic" />
+          <NavigationProperty Name="Publisher1" Relationship="MyDatabase4Model.pubdic" FromRole="Dictionaries" ToRole="Publisher" />
+        </EntityType>
+        <EntityType Name="LangDic">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="LID" />
+            <PropertyRef Name="TYPE" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" />
+          <Property Name="LID" Type="Int32" Nullable="false" />
+          <Property Name="TYPE" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Dictionary" Relationship="MyDatabase4Model.diclang" FromRole="LangDic" ToRole="Dictionaries" />
+          <NavigationProperty Name="Language" Relationship="MyDatabase4Model.langdic1" FromRole="LangDic" ToRole="Language" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="LangDics" Relationship="MyDatabase4Model.langdic1" FromRole="Language" ToRole="LangDic" />
+          <NavigationProperty Name="LSDs" Relationship="MyDatabase4Model.L" FromRole="Language" ToRole="LSD" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="PIN" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Publishers" Relationship="MyDatabase4Model.publoc" FromRole="Location" ToRole="Publisher" />
+        </EntityType>
+        <EntityType Name="LSD">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="LID" />
+            <PropertyRef Name="SID" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" />
+          <Property Name="LID" Type="Int32" Nullable="false" />
+          <Property Name="SID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Dictionary" Relationship="MyDatabase4Model.D" FromRole="LSD" ToRole="Dictionaries" />
+          <NavigationProperty Name="Language" Relationship="MyDatabase4Model.L" FromRole="LSD" ToRole="Language" />
+          <NavigationProperty Name="Script" Relationship="MyDatabase4Model.S" FromRole="LSD" ToRole="Script" />
+        </EntityType>
+        <EntityType Name="MAOrganization">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" />
+          <Property Name="OID" Type="Int32" Nullable="false" />
+          <Property Name="MA" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Dictionary" Relationship="MyDatabase4Model.dico" FromRole="MAOrganizations" ToRole="Dictionaries" />
+          <NavigationProperty Name="Organization" Relationship="MyDatabase4Model.oo" FromRole="MAOrganizations" ToRole="Organizations" />
+        </EntityType>
+        <EntityType Name="MAPeople">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" />
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="MA" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Dictionary" Relationship="MyDatabase4Model.dicp" FromRole="MAPeople" ToRole="Dictionaries" />
+          <NavigationProperty Name="Person" Relationship="MyDatabase4Model.pp" FromRole="MAPeople" ToRole="People" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="MAOrganizations" Relationship="MyDatabase4Model.oo" FromRole="Organizations" ToRole="MAOrganizations" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="MAPeoples" Relationship="MyDatabase4Model.pp" FromRole="People" ToRole="MAPeople" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Location" Type="Int32" />
+          <NavigationProperty Name="Dictionaries" Relationship="MyDatabase4Model.pubdic" FromRole="Publisher" ToRole="Dictionaries" />
+          <NavigationProperty Name="Location1" Relationship="MyDatabase4Model.publoc" FromRole="Publisher" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Script">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="LSDs" Relationship="MyDatabase4Model.S" FromRole="Script" ToRole="LSD" />
+          <NavigationProperty Name="ScriptDics" Relationship="MyDatabase4Model.scripscrip" FromRole="Script" ToRole="ScriptDic" />
+        </EntityType>
+        <EntityType Name="ScriptDic">
+          <Key>
+            <PropertyRef Name="DID" />
+            <PropertyRef Name="SID" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" />
+          <Property Name="SID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Dictionary" Relationship="MyDatabase4Model.dicscrip" FromRole="ScriptDic" ToRole="Dictionaries" />
+          <NavigationProperty Name="Script" Relationship="MyDatabase4Model.scripscrip" FromRole="ScriptDic" ToRole="Script" />
+        </EntityType>
+        <Association Name="authdic1">
+          <End Role="Author" Type="MyDatabase4Model.Author" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AuthDic" Type="MyDatabase4Model.AuthDic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AuthDic">
+              <PropertyRef Name="AID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="catdic">
+          <End Role="Category" Type="MyDatabase4Model.Category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dictionaries" Type="MyDatabase4Model.Dictionary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dictionaries">
+              <PropertyRef Name="Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="D">
+          <End Role="Dictionaries" Type="MyDatabase4Model.Dictionary" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LSD" Type="MyDatabase4Model.LSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionaries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LSD">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="diclang">
+          <End Role="Dictionaries" Type="MyDatabase4Model.Dictionary" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LangDic" Type="MyDatabase4Model.LangDic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionaries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LangDic">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dico">
+          <End Role="Dictionaries" Type="MyDatabase4Model.Dictionary" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MAOrganizations" Type="MyDatabase4Model.MAOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionaries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MAOrganizations">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dicp">
+          <End Role="Dictionaries" Type="MyDatabase4Model.Dictionary" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MAPeople" Type="MyDatabase4Model.MAPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionaries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MAPeople">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dicscrip">
+          <End Role="Dictionaries" Type="MyDatabase4Model.Dictionary" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ScriptDic" Type="MyDatabase4Model.ScriptDic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionaries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ScriptDic">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pubdic">
+          <End Role="Publisher" Type="MyDatabase4Model.Publisher" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dictionaries" Type="MyDatabase4Model.Dictionary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dictionaries">
+              <PropertyRef Name="Publisher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="langdic1">
+          <End Role="Language" Type="MyDatabase4Model.Language" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LangDic" Type="MyDatabase4Model.LangDic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LangDic">
+              <PropertyRef Name="LID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="L">
+          <End Role="Language" Type="MyDatabase4Model.Language" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LSD" Type="MyDatabase4Model.LSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LSD">
+              <PropertyRef Name="LID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publoc">
+          <End Role="Location" Type="MyDatabase4Model.Location" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Publisher" Type="MyDatabase4Model.Publisher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Publisher">
+              <PropertyRef Name="Location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="S">
+          <End Role="Script" Type="MyDatabase4Model.Script" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LSD" Type="MyDatabase4Model.LSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Script">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LSD">
+              <PropertyRef Name="SID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="oo">
+          <End Role="Organizations" Type="MyDatabase4Model.Organization" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MAOrganizations" Type="MyDatabase4Model.MAOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MAOrganizations">
+              <PropertyRef Name="OID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pp">
+          <End Role="People" Type="MyDatabase4Model.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MAPeople" Type="MyDatabase4Model.MAPeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MAPeople">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="scripscrip">
+          <End Role="Script" Type="MyDatabase4Model.Script" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ScriptDic" Type="MyDatabase4Model.ScriptDic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Script">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ScriptDic">
+              <PropertyRef Name="SID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyDatabase4ModelStoreContainer" CdmEntityContainer="MyDatabase4Entities1">
+          <EntitySetMapping Name="AuthDics"><EntityTypeMapping TypeName="MyDatabase4Model.AuthDic"><MappingFragment StoreEntitySet="AuthDic">
+            <ScalarProperty Name="AID" ColumnName="AID" />
+            <ScalarProperty Name="DID" ColumnName="DID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Authors"><EntityTypeMapping TypeName="MyDatabase4Model.Author"><MappingFragment StoreEntitySet="Author">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Categories"><EntityTypeMapping TypeName="MyDatabase4Model.Category"><MappingFragment StoreEntitySet="Category">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Dictionaries"><EntityTypeMapping TypeName="MyDatabase4Model.Dictionary"><MappingFragment StoreEntitySet="Dictionaries">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+            <ScalarProperty Name="Edition" ColumnName="Edition" />
+            <ScalarProperty Name="Volume" ColumnName="Volume" />
+            <ScalarProperty Name="Part" ColumnName="Part" />
+            <ScalarProperty Name="Copies" ColumnName="Copies" />
+            <ScalarProperty Name="Words" ColumnName="Words" />
+            <ScalarProperty Name="Notes" ColumnName="Notes" />
+            <ScalarProperty Name="Category" ColumnName="Category" />
+            <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LangDics"><EntityTypeMapping TypeName="MyDatabase4Model.LangDic"><MappingFragment StoreEntitySet="LangDic">
+            <ScalarProperty Name="DID" ColumnName="DID" />
+            <ScalarProperty Name="LID" ColumnName="LID" />
+            <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Languages"><EntityTypeMapping TypeName="MyDatabase4Model.Language"><MappingFragment StoreEntitySet="Language">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Locations"><EntityTypeMapping TypeName="MyDatabase4Model.Location"><MappingFragment StoreEntitySet="Location">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Street" ColumnName="Street" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="PIN" ColumnName="PIN" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LSDs"><EntityTypeMapping TypeName="MyDatabase4Model.LSD"><MappingFragment StoreEntitySet="LSD">
+            <ScalarProperty Name="DID" ColumnName="DID" />
+            <ScalarProperty Name="LID" ColumnName="LID" />
+            <ScalarProperty Name="SID" ColumnName="SID" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MAOrganizations"><EntityTypeMapping TypeName="MyDatabase4Model.MAOrganization"><MappingFragment StoreEntitySet="MAOrganizations">
+            <ScalarProperty Name="DID" ColumnName="DID" />
+            <ScalarProperty Name="OID" ColumnName="OID" />
+            <ScalarProperty Name="MA" ColumnName="MA" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MAPeoples"><EntityTypeMapping TypeName="MyDatabase4Model.MAPeople"><MappingFragment StoreEntitySet="MAPeople">
+            <ScalarProperty Name="DID" ColumnName="DID" />
+            <ScalarProperty Name="PID" ColumnName="PID" />
+            <ScalarProperty Name="MA" ColumnName="MA" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Organizations"><EntityTypeMapping TypeName="MyDatabase4Model.Organization"><MappingFragment StoreEntitySet="Organizations">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="People"><EntityTypeMapping TypeName="MyDatabase4Model.Person"><MappingFragment StoreEntitySet="People">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Publishers"><EntityTypeMapping TypeName="MyDatabase4Model.Publisher"><MappingFragment StoreEntitySet="Publisher">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Location" ColumnName="Location" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Scripts"><EntityTypeMapping TypeName="MyDatabase4Model.Script"><MappingFragment StoreEntitySet="Script">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ScriptDics"><EntityTypeMapping TypeName="MyDatabase4Model.ScriptDic"><MappingFragment StoreEntitySet="ScriptDic">
+            <ScalarProperty Name="DID" ColumnName="DID" />
+            <ScalarProperty Name="SID" ColumnName="SID" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model8">
+        <EntityTypeShape EntityType="MyDatabase4Model.AuthDic" Width="1.5" PointX="12" PointY="10.75" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Author" Width="1.5" PointX="9.75" PointY="10.75" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Category" Width="1.5" PointX="3" PointY="4.625" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Dictionary" Width="1.5" PointX="5.25" PointY="6.375" Height="3.8931689453124996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.LangDic" Width="1.5" PointX="7.5" PointY="7.5" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Language" Width="1.5" PointX="5.25" PointY="3.375" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Location" Width="1.5" PointX="0.75" PointY="7.375" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.LSD" Width="1.5" PointX="7.5" PointY="4.375" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.MAOrganization" Width="1.5" PointX="7.5" PointY="10.5" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.MAPeople" Width="1.5" PointX="10.5" PointY="7.5" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Organization" Width="1.5" PointX="5.25" PointY="11.625" Height="1.4279589843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Person" Width="1.5" PointX="8.25" PointY="1.625" Height="1.4279589843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Publisher" Width="1.5" PointX="3" PointY="7.5" Height="1.7566536458333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.Script" Width="1.5" PointX="5.25" PointY="0.75" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabase4Model.ScriptDic" Width="1.5" PointX="10.5" PointY="4.5" Height="1.7566536458333388" IsExpanded="true" />
+        <AssociationConnector Association="MyDatabase4Model.authdic1" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.25" PointY="11.4639794921875" />
+          <ConnectorPoint PointX="12" PointY="11.4639794921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.catdic" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.052958984375" />
+          <ConnectorPoint PointX="4.875" PointY="6.427958984375" />
+          <ConnectorPoint PointX="4.875" PointY="6" />
+          <ConnectorPoint PointX="5.25" PointY="6.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.D" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="6.375" />
+          <ConnectorPoint PointX="7.125" PointY="6" />
+          <ConnectorPoint PointX="7.125" PointY="6.8353483072916674" />
+          <ConnectorPoint PointX="7.1285744349011209" PointY="6.8317738723905457" />
+          <ConnectorPoint PointX="7.2464255650988791" PointY="6.7139227421927883" />
+          <ConnectorPoint PointX="7.5" PointY="6.4603483072916674" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.diclang" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="8.3783268229166659" />
+          <ConnectorPoint PointX="7.5" PointY="8.3783268229166659" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.dico" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="10.2681689453125" />
+          <ConnectorPoint PointX="7.125" PointY="10.6431689453125" />
+          <ConnectorPoint PointX="7.125" PointY="10.123847153846153" />
+          <ConnectorPoint PointX="7.5011528461538459" PointY="10.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.dicp" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="9.7311592955729154" />
+          <ConnectorPoint PointX="11.25" PointY="9.7311592955729154" />
+          <ConnectorPoint PointX="11.25" PointY="9.2566536458333317" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.dicscrip" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="7.3766634114583329" />
+          <ConnectorPoint PointX="7.25" PointY="7.3766634114583329" />
+          <ConnectorPoint PointX="7.25" PointY="7.25" />
+          <ConnectorPoint PointX="10.041666666666666" PointY="7.2499999999999991" />
+          <ConnectorPoint PointX="10.208333333333334" PointY="7.25" />
+          <ConnectorPoint PointX="11.25" PointY="7.25" />
+          <ConnectorPoint PointX="11.25" PointY="6.2566536458333388" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.pubdic" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.37832682291667" />
+          <ConnectorPoint PointX="5.25" PointY="8.37832682291667" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.langdic1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="4.9049976227964747" />
+          <ConnectorPoint PointX="7.1875" PointY="5.3424976227964747" />
+          <ConnectorPoint PointX="7.1875" PointY="7.9079114114583327" />
+          <ConnectorPoint PointX="7.5" PointY="7.9079114114583327" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.L" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="4.608746311398237" />
+          <ConnectorPoint PointX="7.5" PointY="4.608746311398237" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.publoc" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.37832682291667" />
+          <ConnectorPoint PointX="3" PointY="8.37832682291667" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.S" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="1.15625" />
+          <ConnectorPoint PointX="7.84375" PointY="1.15625" />
+          <ConnectorPoint PointX="7.84375" PointY="4.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.oo" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="11.940826822916666" />
+          <ConnectorPoint PointX="7.5" PointY="11.940826822916666" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.pp" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="3.0529589843750031" />
+          <ConnectorPoint PointX="10.125" PointY="3.4279589843750031" />
+          <ConnectorPoint PointX="10.125" PointY="8.3783268229166659" />
+          <ConnectorPoint PointX="10.5" PointY="8.3783268229166659" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyDatabase4Model.scripscrip" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="1.3906275000000008" />
+          <ConnectorPoint PointX="7.760416666666667" PointY="1.3906275000000001" />
+          <ConnectorPoint PointX="7.927083333333333" PointY="1.3906275000000008" />
+          <ConnectorPoint PointX="11.25" PointY="1.3906275000000008" />
+          <ConnectorPoint PointX="11.25" PointY="4.5" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
